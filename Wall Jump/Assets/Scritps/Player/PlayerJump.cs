@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class PlayerJump : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigid;
     [SerializeField] private float jumpPower;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite jumpSprite;
+    [SerializeField] private Rigidbody2D rigidbody;
 
-    /// <summary>
-    /// 땅과 벽에서 점프하는 함수
-    /// LocalScale.x 의 방향에 따라 점프 방향이 달라짐
-    /// </summary>
     public void Jump()
     {
-        if (PlayerStatus.CanJumping)
+        Debug.Log("점프");
+        if (PlayerStatus.CanJumping && PlayerStatus.JumpingCount <= 0)
         {
-            if (transform.localScale.x == 1)
+            if (PlayerStatus.Direction == PlayerDirection.Left)
             {
-                rigid.AddForce(new Vector2(1, 1.5f) * jumpPower, ForceMode2D.Impulse);
+                rigidbody.AddForce(new Vector2(-1, 1.5f) * jumpPower, ForceMode2D.Impulse);
             }
-            else if (transform.localScale.x == -1)
+            else if (PlayerStatus.Direction == PlayerDirection.Right)
             {
-                rigid.AddForce(new Vector2(-1, 1.5f) * jumpPower, ForceMode2D.Impulse);
+                rigidbody.AddForce(new Vector2(1, 1.5f) * jumpPower, ForceMode2D.Impulse);
             }
-        } 
+
+            PlayerStatus.JumpingCount++;
+        }
     }
 }

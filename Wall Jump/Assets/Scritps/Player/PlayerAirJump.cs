@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerAirJump : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float jumpPower;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody2D rigidbody;
 
-    // Update is called once per frame
-    void Update()
+    public void AirJump()
     {
-        
+
     }
 }

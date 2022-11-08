@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerWallChecker : MonoBehaviour
+public class PlayerGroundChecker : MonoBehaviour
 {
-    [SerializeField] private UnityEvent wallTouchedEvent;
+    [SerializeField] private UnityEvent groundTouchedEvent;
     [SerializeField] private Animator animator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        
+
     }
 }
