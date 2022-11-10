@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAirJump : State
+public class PlayerAerialJump : State
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private Animator animator;
@@ -15,16 +15,19 @@ public class PlayerAirJump : State
 
     public override void Enter(PlayerFSM fsm)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        throw new System.NotImplementedException();
+        for (int i = 0; i < transitionConditions.Count; i++)
+        {
+            transitionConditions[i].Condition(fsm);
+        }
     }
 
     public override void Exit(PlayerFSM fsm)
     {
-        throw new System.NotImplementedException();
+        
     }
 }

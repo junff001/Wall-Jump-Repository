@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerGroundChecker : MonoBehaviour
+public class PlayerGroundSensor : MonoBehaviour
 {
     [SerializeField] private UnityEvent groundTouchedEvent;
     [SerializeField] private Animator animator;
@@ -14,19 +14,7 @@ public class PlayerGroundChecker : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            PlayerStatus.IsOnGround = true;
-            PlayerStatus.IsJumping = false;
-            PlayerStatus.JumpingCount = 0;
-
-            animator.SetBool(isOnGround, PlayerStatus.IsOnGround);
+            PlayerStatus.CurrentState = PlayerState.Idle;
         } 
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            PlayerStatus.IsOnGround = false;
-        }
     }
 }

@@ -10,23 +10,19 @@ public class PlayerIdle : State
 
     public override void Enter(PlayerFSM fsm)
     {
-        PlayerStatus.IsJumping = false;
-        PlayerStatus.JumpingCount = 0;
-        PlayerStatus.IsOnGround = true;
-
-        animator.SetBool(isOnGround, PlayerStatus.IsOnGround);
+       
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        if (PlayerStatus.IsJumping)
+        for (int i = 0; i < transitionConditions.Count; i++)
         {
-            fsm.ChangeState(PlayerState.Jump);
+            transitionConditions[i].Condition(fsm);
         }
     }
 
     public override void Exit(PlayerFSM fsm)
     {
-        PlayerStatus.IsOnGround = false;
+       
     }
 }

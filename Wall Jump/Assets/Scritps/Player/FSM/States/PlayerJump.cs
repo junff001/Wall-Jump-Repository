@@ -12,31 +12,31 @@ public class PlayerJump : State
 
     public override void Enter(PlayerFSM fsm)
     {
-        PlayerStatus.IsJumping = true;
-        PlayerStatus.JumpingCount++;
-        animator.SetBool(isJumping, PlayerStatus.IsJumping);
         Jump();
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        
+        for (int i = 0; i < transitionConditions.Count; i++)
+        {
+            transitionConditions[i].Condition(fsm);
+        }
     }
 
     public override void Exit(PlayerFSM fsm)
     {
-        PlayerStatus.IsJumping = false;
+       
     }
 
     public void Jump()
     {
         Debug.Log("มกวม");
 
-        if (PlayerStatus.Direction == PlayerDirection.Left)
+        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
             rigidbody.AddForce(new Vector2(-1, 1.5f) * jumpPower, ForceMode2D.Impulse);
         }
-        else if (PlayerStatus.Direction == PlayerDirection.Right)
+        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
         {
             rigidbody.AddForce(new Vector2(1, 1.5f) * jumpPower, ForceMode2D.Impulse);
         }

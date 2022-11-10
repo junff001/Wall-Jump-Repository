@@ -6,15 +6,15 @@ public class PlayerFilp : MonoBehaviour
 {
     public void FilpX()
     {
-        if (PlayerStatus.Direction == PlayerDirection.Left)
+        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
-            PlayerStatus.Direction = PlayerDirection.Right;
+            PlayerStatus.CurrentDirection = PlayerDirection.Right;
         }
-        else if (PlayerStatus.Direction == PlayerDirection.Right)
+        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-            PlayerStatus.Direction = PlayerDirection.Left;
+            PlayerStatus.CurrentDirection = PlayerDirection.Left;
         }
     }
 }
