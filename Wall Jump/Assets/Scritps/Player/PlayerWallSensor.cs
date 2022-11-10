@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class PlayerWallSensor : MonoBehaviour
 {
-    [SerializeField] private UnityEvent wallTouchedEvent;
     [SerializeField] private Animator animator;
 
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTouchedToScreenTwice : TransitionCondition
+public class IfTouchedToScreenTwice_AerialJump : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {

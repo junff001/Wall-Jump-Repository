@@ -10,7 +10,7 @@ public class PlayerIdle : State
 
     public override void Enter(PlayerFSM fsm)
     {
-       
+        
     }
 
     public override void Execute(PlayerFSM fsm)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerContactedTheGround : TransitionCondition
+public class IfContactedTheGround_Idle : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {

@@ -24,7 +24,7 @@ public class PlayerFSM : MonoBehaviour
     // 해당 키 가 존재하고, 현재 키 와 같은 키가 아니라면
     public void ChangeState(PlayerState newState)
     {
-        if (stateDictionary.ContainsKey(newState) && PlayerStatus.CurrentState != newState)
+        if (currentState != stateDictionary[newState])
         {
             if (currentState != null)
             {

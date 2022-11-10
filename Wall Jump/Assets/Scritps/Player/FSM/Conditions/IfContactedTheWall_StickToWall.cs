@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerContactedTheWall : TransitionCondition
+public class IfContactedTheWall_StickToWall : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {

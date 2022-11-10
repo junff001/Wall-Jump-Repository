@@ -8,7 +8,7 @@ public class PlayerStickToWall : State
 
     public override void Enter(PlayerFSM fsm)
     {
-
+        StickToWall();
     }
 
     public override void Execute(PlayerFSM fsm)
