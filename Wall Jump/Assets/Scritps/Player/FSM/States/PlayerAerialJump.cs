@@ -1,21 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAerialJump : State
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private UnityEvent aerialJumpEvent;
 
-    public void AirJump()
+    public void AerialJump()
     {
+        aerialJumpEvent.Invoke();
+        rigidbody.velocity = Vector2.zero;
 
+        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+        {
+            rigidbody.AddForce(new Vector2(-1, 1.5f) * jumpPower, ForceMode2D.Impulse);
+        }
+        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+        {
+            rigidbody.AddForce(new Vector2(1, 1.5f) * jumpPower, ForceMode2D.Impulse);
+        }
     }
 
     public override void Enter(PlayerFSM fsm)
     {
-        
+        AerialJump();
     }
 
     public override void Execute(PlayerFSM fsm)

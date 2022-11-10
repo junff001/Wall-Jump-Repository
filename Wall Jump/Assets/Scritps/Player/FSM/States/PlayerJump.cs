@@ -13,6 +13,7 @@ public class PlayerJump : State
     public override void Enter(PlayerFSM fsm)
     {
         Jump();
+        animator.SetBool(isJumping, true);
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -25,13 +26,11 @@ public class PlayerJump : State
 
     public override void Exit(PlayerFSM fsm)
     {
-       
+        animator.SetBool(isJumping, false);
     }
 
     public void Jump()
     {
-        Debug.Log("มกวม");
-
         if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
             rigidbody.AddForce(new Vector2(-1, 1.5f) * jumpPower, ForceMode2D.Impulse);

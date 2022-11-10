@@ -5,15 +5,15 @@ using UnityEngine.Events;
 
 public class PlayerWallSensor : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
-
-    private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
+    [SerializeField] private UnityEvent stickToWallEvent;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            PlayerStatus.CurrentState = PlayerState.StickToWall;
+            PlayerStatus.CurrentState = PlayerState.StickToWall;           
+            InputManager.Instance.JumpingCountReset();
+            stickToWallEvent.Invoke();
         }
     }
 }

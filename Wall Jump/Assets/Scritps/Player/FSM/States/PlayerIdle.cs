@@ -10,7 +10,7 @@ public class PlayerIdle : State
 
     public override void Enter(PlayerFSM fsm)
     {
-        
+        animator.SetBool(isOnGround, true);
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -23,6 +23,6 @@ public class PlayerIdle : State
 
     public override void Exit(PlayerFSM fsm)
     {
-       
+        animator.SetBool(isOnGround, false);
     }
 }

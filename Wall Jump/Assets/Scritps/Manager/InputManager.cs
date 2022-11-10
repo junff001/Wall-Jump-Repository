@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    public int jumpingCount { get; set; } = 0;
+    private int jumpingCount = 0;
 
     public void JumpingCountUp()
     {
         jumpingCount++;
-        Debug.Log(jumpingCount);
 
         switch (jumpingCount)
         {
@@ -23,7 +22,10 @@ public class InputManager : MonoSingleton<InputManager>
                 PlayerStatus.CurrentState = PlayerState.BashJump;
                 break;
         }
+    }
 
-        Debug.Log(PlayerStatus.CurrentState);
+    public void JumpingCountReset()
+    {
+        jumpingCount = 0;
     }
 }

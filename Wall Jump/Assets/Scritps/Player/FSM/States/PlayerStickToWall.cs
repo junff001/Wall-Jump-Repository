@@ -5,10 +5,14 @@ using UnityEngine;
 public class PlayerStickToWall : State
 {
     [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private Animator animator;
+
+    private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
 
     public override void Enter(PlayerFSM fsm)
     {
         StickToWall();
+        animator.SetBool(isStickToWall, true);
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -21,7 +25,8 @@ public class PlayerStickToWall : State
 
     public override void Exit(PlayerFSM fsm)
     {
-
+        rigidbody.gravityScale = 1;
+        animator.SetBool(isStickToWall, false);
     }
 
     public void StickToWall()
