@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2016 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -137,7 +137,7 @@ public class UIWrapContent : MonoBehaviour
 	/// Cache the scroll view and return 'false' if the scroll view is not found.
 	/// </summary>
 
-	protected virtual bool CacheScrollView ()
+	protected bool CacheScrollView ()
 	{
 		mTrans = transform;
 		mPanel = NGUITools.FindInParents<UIPanel>(gameObject);
@@ -169,16 +169,6 @@ public class UIWrapContent : MonoBehaviour
 
 	public virtual void WrapContent ()
 	{
-        ///
-        mChildren.Clear();
-        for (int i = 0; i < mTrans.childCount; ++i)
-        {
-            Transform t = mTrans.GetChild(i);
-            if (hideInactive && !t.gameObject.activeInHierarchy) continue;
-            mChildren.Add(t);
-        }
-        ///
-
 		float extents = itemSize * mChildren.Count * 0.5f;
 		Vector3[] corners = mPanel.worldCorners;
 		

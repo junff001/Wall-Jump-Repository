@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2016 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -52,7 +52,7 @@ public class NGUIDebug : MonoBehaviour
 	/// <summary>
 	/// Add a new on-screen log entry.
 	/// </summary>
-	[System.Diagnostics.Conditional("DEBUG_LOG")]
+
 	static void LogString (string text)
 	{
 		if (Application.isPlaying)
@@ -67,7 +67,7 @@ public class NGUIDebug : MonoBehaviour
 	/// <summary>
 	/// Add a new log entry, printing all of the specified parameters.
 	/// </summary>
-	[System.Diagnostics.Conditional("DEBUG_LOG")]
+
 	static public void Log (params object[] objs)
 	{
 		string text = "";
@@ -89,7 +89,7 @@ public class NGUIDebug : MonoBehaviour
 	/// <summary>
 	/// Add a new log entry.
 	/// </summary>
-	[System.Diagnostics.Conditional("DEBUG_LOG")]
+
 	static public void Log (string s)
 	{
 		if (!string.IsNullOrEmpty(s))

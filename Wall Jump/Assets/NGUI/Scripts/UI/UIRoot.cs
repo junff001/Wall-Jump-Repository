@@ -1,7 +1,7 @@
-//----------------------------------------------
+//-------------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2016 Tasharen Entertainment
-//----------------------------------------------
+// Copyright © 2011-2020 Tasharen Entertainment Inc
+//-------------------------------------------------
 
 using UnityEngine;
 using System.Collections.Generic;
@@ -21,14 +21,14 @@ public class UIRoot : MonoBehaviour
 
 	static public List<UIRoot> list = new List<UIRoot>();
 
-	public enum Scaling
+	[DoNotObfuscateNGUI] public enum Scaling
 	{
 		Flexible,
 		Constrained,
 		ConstrainedOnMobiles,
 	}
 
-	public enum Constraint
+	[DoNotObfuscateNGUI] public enum Constraint
 	{
 		Fit,
 		Fill,
@@ -286,13 +286,7 @@ public class UIRoot : MonoBehaviour
 					!(Mathf.Abs(ls.y - size) <= float.Epsilon) ||
 					!(Mathf.Abs(ls.z - size) <= float.Epsilon))
 				{
-//					
-//					float xVal = NGUITools.screenSize.x / (float)manualWidth;
-//					float temp = (float)manualHeight * xVal;
-//					float yVal = NGUITools.screenSize.y / temp;
-
 					mTrans.localScale = new Vector3(size, size, size);
-//					mTrans.localScale = new Vector3(size, size * yVal, size);
 					if (updateAnchors) BroadcastMessage("UpdateAnchors", SendMessageOptions.DontRequireReceiver);
 				}
 			}
