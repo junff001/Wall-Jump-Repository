@@ -10,6 +10,27 @@ public class PlayerAerialJump : State
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private UnityEvent aerialJumpEvent;
 
+    private readonly int isAerialJump = Animator.StringToHash("isAerialJump");
+
+    public override void Enter(PlayerFSM fsm)
+    {
+        AerialJump();
+        animator.SetBool(isAerialJump, true);
+    }
+
+    public override void Execute(PlayerFSM fsm)
+    {
+        for (int i = 0; i < transitionConditions.Count; i++)
+        {
+            transitionConditions[i].Condition(fsm);
+        }
+    }
+
+    public override void Exit(PlayerFSM fsm)
+    {
+        animator.SetBool(isAerialJump, false);
+    }
+
     public void AerialJump()
     {
         aerialJumpEvent.Invoke();
@@ -23,23 +44,5 @@ public class PlayerAerialJump : State
         {
             rigidbody.AddForce(new Vector2(1, 1.5f) * jumpPower, ForceMode2D.Impulse);
         }
-    }
-
-    public override void Enter(PlayerFSM fsm)
-    {
-        AerialJump();
-    }
-
-    public override void Execute(PlayerFSM fsm)
-    {
-        for (int i = 0; i < transitionConditions.Count; i++)
-        {
-            transitionConditions[i].Condition(fsm);
-        }
-    }
-
-    public override void Exit(PlayerFSM fsm)
-    {
-        
     }
 }

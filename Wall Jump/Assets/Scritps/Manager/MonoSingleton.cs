@@ -9,5 +9,6 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     void Awake()
     {
         Instance = this as T;
+
     }
 }

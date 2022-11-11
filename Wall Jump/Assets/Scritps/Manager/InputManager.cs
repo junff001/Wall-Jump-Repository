@@ -6,6 +6,18 @@ public class InputManager : MonoSingleton<InputManager>
 {
     private int jumpingCount = 0;
 
+    float a;
+    //private void Start()
+    //{
+    //    a = Camera.main.orthographicSize;
+    //    Camera.main.orthographicSize = Camera.main.orthographicSize * 0.5625f / (Screen.width / (float)Screen.height);
+    //}
+
+    //private void Update()
+    //{
+    //    Camera.main.orthographicSize =  a * 0.5625f / (Screen.width / (float)Screen.height);
+    //}
+
     public void JumpingCountUp()
     {
         jumpingCount++;
