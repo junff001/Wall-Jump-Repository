@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerAerialJump : State
 {
     [SerializeField] private float jumpPower;
+    [SerializeField] private float jumpTime;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private UnityEvent aerialJumpEvent;
@@ -36,13 +37,27 @@ public class PlayerAerialJump : State
         aerialJumpEvent.Invoke();
         rigidbody.velocity = Vector2.zero;
 
-        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+        StartCoroutine(MarioJump());
+    }
+
+    IEnumerator MarioJump()
+    {
+        float timer = jumpTime;
+
+        while (InputManager.Instance.isPress && timer > 0)
         {
-            rigidbody.AddForce(new Vector2(-1, 1.5f) * jumpPower, ForceMode2D.Impulse);
-        }
-        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-        {
-            rigidbody.AddForce(new Vector2(1, 1.5f) * jumpPower, ForceMode2D.Impulse);
+            timer -= Time.deltaTime;
+
+            if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+            {
+                rigidbody.velocity = new Vector2(-1, 1.5f) * jumpPower;
+            }
+            else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+            {
+                rigidbody.velocity = new Vector2(1, 1.5f) * jumpPower;
+            }
+
+            yield return null;
         }
     }
 }

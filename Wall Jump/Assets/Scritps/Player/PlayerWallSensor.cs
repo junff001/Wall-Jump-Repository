@@ -11,8 +11,8 @@ public class PlayerWallSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            PlayerStatus.CurrentState = PlayerState.StickToWall;           
-            InputManager.Instance.JumpingCountReset();
+            PlayerStatus.CurrentState = PlayerState.StickToWall;
+            PlayerStatus.JumpingCount = 0;
             stickToWallEvent.Invoke();
         }
     }

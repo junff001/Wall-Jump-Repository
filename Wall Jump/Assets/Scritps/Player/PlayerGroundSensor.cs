@@ -10,7 +10,7 @@ public class PlayerGroundSensor : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             PlayerStatus.CurrentState = PlayerState.Idle;
-            InputManager.Instance.JumpingCountReset();
+            PlayerStatus.JumpingCount = 0;
         } 
     }
 }

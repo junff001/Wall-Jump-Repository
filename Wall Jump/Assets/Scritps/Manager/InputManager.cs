@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    private int jumpingCount = 0;
+    public bool isPress { get; set; } = false;
+    public bool isRelease { get; set; } = false;
+
 
     float a;
     //private void Start()
@@ -18,11 +20,23 @@ public class InputManager : MonoSingleton<InputManager>
     //    Camera.main.orthographicSize =  a * 0.5625f / (Screen.width / (float)Screen.height);
     //}
 
+    public void JumpButtonPress()
+    {
+        isRelease = false;
+        isPress = true;
+    }
+
+    public void JumpButtonRelease()
+    {
+        isPress = false;
+        isRelease = true;
+    }
+
     public void JumpingCountUp()
     {
-        jumpingCount++;
+        PlayerStatus.JumpingCount++;
 
-        switch (jumpingCount)
+        switch (PlayerStatus.JumpingCount)
         {
             case 1:
                 PlayerStatus.CurrentState = PlayerState.Jump;
@@ -34,10 +48,5 @@ public class InputManager : MonoSingleton<InputManager>
                 PlayerStatus.CurrentState = PlayerState.BashJump;
                 break;
         }
-    }
-
-    public void JumpingCountReset()
-    {
-        jumpingCount = 0;
     }
 }

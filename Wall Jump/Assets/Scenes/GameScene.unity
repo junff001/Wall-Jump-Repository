@@ -2054,7 +2054,8 @@ MonoBehaviour:
   - {fileID: 1428899184}
   - {fileID: 1428899183}
   - {fileID: 1428899181}
-  jumpPower: 10
+  jumpPower: 8
+  jumpTime: 0.5
   animator: {fileID: 1519498141}
   rigidbody: {fileID: 1519498135}
   aerialJumpEvent:
@@ -2353,7 +2354,8 @@ MonoBehaviour:
   - {fileID: 1551832639}
   - {fileID: 1551832638}
   - {fileID: 1551832637}
-  jumpPower: 10
+  jumpPower: 8
+  jumpTime: 0.5
   rigidbody: {fileID: 1519498135}
   animator: {fileID: 1519498141}
 --- !u!114 &1551832637
@@ -3150,7 +3152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103563218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 397009777}
@@ -3172,10 +3174,18 @@ MonoBehaviour:
   onHoverOut: []
   onPress:
   - mTarget: {fileID: 1002469520}
+    mMethodName: JumpButtonPress
+    mParameters: []
+    oneShot: 0
+  - mTarget: {fileID: 1002469520}
     mMethodName: JumpingCountUp
     mParameters: []
     oneShot: 0
-  onRelease: []
+  onRelease:
+  - mTarget: {fileID: 1002469520}
+    mMethodName: JumpButtonRelease
+    mParameters: []
+    oneShot: 0
   onSelect: []
   onDeselect: []
   onClick: []
@@ -3209,7 +3219,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12702, y: 22670}
+  m_Size: {x: 12697, y: 22670}
   m_EdgeRadius: 0
 --- !u!114 &2103563222
 MonoBehaviour:
@@ -3242,7 +3252,7 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 12702
+  mWidth: 12697
   mHeight: 22670
   mDepth: 0
   boundless: 0
@@ -3250,7 +3260,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.56029993
+  aspectRatio: 0.5600794
 --- !u!1 &2106810658
 GameObject:
   m_ObjectHideFlags: 0
