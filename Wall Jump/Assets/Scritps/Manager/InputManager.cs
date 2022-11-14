@@ -44,9 +44,6 @@ public class InputManager : MonoSingleton<InputManager>
             case 2:
                 PlayerStatus.CurrentState = PlayerState.AerialJump;
                 break;
-            case 3:
-                PlayerStatus.CurrentState = PlayerState.BashJump;
-                break;
         }
     }
 }

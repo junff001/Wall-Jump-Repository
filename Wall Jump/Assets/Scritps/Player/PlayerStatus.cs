@@ -8,4 +8,5 @@ public static class PlayerStatus
     public static PlayerDirection CurrentDirection { get; set; } = PlayerDirection.Right;
 
     public static int JumpingCount { get; set; } = 0;
+    public static bool CanBashJump { get; set; } = false;
 }

@@ -21,4 +21,9 @@ public class PlayerBashJump : State
     {
         
     }
+
+    public void BashJump()
+    {
+
+    }
 }
