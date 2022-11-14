@@ -8,15 +8,7 @@ public class PlayerBashableSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bashable"))
         {
-            Debug.Log("배쉬 가능");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Bashable"))
-        {
-            Debug.Log("배쉬 불가능");
+            PlayerStatus.CurrentState = PlayerState.Bashable;
         }
     }
 }

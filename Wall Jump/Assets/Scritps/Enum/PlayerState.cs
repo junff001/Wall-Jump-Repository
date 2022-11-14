@@ -7,6 +7,7 @@ public enum PlayerState
     StickToWall,
     Bashable,
     Jump,
+    Fall,
     AerialJump,
     BashJump,
     Death
