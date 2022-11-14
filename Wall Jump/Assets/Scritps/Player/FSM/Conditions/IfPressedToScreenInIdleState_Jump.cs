@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfTouchedToScreenOnce_Jump : TransitionCondition
+public class IfPressedToScreenInIdleState_Jump : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {

@@ -11,4 +11,13 @@ public class IfContactedTheGround_Idle : TransitionCondition
             fsm.ChangeState(PlayerState.Idle);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            PlayerStatus.CurrentState = PlayerState.Idle;
+            PlayerStatus.JumpingCount = 0;
+        }
+    }
 }

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFallSensor : MonoBehaviour
+public class PlayerFallChecker : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody;
 
-    private void Update()
+    void Update()
     {
         if (PlayerStatus.CurrentState == PlayerState.Jump)
         {

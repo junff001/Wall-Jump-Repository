@@ -31,19 +31,4 @@ public class InputManager : MonoSingleton<InputManager>
         isPress = false;
         isRelease = true;
     }
-
-    public void JumpingCountUp()
-    {
-        PlayerStatus.JumpingCount++;
-
-        switch (PlayerStatus.JumpingCount)
-        {
-            case 1:
-                PlayerStatus.CurrentState = PlayerState.Jump;
-                break;
-            case 2:
-                PlayerStatus.CurrentState = PlayerState.AerialJump;
-                break;
-        }
-    }
 }

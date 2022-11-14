@@ -5,10 +5,10 @@ public enum PlayerState
 {
     Idle,
     StickToWall,
-    Bashable,
     Jump,
     Fall,
     AerialJump,
+    BashAim,
     BashJump,
     Death
 }

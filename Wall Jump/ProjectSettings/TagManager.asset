@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Ground
+  - Bashable
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Stage
+    uniqueID: 3871801575
+    locked: 0
+  - name: Bashable
+    uniqueID: 3796006401
+    locked: 0
+  - name: Player
+    uniqueID: 1314176383
     locked: 0

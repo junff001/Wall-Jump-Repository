@@ -15,6 +15,11 @@ public class PlayerIdle : State
 
     public override void Execute(PlayerFSM fsm)
     {
+        if (InputManager.Instance.isPress)
+        {
+            PlayerStatus.CurrentState = PlayerState.Jump;
+        }
+
         for (int i = 0; i < transitionConditions.Count; i++)
         {
             transitionConditions[i].Condition(fsm);
