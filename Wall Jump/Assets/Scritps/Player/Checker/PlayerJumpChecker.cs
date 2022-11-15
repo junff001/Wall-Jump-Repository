@@ -6,7 +6,7 @@ public class PlayerJumpChecker : MonoBehaviour
 {
     void Update()
     {
-        if (PlayerStatus.CurrentState == PlayerState.Idle && InputManager.Instance.isPress)
+        if (PlayerStatus.CurrentState == PlayerState.OnGround && InputManager.Instance.isPress)
         {
             PlayerStatus.CurrentState = PlayerState.Jump;
         }

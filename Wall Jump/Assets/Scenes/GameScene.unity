@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1442765}
   - component: {fileID: 1442766}
-  - component: {fileID: 1442767}
   m_Layer: 0
   m_Name: Bash Aim
   m_TagString: Untagged
@@ -168,19 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
---- !u!114 &1442767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e681e0c6cffb63c4b8d8cc34446f0bf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - {fileID: 1622558223}
+  - {fileID: 247420193}
 --- !u!1 &109289549
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &109289550
 Transform:
   m_ObjectHideFlags: 0
@@ -404,7 +392,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -897,7 +885,7 @@ GameObject:
   - component: {fileID: 631675317}
   - component: {fileID: 631675318}
   m_Layer: 0
-  m_Name: Idle
+  m_Name: OnGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -930,11 +918,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1003335513}
+  - {fileID: 1992593070}
+  - {fileID: 214502406}
+  - {fileID: 247420193}
   animator: {fileID: 1519498141}
 --- !u!1 &675391975
 GameObject:
@@ -980,11 +967,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1945704752}
+  - {fileID: 1992593070}
+  - {fileID: 1003335513}
+  - {fileID: 214502406}
+  - {fileID: 247420193}
+  stickToWallEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1519498138}
+        m_TargetAssemblyTypeName: PlayerFilp, Assembly-CSharp
+        m_MethodName: FilpX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rigidbody: {fileID: 1519498135}
   animator: {fileID: 1519498141}
 --- !u!1 &691723038
@@ -1031,12 +1033,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1992593070}
+  - {fileID: 448218661}
+  - {fileID: 214502406}
+  - {fileID: 247420193}
+  - {fileID: 1945704752}
+  - {fileID: 450813759}
   animator: {fileID: 1519498141}
 --- !u!1 &766852791
 GameObject:
@@ -1294,10 +1296,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1063551475}
   - component: {fileID: 1063551477}
-  - component: {fileID: 1063551480}
-  - component: {fileID: 1063551479}
-  - component: {fileID: 1063551478}
-  - component: {fileID: 1063551476}
   m_Layer: 0
   m_Name: Bash Jump
   m_TagString: Untagged
@@ -1319,21 +1317,6 @@ Transform:
   m_Father: {fileID: 1029610695}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1063551476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063551474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d45a4367ff863441aed8b76da011b06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stickToWallEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1063551477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,46 +1330,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &1063551478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063551474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23cd08098355d5418e847b80809f082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1063551479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063551474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee68be1fde458ff4f8b336bce27eb52f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1063551480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063551474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac512cc47a610a4795063b894b08165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - {fileID: 247420193}
+  - {fileID: 1945704752}
+  - {fileID: 450813759}
+  - {fileID: 214502406}
 --- !u!1 &1122185577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,9 +2323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d45a4367ff863441aed8b76da011b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickToWallEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1428899182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2392,10 +2336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 450813759}
+  - {fileID: 1945704752}
+  - {fileID: 247420193}
+  - {fileID: 214502406}
   jumpPower: 8
   jumpTime: 0.5
   animator: {fileID: 1519498141}
@@ -2672,15 +2616,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  jumpPower: 8
+  - {fileID: 1945704752}
+  - {fileID: 450813759}
+  - {fileID: 214502406}
+  - {fileID: 247420193}
+  - {fileID: 448218661}
+  - {fileID: 1003335513}
+  jumpPower: 5
   jumpTime: 0.5
   rigidbody: {fileID: 1519498135}
   animator: {fileID: 1519498141}
@@ -3354,7 +3296,7 @@ GameObject:
   - component: {fileID: 1945704753}
   - component: {fileID: 1945704752}
   m_Layer: 0
-  m_Name: If Contact The Ground _Idle
+  m_Name: If Contact The Ground _OnGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

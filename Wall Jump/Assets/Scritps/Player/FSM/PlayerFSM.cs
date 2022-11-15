@@ -9,7 +9,7 @@ public class PlayerFSM : MonoBehaviour
 
     void Start()
     {
-        currentState = stateDictionary[PlayerState.Idle];
+        currentState = stateDictionary[PlayerState.OnGround];
         currentState.Enter(this);
     }
 

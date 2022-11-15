@@ -3,7 +3,7 @@ using System;
 [Serializable]
 public enum PlayerState
 {
-    Idle,
+    OnGround,
     StickToWall,
     Jump,
     Fall,

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerStickToWall : State
 {
+    [SerializeField] private UnityEvent stickToWallEvent;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
 
@@ -11,6 +13,7 @@ public class PlayerStickToWall : State
 
     public override void Enter(PlayerFSM fsm)
     {
+        stickToWallEvent.Invoke();
         StickToWall();
         animator.SetBool(isStickToWall, true);
     }

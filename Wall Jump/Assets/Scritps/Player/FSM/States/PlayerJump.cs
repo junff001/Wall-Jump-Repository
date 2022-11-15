@@ -13,6 +13,7 @@ public class PlayerJump : State
 
     public override void Enter(PlayerFSM fsm)
     {
+        
         Jump();
         animator.SetBool(isJumping, true);
     }

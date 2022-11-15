@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdle : State
+public class PlayerOnGround : State
 {
     [SerializeField] private Animator animator;
 

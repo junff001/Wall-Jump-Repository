@@ -20,15 +20,26 @@ public class InputManager : MonoSingleton<InputManager>
     //    Camera.main.orthographicSize =  a * 0.5625f / (Screen.width / (float)Screen.height);
     //}
 
-    public void JumpButtonPress()
+    public void ScreenPress()
     {
         isRelease = false;
         isPress = true;
     }
 
-    public void JumpButtonRelease()
+    public void ScreenRelease()
     {
         isPress = false;
-        isRelease = true;
+        isRelease = true; 
+    }
+
+    public void JumpEvent()
+    {
+        switch (PlayerStatus.CurrentState)
+        {
+            case PlayerState.OnGround:
+                break;
+            case PlayerState.StickToWall:
+                break;
+        }
     }
 }

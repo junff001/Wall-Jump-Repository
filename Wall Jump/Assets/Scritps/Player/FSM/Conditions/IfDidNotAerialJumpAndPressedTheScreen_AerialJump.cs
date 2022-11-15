@@ -6,11 +6,6 @@ public class IfDidNotAerialJumpAndPressedTheScreen_AerialJump : TransitionCondit
 {
     public override void Condition(PlayerFSM fsm)
     {
-        if (!PlayerStatus.IsAerialJumping && InputManager.Instance.isPress)
-        {
-            PlayerStatus.CurrentState = PlayerState.AerialJump;
-        }
-
         if (PlayerStatus.CurrentState == PlayerState.AerialJump)
         {
             fsm.ChangeState(PlayerState.AerialJump);

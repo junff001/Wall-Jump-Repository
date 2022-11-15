@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfContactTheGround_Idle : TransitionCondition
+public class IfContactTheGround_OnGround : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {
-        if (PlayerStatus.CurrentState == PlayerState.Idle)
+        if (PlayerStatus.CurrentState == PlayerState.OnGround)
         {
-            fsm.ChangeState(PlayerState.Idle); 
+            fsm.ChangeState(PlayerState.OnGround); 
         }
     }
 
@@ -16,7 +16,7 @@ public class IfContactTheGround_Idle : TransitionCondition
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            PlayerStatus.CurrentState = PlayerState.Idle;
+            PlayerStatus.CurrentState = PlayerState.OnGround;
         }
     }
 
