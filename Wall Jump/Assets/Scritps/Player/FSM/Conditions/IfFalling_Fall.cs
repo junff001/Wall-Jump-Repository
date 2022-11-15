@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfPlayerIsFalling_Fall : TransitionCondition
+public class IfFalling_Fall : TransitionCondition
 {
     [SerializeField] private Rigidbody2D rigidbody;
 

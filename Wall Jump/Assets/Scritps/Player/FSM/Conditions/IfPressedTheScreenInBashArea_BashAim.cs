@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfPressedToScreenJumpOrAerialJumpOrFall_Bash : TransitionCondition
+public class IfPressedTheScreenInBashArea_BashAim : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {
-        if (InputManager.Instance.isPress && PlayerStatus.CanBashAim)
+        if (PlayerStatus.CanBashAim && InputManager.Instance.isPress)
         {
             PlayerStatus.CurrentState = PlayerState.BashAim;
         }

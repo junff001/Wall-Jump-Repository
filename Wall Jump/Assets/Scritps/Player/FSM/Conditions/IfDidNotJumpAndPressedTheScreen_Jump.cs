@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfPressedToScreenInIdleOrWall_Jump : TransitionCondition
+public class IfDidNotJumpAndPressedTheScreen_Jump : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {
-        if (InputManager.Instance.isPress)
+        if (!PlayerStatus.IsJumping && InputManager.Instance.isPress)
         {
             PlayerStatus.CurrentState = PlayerState.Jump;
         }

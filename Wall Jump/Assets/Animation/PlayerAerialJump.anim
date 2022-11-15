@@ -134,53 +134,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.29
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.13157895
-        value: 0.27
-        inSlope: -0.30399972
-        outSlope: -0.30399972
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2631579
-        value: 0.2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Offset.x
-    path: Wall Sensor
-    classID: 61
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -0.15
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.13157895
-        value: -0.11
+        value: 0.6475568
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -189,35 +143,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: -0.15
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Offset.y
-    path: Wall Sensor
-    classID: 61
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.34
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2631579
-        value: 0.10339141
+        value: 0.6475568
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -228,7 +154,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.x
-    path: Wall Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -236,7 +162,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.08
+        value: 0.13491201
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -245,7 +171,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 1.08
+        value: 0.13491201
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -256,7 +182,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.y
-    path: Wall Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -264,7 +190,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.03
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -273,7 +199,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.13157895
-        value: -0.18
+        value: -0.13
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -282,7 +208,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.03
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -293,7 +219,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.x
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -301,7 +227,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.44
+        value: -0.38
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.13157895
+        value: -0.37
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -310,7 +245,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: -0.44
+        value: -0.38
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -321,7 +256,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.y
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -329,7 +264,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.6449813
+        value: 0.2465123
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -338,7 +273,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.6449813
+        value: 0.2465123
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -349,7 +284,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.x
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -357,7 +292,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.074893
+        value: 0.8814306
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -366,7 +301,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.074893
+        value: 0.8814306
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -377,7 +312,72 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.y
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.44
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.2631579
+        value: 0.44
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Offset.x
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.01
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.13157895
+        value: 0.18
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.2631579
+        value: -0.01
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Offset.y
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -392,11 +392,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.2631579
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.x
-    path: Bashable Sensor
+    path: FSM/Conditions/If Pressed The Screen Bash Area _Bash Aim
     classID: 58
     script: {fileID: 0}
   - curve:
@@ -404,7 +413,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1
+        value: -0.04
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.13157895
+        value: -0.02
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -413,7 +431,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.1
+        value: -0.04
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -424,26 +442,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.y
-    path: Bashable Sensor
-    classID: 58
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Radius
-    path: Bashable Sensor
+    path: FSM/Conditions/If Pressed The Screen Bash Area _Bash Aim
     classID: 58
     script: {fileID: 0}
   m_PPtrCurves:
@@ -466,31 +465,31 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 4234238968
+      path: 1197112602
       attribute: 413499720
       script: {fileID: 0}
       typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4234238968
+      path: 1197112602
       attribute: 1872933342
       script: {fileID: 0}
       typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4234238968
-      attribute: 4197328169
+      path: 2472731203
+      attribute: 1872933342
       script: {fileID: 0}
       typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3521289462
-      attribute: 413499720
+      path: 876559502
+      attribute: 1872933342
       script: {fileID: 0}
-      typeID: 61
+      typeID: 58
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
@@ -529,50 +528,43 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4234238968
-      attribute: 2368279999
-      script: {fileID: 0}
-      typeID: 61
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3521289462
-      attribute: 1872933342
-      script: {fileID: 0}
-      typeID: 61
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 3521289462
+      path: 1197112602
       attribute: 4197328169
       script: {fileID: 0}
       typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3521289462
+      path: 1197112602
       attribute: 2368279999
       script: {fileID: 0}
       typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 777873035
+      path: 2472731203
+      attribute: 4197328169
+      script: {fileID: 0}
+      typeID: 61
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2472731203
+      attribute: 2368279999
+      script: {fileID: 0}
+      typeID: 61
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2472731203
       attribute: 413499720
       script: {fileID: 0}
-      typeID: 58
+      typeID: 61
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 777873035
-      attribute: 1872933342
-      script: {fileID: 0}
-      typeID: 58
-      customType: 0
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 777873035
-      attribute: 1984117138
+      path: 876559502
+      attribute: 413499720
       script: {fileID: 0}
       typeID: 58
       customType: 0
@@ -719,53 +711,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.29
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.13157895
-        value: 0.27
-        inSlope: -0.30399972
-        outSlope: -0.30399972
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2631579
-        value: 0.2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Offset.x
-    path: Wall Sensor
-    classID: 61
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: -0.15
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.13157895
-        value: -0.11
+        value: 0.6475568
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -774,35 +720,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: -0.15
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Offset.y
-    path: Wall Sensor
-    classID: 61
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.34
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.2631579
-        value: 0.10339141
+        value: 0.6475568
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -813,7 +731,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.x
-    path: Wall Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -821,7 +739,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1.08
+        value: 0.13491201
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -830,7 +748,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 1.08
+        value: 0.13491201
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -841,7 +759,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.y
-    path: Wall Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -849,7 +767,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.03
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -858,7 +776,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.13157895
-        value: -0.18
+        value: -0.13
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -867,7 +785,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.03
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -878,7 +796,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.x
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -886,7 +804,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -0.44
+        value: -0.38
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.13157895
+        value: -0.37
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -895,7 +822,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: -0.44
+        value: -0.38
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -906,7 +833,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.y
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Ground _Idle
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -914,7 +841,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.6449813
+        value: 0.2465123
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -923,7 +850,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.6449813
+        value: 0.2465123
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -934,7 +861,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.x
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -942,7 +869,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.074893
+        value: 0.8814306
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -951,7 +878,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.074893
+        value: 0.8814306
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -962,7 +889,72 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Size.y
-    path: Ground Sensor
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.44
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.2631579
+        value: 0.44
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Offset.x
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
+    classID: 61
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -0.01
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.13157895
+        value: 0.18
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.2631579
+        value: -0.01
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Offset.y
+    path: FSM/Conditions/If Contact The Wall _Stick To Wall
     classID: 61
     script: {fileID: 0}
   - curve:
@@ -977,11 +969,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.2631579
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.x
-    path: Bashable Sensor
+    path: FSM/Conditions/If Pressed The Screen Bash Area _Bash Aim
     classID: 58
     script: {fileID: 0}
   - curve:
@@ -989,7 +990,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1
+        value: -0.04
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.13157895
+        value: -0.02
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -998,7 +1008,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.2631579
-        value: 0.1
+        value: -0.04
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1009,26 +1019,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Offset.y
-    path: Bashable Sensor
-    classID: 58
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.8
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Radius
-    path: Bashable Sensor
+    path: FSM/Conditions/If Pressed The Screen Bash Area _Bash Aim
     classID: 58
     script: {fileID: 0}
   m_EulerEditorCurves: []

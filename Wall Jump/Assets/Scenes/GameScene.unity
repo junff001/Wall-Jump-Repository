@@ -360,8 +360,9 @@ GameObject:
   m_Component:
   - component: {fileID: 214502405}
   - component: {fileID: 214502406}
+  - component: {fileID: 214502407}
   m_Layer: 0
-  m_Name: 'If Contact The Camera Bottom Bound _Death '
+  m_Name: If Pressed The Screen Bash Area _Bash Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,9 +391,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 214502404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac512cc47a610a4795063b894b08165, type: 3}
+  m_Script: {fileID: 11500000, guid: 1293180faafb63f4a9d4e7dd07ef8d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &214502407
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214502404}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.15}
+  serializedVersion: 2
+  m_Radius: 0.8
 --- !u!1 &247420191
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +421,7 @@ GameObject:
   - component: {fileID: 247420192}
   - component: {fileID: 247420193}
   m_Layer: 0
-  m_Name: If Pressed To Screen In Idle Or Wall_Jump
+  m_Name: If Contact The Death Of Boundary _Death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,7 +439,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 316125335}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &247420193
 MonoBehaviour:
@@ -433,7 +450,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 247420191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a6086726b967f94398909f5cfbb64ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 9618093b644af4d4fa2155d7c3270d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &316125334
@@ -465,12 +482,11 @@ Transform:
   m_Children:
   - {fileID: 1945704751}
   - {fileID: 450813758}
-  - {fileID: 1003335512}
   - {fileID: 247420192}
+  - {fileID: 1003335512}
   - {fileID: 448218660}
   - {fileID: 1992593069}
   - {fileID: 214502405}
-  - {fileID: 1145357021}
   - {fileID: 1622558222}
   m_Father: {fileID: 1122185578}
   m_RootOrder: 1
@@ -610,7 +626,7 @@ GameObject:
   - component: {fileID: 448218660}
   - component: {fileID: 448218661}
   m_Layer: 0
-  m_Name: 'If Pressed To Screen Jump Or Fall _Aeiral Jump '
+  m_Name: If Did Not Aerial Jump And Pressed The Screen _Aerial Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +655,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 448218659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668997ffe56f1f2428284be086c158ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 87949ec41f8928c49b9e52a1fa2b842a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &450813757
@@ -683,24 +699,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 450813757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d45a4367ff863441aed8b76da011b06, type: 3}
+  m_Script: {fileID: 11500000, guid: 23fa3a760aa0d784c85a7432fefa7ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickToWallEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1519498138}
-        m_TargetAssemblyTypeName: PlayerFilp, Assembly-CSharp
-        m_MethodName: FilpX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!61 &450813760
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -929,11 +930,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 247420193}
-  - {fileID: 450813759}
-  - {fileID: 1003335513}
-  - {fileID: 214502406}
-  - {fileID: 1145357022}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   animator: {fileID: 1519498141}
 --- !u!1 &675391975
 GameObject:
@@ -979,11 +980,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 1945704752}
-  - {fileID: 1003335513}
-  - {fileID: 247420193}
-  - {fileID: 214502406}
-  - {fileID: 1145357022}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   rigidbody: {fileID: 1519498135}
   animator: {fileID: 1519498141}
 --- !u!1 &691723038
@@ -1030,12 +1031,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 1945704752}
-  - {fileID: 450813759}
-  - {fileID: 448218661}
-  - {fileID: 1992593070}
-  - {fileID: 214502406}
-  - {fileID: 1145357022}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   animator: {fileID: 1519498141}
 --- !u!1 &766852791
 GameObject:
@@ -1212,7 +1213,7 @@ GameObject:
   - component: {fileID: 1003335512}
   - component: {fileID: 1003335513}
   m_Layer: 0
-  m_Name: If Player Is Falling_Fall
+  m_Name: if Falling _Fall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1230,7 +1231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 316125335}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1003335513
 MonoBehaviour:
@@ -1241,7 +1242,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003335511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df292a5e0dfb7342b438da2e2676747, type: 3}
+  m_Script: {fileID: 11500000, guid: 20f9f8072e4c2fc4cbd64b1f864157ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1519498135}
@@ -1346,10 +1347,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 1063551480}
-  - {fileID: 1063551479}
-  - {fileID: 1063551478}
-  - {fileID: 1063551476}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1063551478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,49 +1465,6 @@ MonoBehaviour:
     - {fileID: 1428899182}
     - {fileID: 1442766}
     - {fileID: 1063551477}
---- !u!1 &1145357020
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1145357021}
-  - component: {fileID: 1145357022}
-  m_Layer: 0
-  m_Name: If Contact The Obstacle _Death
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1145357021
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145357020}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 316125335}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1145357022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145357020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23cd08098355d5418e847b80809f082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1253095800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,10 +2392,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 1428899185}
-  - {fileID: 1428899184}
-  - {fileID: 1428899183}
-  - {fileID: 1428899181}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   jumpPower: 8
   jumpTime: 0.5
   animator: {fileID: 1519498141}
@@ -2714,14 +2672,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionConditions:
-  - {fileID: 1945704752}
-  - {fileID: 450813759}
-  - {fileID: 1003335513}
-  - {fileID: 448218661}
-  - {fileID: 1992593070}
-  - {fileID: 214502406}
-  - {fileID: 1145357022}
-  - {fileID: 1622558223}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   jumpPower: 8
   jumpTime: 0.5
   rigidbody: {fileID: 1519498135}
@@ -2802,7 +2760,7 @@ GameObject:
   - component: {fileID: 1622558222}
   - component: {fileID: 1622558223}
   m_Layer: 0
-  m_Name: If ReleasedToScreen_BashJump
+  m_Name: If ReleasedToScreen _BashJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2820,7 +2778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 316125335}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1622558223
 MonoBehaviour:
@@ -2831,7 +2789,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1622558221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baef094d31bb5384ba83b254dc2610cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 23de3104bc132f543ac4a48d848c7aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1766936695
@@ -3425,7 +3383,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1945704750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee68be1fde458ff4f8b336bce27eb52f, type: 3}
+  m_Script: {fileID: 11500000, guid: 613c1a2ebb210c7429c9f6f2fa28543d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &1945704753
@@ -3537,10 +3495,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1992593069}
-  - component: {fileID: 1992593071}
   - component: {fileID: 1992593070}
   m_Layer: 0
-  m_Name: If Pressed To Screen Jump Or Aerial Jump Or Fall_Bash
+  m_Name: If Did Not Jump And Pressed The Screen _Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3569,25 +3526,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1992593068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e681e0c6cffb63c4b8d8cc34446f0bf3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a783d2c81d4c2040b7f34d0041f414f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &1992593071
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992593068}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.8
 --- !u!1 &2006506083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7496058888071357772, guid: 9892e57723a28d04c8ee11c0fdd923f4, type: 3}

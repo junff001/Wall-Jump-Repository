@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfPressedToScreenInJumpOrFall_AerialJump : TransitionCondition
+public class IfDidNotAerialJumpAndPressedTheScreen_AerialJump : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {
-        if (InputManager.Instance.isPress)
+        if (!PlayerStatus.IsAerialJumping && InputManager.Instance.isPress)
         {
             PlayerStatus.CurrentState = PlayerState.AerialJump;
         }
@@ -16,4 +16,5 @@ public class IfPressedToScreenInJumpOrFall_AerialJump : TransitionCondition
             fsm.ChangeState(PlayerState.AerialJump);
         }
     }
+
 }

@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class IfContactedTheWall_StickToWall : TransitionCondition
+public class IfContactTheWall_StickToWall : TransitionCondition
 {
-    [SerializeField] private UnityEvent stickToWallEvent;
-
     public override void Condition(PlayerFSM fsm)
     {
         if (PlayerStatus.CurrentState == PlayerState.StickToWall)
@@ -20,8 +17,12 @@ public class IfContactedTheWall_StickToWall : TransitionCondition
         if (collision.gameObject.CompareTag("Wall"))
         {
             PlayerStatus.CurrentState = PlayerState.StickToWall;
-            PlayerStatus.JumpingCount = 0;
-            stickToWallEvent.Invoke();
         }
+           
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        
     }
 }
