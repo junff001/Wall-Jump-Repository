@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfContactTheGround_OnGround : TransitionCondition
+public class IsOnGround : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {
         if (PlayerStatus.CurrentState == PlayerState.OnGround)
         {
-            fsm.ChangeState(PlayerState.OnGround); 
+            fsm.ChangeState(PlayerStatus.CurrentState);
         }
     }
 
@@ -18,10 +18,5 @@ public class IfContactTheGround_OnGround : TransitionCondition
         {
             PlayerStatus.CurrentState = PlayerState.OnGround;
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        
     }
 }

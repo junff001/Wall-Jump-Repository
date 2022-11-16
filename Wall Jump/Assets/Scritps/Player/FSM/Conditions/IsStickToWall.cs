@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IfContactTheWall_StickToWall : TransitionCondition
+public class IsStickToWall : TransitionCondition
 {
     public override void Condition(PlayerFSM fsm)
     {
         if (PlayerStatus.CurrentState == PlayerState.StickToWall)
         {
-            fsm.ChangeState(PlayerState.StickToWall);
+            fsm.ChangeState(PlayerStatus.CurrentState);
         }
     }
 
@@ -18,11 +18,5 @@ public class IfContactTheWall_StickToWall : TransitionCondition
         {
             PlayerStatus.CurrentState = PlayerState.StickToWall;
         }
-           
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        
     }
 }

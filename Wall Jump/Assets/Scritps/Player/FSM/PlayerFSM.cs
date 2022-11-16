@@ -37,4 +37,15 @@ public class PlayerFSM : MonoBehaviour
 
         Debug.Log(currentState.name);
     }
+
+    public void TransitionToJump()
+    {
+        IPressTheScreenToTransition transition = currentState.GetComponent<IPressTheScreenToTransition>();
+
+        if (transition != null)
+        {
+            transition.PressTheScreenToTransition();
+        }
+
+    }
 }

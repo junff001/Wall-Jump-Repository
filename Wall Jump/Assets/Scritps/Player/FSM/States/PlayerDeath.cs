@@ -11,14 +11,11 @@ public class PlayerDeath : State
 
     public override void Execute(PlayerFSM fsm)
     {
-        for (int i = 0; i < transitionConditions.Count; i++)
-        {
-            transitionConditions[i].Condition(fsm);
-        }
+        
     }
 
     public override void Exit(PlayerFSM fsm)
     {
-       
+        
     }
 }

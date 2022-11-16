@@ -11,19 +11,11 @@ public class PlayerBashJump : State
 
     public override void Execute(PlayerFSM fsm)
     {
-        for (int i = 0; i < transitionConditions.Count; i++)
-        {
-            transitionConditions[i].Condition(fsm);
-        }
-    }
-
-    public override void Exit(PlayerFSM fsm) 
-    {
         
     }
 
-    public void BashJump()
+    public override void Exit(PlayerFSM fsm)
     {
-
+        
     }
 }

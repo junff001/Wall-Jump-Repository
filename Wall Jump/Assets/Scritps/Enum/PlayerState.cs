@@ -8,7 +8,6 @@ public enum PlayerState
     Jump,
     Fall,
     AerialJump,
-    BashAim,
     BashJump,
     Death
 }

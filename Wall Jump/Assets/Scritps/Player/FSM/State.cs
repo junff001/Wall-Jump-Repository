@@ -5,8 +5,7 @@ using UnityEngine;
 [Serializable]
 public abstract class State : MonoBehaviour
 {
-    [SerializeField] protected List<TransitionCondition> transitionConditions = new List<TransitionCondition>();
-
+    [SerializeField] protected List<TransitionCondition> conditions = new List<TransitionCondition>();
     /// <summary>
     /// 해당 상태가 시작될 때 단 한 번만 호출되는 함수
     /// </summary>
