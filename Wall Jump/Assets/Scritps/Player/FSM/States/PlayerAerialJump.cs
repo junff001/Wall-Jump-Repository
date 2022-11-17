@@ -11,28 +11,34 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     [SerializeField] private PlayerFilp filp;
 
     private PlayerFSM fsm;
-    private readonly int isAerialJump = Animator.StringToHash("isAerialJump");
+    private readonly int isJumping = Animator.StringToHash("isJumping");
 
     public override void Enter(PlayerFSM fsm)
     {
         this.fsm = fsm;
-        animator.SetBool(isAerialJump, true);
+        animator.SetBool(isJumping, true);
         rigidbody.velocity = Vector2.zero;
+        filp.FilpX();
         AerialJump();
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        for (int i = 0; i < conditions.Count; i++)
+        switch (PlayerStatus.CurrentState)
         {
-            conditions[i].Condition(fsm);
+            case PlayerState.OnGround:
+                fsm.ChangeState(PlayerState.OnGround);
+                break;
+            case PlayerState.StickToWall:
+                fsm.ChangeState(PlayerState.StickToWall);
+                break;
         }
     }
 
     public override void Exit(PlayerFSM fsm)
     {
-        animator.SetBool(isAerialJump, false);
-        PlayerStatus.PreviousState = PlayerState.BashJump;
+        animator.SetBool(isJumping, false);
+        StopCoroutine(MarioJump());
     }
 
     void AerialJump()
@@ -44,7 +50,7 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     {
         float originTime = jumpTime;
 
-        while (originTime > 0 || InputManager.Instance.isPress && PlayerStatus.CurrentState == PlayerState.AerialJump)
+        while (PlayerStatus.CurrentState == PlayerState.AerialJump && originTime > 0 && InputManager.Instance.isPress)
         {
             originTime -= Time.deltaTime;
 
@@ -61,9 +67,8 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
         }
     }
 
-    public void PressTheScreenToTransition()
+    public void Transition()
     {
-        PlayerStatus.CurrentState = PlayerState.BashJump;
-        fsm.ChangeState(PlayerStatus.CurrentState);
+        
     }
 }

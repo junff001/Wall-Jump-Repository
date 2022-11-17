@@ -2,37 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOnGround : State, IPressTheScreenToTransition
+public class PlayerOnGround : PlayerIdle
 {
+    [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
 
-    private PlayerFSM fsm;
     private readonly int isOnGround = Animator.StringToHash("isOnGround");
 
     public override void Enter(PlayerFSM fsm)
     {
-        this.fsm = fsm;
+        rigidbody.velocity = Vector2.zero;
+        base.Enter(fsm);    
         animator.SetBool(isOnGround, true);
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        for (int i = 0; i < conditions.Count; i++)
-        {
-            conditions[i].Condition(fsm);
-        }
+        base.Execute(fsm);
     }
 
     public override void Exit(PlayerFSM fsm)
     {
+        base.Exit(fsm);
         animator.SetBool(isOnGround, false);
-        PlayerStatus.PreviousState = PlayerState.OnGround;
-
-    }
-
-    public void PressTheScreenToTransition()
-    {
-        PlayerStatus.CurrentState = PlayerState.Jump;
-        fsm.ChangeState(PlayerStatus.CurrentState);
     }
 }

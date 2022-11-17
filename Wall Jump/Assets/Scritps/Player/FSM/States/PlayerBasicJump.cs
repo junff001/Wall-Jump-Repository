@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class PlayerJump : State, IPressTheScreenToTransition
+public class PlayerBasicJump : State, IPressTheScreenToTransition
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpTime;
@@ -22,16 +22,27 @@ public class PlayerJump : State, IPressTheScreenToTransition
 
     public override void Execute(PlayerFSM fsm)
     {
-        for (int i = 0; i < conditions.Count; i++)
+        switch (PlayerStatus.CurrentState)
         {
-            conditions[i].Condition(fsm);
+            case PlayerState.OnGround:
+                fsm.ChangeState(PlayerState.OnGround);
+                break;
+            case PlayerState.StickToWall:
+                fsm.ChangeState(PlayerState.StickToWall);
+                break;
         }
     }
 
     public override void Exit(PlayerFSM fsm)
     {
         animator.SetBool(isJumping, false);
-        PlayerStatus.PreviousState = PlayerState.Jump;
+        StopCoroutine(MarioJump());
+    }
+
+    public void Transition()
+    {
+        PlayerStatus.CurrentState = PlayerState.AerialJump;
+        fsm.ChangeState(PlayerStatus.CurrentState);
     }
 
     void Jump()
@@ -43,10 +54,11 @@ public class PlayerJump : State, IPressTheScreenToTransition
     {
         float originTime = jumpTime;
 
-        while (originTime > 0 || InputManager.Instance.isPress && PlayerStatus.CurrentState == PlayerState.Jump)
+        while (PlayerStatus.CurrentState == PlayerState.BasicJump &&originTime > 0 && InputManager.Instance.isPress)
         {
             originTime -= Time.deltaTime;
 
+        
             if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
             {
                 rigidbody.velocity = new Vector2(1, 1.5f) * jumpPower;
@@ -58,11 +70,5 @@ public class PlayerJump : State, IPressTheScreenToTransition
 
             yield return null;
         }
-    }
-
-    public void PressTheScreenToTransition()
-    {
-        PlayerStatus.CurrentState = PlayerState.AerialJump;
-        fsm.ChangeState(PlayerStatus.CurrentState);
     }
 }

@@ -44,7 +44,7 @@ public class PlayerFSM : MonoBehaviour
 
         if (transition != null)
         {
-            transition.PressTheScreenToTransition();
+            transition.Transition();
         }
 
     }

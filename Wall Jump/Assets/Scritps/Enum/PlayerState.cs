@@ -3,10 +3,10 @@ using System;
 [Serializable]
 public enum PlayerState
 {
+    Idle,       // Group
     OnGround,
     StickToWall,
-    Jump,
-    Fall,
+    BasicJump,
     AerialJump,
     BashJump,
     Death

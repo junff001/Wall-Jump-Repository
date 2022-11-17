@@ -22,24 +22,13 @@ public class InputManager : MonoSingleton<InputManager>
 
     public void ScreenPress()
     {
-        isRelease = false;
         isPress = true;
+        isRelease = false;     
     }
 
     public void ScreenRelease()
     {
+        isRelease = true;
         isPress = false;
-        isRelease = true; 
-    }
-
-    public void JumpEvent()
-    {
-        switch (PlayerStatus.CurrentState)
-        {
-            case PlayerState.OnGround:
-                break;
-            case PlayerState.StickToWall:
-                break;
-        }
     }
 }
