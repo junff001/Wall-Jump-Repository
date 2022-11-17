@@ -6,4 +6,6 @@ public static class PlayerStatus
 {
     public static PlayerState CurrentState { get; set; } = PlayerState.OnGround;
     public static PlayerDirection CurrentDirection { get; set; } = PlayerDirection.Right;
+
+    public static bool Bashable { get; set; } = false;
 }

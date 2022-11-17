@@ -69,6 +69,10 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        
+        if (PlayerStatus.Bashable)
+        {
+            PlayerStatus.CurrentState = PlayerState.BashJump;
+            fsm.ChangeState(PlayerStatus.CurrentState);
+        }
     }
 }
