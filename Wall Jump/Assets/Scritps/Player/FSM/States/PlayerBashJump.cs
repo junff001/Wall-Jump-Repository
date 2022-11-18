@@ -7,7 +7,7 @@ public class PlayerBashJump : State
 {
     [SerializeField] private GameObject arrowPivot;
     [SerializeField] private GameObject arrow;
-    [SerializeField] private float bashTime;
+    [SerializeField] private float fallGravity;
     [SerializeField] private float bashDistance;
     [SerializeField] private Rigidbody2D rigidbody;
 
@@ -49,7 +49,7 @@ public class PlayerBashJump : State
         }
 
         arrowPivot.SetActive(false);
-        rigidbody.gravityScale = 1;
+        rigidbody.gravityScale = fallGravity  ;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         Vector2 direction = mousePos - transform.position;
@@ -70,7 +70,6 @@ public class PlayerBashJump : State
             Debug.Log("¿ÞÂÊ");
             rigidbody.transform.localScale = new Vector3(-1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
             PlayerStatus.CurrentDirection = PlayerDirection.Left;
-            
         }
     }
 }

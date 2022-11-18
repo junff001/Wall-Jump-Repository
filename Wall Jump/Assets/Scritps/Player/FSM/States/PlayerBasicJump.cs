@@ -7,6 +7,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpTime;
+    [SerializeField] private float fallGravity;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
 
@@ -53,6 +54,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     IEnumerator MarioJump()
     {
         float originTime = jumpTime;
+        rigidbody.gravityScale = 0;
 
         while (PlayerStatus.CurrentState == PlayerState.BasicJump && originTime > 0 && InputManager.Instance.isPress)
         {
@@ -70,5 +72,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 
             yield return null;
         }
+
+        rigidbody.gravityScale = fallGravity;
     }
 }

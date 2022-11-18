@@ -51,6 +51,9 @@ TagManager:
   - name: Bashable
     uniqueID: 3796006401
     locked: 0
+  - name: Wall
+    uniqueID: 3311213923
+    locked: 0
   - name: Player
     uniqueID: 1314176383
     locked: 0

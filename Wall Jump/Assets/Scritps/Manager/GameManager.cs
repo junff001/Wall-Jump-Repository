@@ -6,14 +6,15 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    [SerializeField] private Camera mainCam;
     // Galaxy S10e ±‚¡ÿ
     private float defaultResolutionRatio = 9 / 19;
-    [SerializeField] private Tilemap stageTilemap;
+    [SerializeField] private Grid grid;
 
     private void Start()
     {
         float displayResolutionRatio =  (float)Screen.width / (float)Screen.height;
         Camera.main.orthographicSize = Camera.main.orthographicSize * displayResolutionRatio;
-        stageTilemap.transform.localScale = new Vector3(stageTilemap.transform.localScale.x * displayResolutionRatio, stageTilemap.transform.localScale.y * displayResolutionRatio, stageTilemap.transform.localScale.z);
+        grid.transform.localScale = new Vector3(grid.transform.localScale.x * displayResolutionRatio, grid.transform.localScale.y * displayResolutionRatio, grid.transform.localScale.z);
     }
 }
