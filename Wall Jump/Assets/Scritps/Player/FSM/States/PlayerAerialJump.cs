@@ -11,12 +11,12 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     [SerializeField] private PlayerFilp filp;
 
     private PlayerFSM fsm;
-    private readonly int isJumping = Animator.StringToHash("isJumping");
+    private readonly int isAerialJumping = Animator.StringToHash("isAerialJumping");
 
     public override void Enter(PlayerFSM fsm)
     {
         this.fsm = fsm;
-        animator.SetBool(isJumping, true);
+        animator.SetBool(isAerialJumping, true);
         rigidbody.velocity = Vector2.zero;
         filp.FilpX();
         AerialJump();
@@ -37,7 +37,7 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
     public override void Exit(PlayerFSM fsm)
     {
-        animator.SetBool(isJumping, false);
+        animator.SetBool(isAerialJumping, false);
         StopCoroutine(MarioJump());
     }
 

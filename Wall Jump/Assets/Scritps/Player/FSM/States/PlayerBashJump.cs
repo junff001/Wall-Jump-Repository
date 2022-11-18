@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerBashJump : State
 {
@@ -49,16 +50,27 @@ public class PlayerBashJump : State
 
         arrowPivot.SetActive(false);
         rigidbody.gravityScale = 1;
-        Vector2 direction = Input.mousePosition.normalized;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        Vector2 direction = mousePos - transform.position;
+        direction = direction.normalized;
+        direction = new Vector3(direction.x, direction.y, 0);
         rigidbody.velocity = direction * bashDistance;
-        Debug.Log(direction);
+        Debug.Log(rigidbody.velocity);
 
-        float currentBashTime = bashTime;
-
-        //while (currentBashTime > 0)
-        //{
-        //    currentBashTime -= Time.deltaTime;
-        //    rigidbody.transform.position = Vector2.MoveTowards(rigidbody.transform.position, bashPos, bashTime);
-        //}
+        if (rigidbody.velocity.x > 0)
+        {
+            Debug.Log("¿À¸¥ÂÊ");
+            rigidbody.transform.localScale = new Vector3(1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
+            PlayerStatus.CurrentDirection = PlayerDirection.Right;
+            
+        }
+        else if (rigidbody.velocity.x < 0)
+        {
+            Debug.Log("¿ÞÂÊ");
+            rigidbody.transform.localScale = new Vector3(-1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
+            PlayerStatus.CurrentDirection = PlayerDirection.Left;
+            
+        }
     }
 }
