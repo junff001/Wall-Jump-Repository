@@ -7,7 +7,6 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpTime;
-    [SerializeField] private float fallGravity;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
 
@@ -42,8 +41,16 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        PlayerStatus.CurrentState = PlayerState.AerialJump;
-        fsm.ChangeState(PlayerStatus.CurrentState);
+        if (PlayerStatus.Bashable)
+        {
+            PlayerStatus.CurrentState = PlayerState.BashJump;
+            fsm.ChangeState(PlayerStatus.CurrentState);
+        }
+        else
+        {
+            PlayerStatus.CurrentState = PlayerState.AerialJump;
+            fsm.ChangeState(PlayerStatus.CurrentState);
+        } 
     }
 
     void Jump()
@@ -54,25 +61,21 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     IEnumerator MarioJump()
     {
         float originTime = jumpTime;
-        rigidbody.gravityScale = 0;
 
         while (PlayerStatus.CurrentState == PlayerState.BasicJump && originTime > 0 && InputManager.Instance.isPress)
         {
             originTime -= Time.deltaTime;
 
-        
             if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
             {
-                rigidbody.velocity = new Vector2(1, 1.5f) * jumpPower;
+                rigidbody.velocity = new Vector2(1, 1.75f) * jumpPower;
             }
             else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
             {
-                rigidbody.velocity = new Vector2(-1, 1.5f) * jumpPower;
+                rigidbody.velocity = new Vector2(-1, 1.75f) * jumpPower;
             }
 
             yield return null;
         }
-
-        rigidbody.gravityScale = fallGravity;
     }
 }

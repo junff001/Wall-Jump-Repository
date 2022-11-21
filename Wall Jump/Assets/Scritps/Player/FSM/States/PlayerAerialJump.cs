@@ -58,11 +58,11 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
             if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
             {
-                rigidbody.velocity = new Vector2(1, 1.5f) * jumpPower;
+                rigidbody.velocity = new Vector2(1, 1.75f) * jumpPower;
             }
             else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
             {
-                rigidbody.velocity = new Vector2(-1, 1.5f) * jumpPower;
+                rigidbody.velocity = new Vector2(-1, 1.75f) * jumpPower;
             }
 
             yield return null;

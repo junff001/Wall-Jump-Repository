@@ -10,6 +10,7 @@ public class PlayerBashJump : State
     [SerializeField] private float fallGravity;
     [SerializeField] private float bashDistance;
     [SerializeField] private Rigidbody2D rigidbody;
+   
 
     public override void Enter(PlayerFSM fsm)
     {
@@ -36,27 +37,30 @@ public class PlayerBashJump : State
 
     IEnumerator BashJump()
     {
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.gravityScale = 0;
-
-        arrowPivot.transform.position = UICamera.mainCamera.ViewportToWorldPoint(Camera.main.WorldToViewportPoint(UIManager.Instance.currentBashObjectPosition));
-
-        arrowPivot.SetActive(true);
+        // 슬로우 모션
+        TimeManager.Instance.SlowMotion();
+        StartCoroutine(TimeManager.Instance.SlowTimer());
+        TimeManager.Instance.TrunBackTime();
 
         while (!InputManager.Instance.isRelease)
         {
             yield return null;
         }
 
-        arrowPivot.SetActive(false);
-        rigidbody.gravityScale = fallGravity  ;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        Vector2 direction = mousePos - transform.position;
-        direction = direction.normalized;
-        direction = new Vector3(direction.x, direction.y, 0);
-        rigidbody.velocity = direction * bashDistance;
-        Debug.Log(rigidbody.velocity);
+        if (InputManager.Instance.isSwipe)
+        {
+            rigidbody.velocity = InputManager.Instance.swipeDistance.normalized * bashDistance;
+        }
+
+        
+
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        //mousePos.z = 0;
+        //Vector2 direction = mousePos - transform.position;
+        //direction = direction.normalized;
+        //direction = new Vector3(direction.x, direction.y, 0);
+        //rigidbody.velocity = direction * bashDistance;
+        //Debug.Log(rigidbody.velocity);
 
         if (rigidbody.velocity.x > 0)
         {
