@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class InputManager : MonoSingleton<InputManager>
 {
-    public bool isPress { get; set; } = false;
-    public bool isRelease { get; set; } = false;
     public bool isSwipe { get; set; } = false;
 
     public Vector2 startTouchPosition { get; set; } = Vector2.zero;
@@ -33,14 +31,25 @@ public class InputManager : MonoSingleton<InputManager>
     {
         if (PlayerStatus.CurrentState == PlayerState.BashJump)
         {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetMouseButtonDown(0))
             {
-                startTouchPosition = Input.GetTouch(0).position;
+                startTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                endTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            if (Input.GetMouseButton(0))
             {
-                endTouchPosition = Input.GetTouch(0).position;
+                endTouchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             }
+
+            //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            //{
+            //    startTouchPosition = Input.GetTouch(0).position;
+            //    endTouchPosition = Input.GetTouch(0).position;
+            //}
+            //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+            //{
+            //    endTouchPosition = Input.GetTouch(0).position;
+            //}
 
             swipeDistance = endTouchPosition - startTouchPosition;
 
@@ -55,20 +64,6 @@ public class InputManager : MonoSingleton<InputManager>
             {
                 isSwipe = false;
             }
-
-            Debug.Log(isSwipe);
         }
-    }
-
-    public void ScreenPress()
-    {
-        isPress = true;
-        isRelease = false;     
-    }
-
-    public void ScreenRelease()
-    {
-        isRelease = true;
-        isPress = false;
     }
 }

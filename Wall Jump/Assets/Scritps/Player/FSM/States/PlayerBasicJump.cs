@@ -62,7 +62,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         float originTime = jumpTime;
 
-        while (PlayerStatus.CurrentState == PlayerState.BasicJump && originTime > 0 && InputManager.Instance.isPress)
+        while (PlayerStatus.CurrentState == PlayerState.BasicJump && originTime > 0 && Input.GetMouseButton(0))
         {
             originTime -= Time.deltaTime;
 

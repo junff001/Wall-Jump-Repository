@@ -6,7 +6,6 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 {
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpTime;
-    [SerializeField] private float fallGravity;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerFilp filp;
@@ -52,7 +51,7 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
         float originTime = jumpTime;
         rigidbody.gravityScale = 0;
 
-        while (PlayerStatus.CurrentState == PlayerState.AerialJump && originTime > 0 && InputManager.Instance.isPress)
+        while (PlayerStatus.CurrentState == PlayerState.AerialJump && originTime > 0 && Input.GetMouseButton(0))
         {
             originTime -= Time.deltaTime;
 
@@ -67,8 +66,6 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
             yield return null;
         }
-
-        rigidbody.gravityScale = fallGravity;
     }
 
     public void Transition()
