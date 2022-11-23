@@ -9,8 +9,9 @@ public class TimeManager : MonoSingleton<TimeManager>
 
     public void SlowMotion()
     {
-        Time.timeScale = slowDownFactor;
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        Time.timeScale = 0;
+        //Time.timeScale = slowDownFactor;
+        //Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 
     public void TrunBackTime()

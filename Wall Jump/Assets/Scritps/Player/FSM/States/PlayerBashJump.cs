@@ -44,11 +44,19 @@ public class PlayerBashJump : State
 
         while (Input.GetMouseButton(0) && PlayerStatus.Bashable)
         {
-            lineRenderer.SetPosition(0, transform.position);
-            lineRenderer.SetPosition(1, InputManager.Instance.endTouchPosition - new Vector2(player.position.x, 0));
+            if (InputManager.Instance.swipeDistance.magnitude > 1)
+            {
+                arrowPivot.SetActive(true);
+                arrowPivot.transform.position = player.position;
+            }
+
+           
+
             yield return null;
         }
 
+        arrowPivot.SetActive(false);
+    
         TimeManager.Instance.TrunBackTime();
 
         if (InputManager.Instance.isSwipe)
