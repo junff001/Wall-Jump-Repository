@@ -20,7 +20,10 @@ public class PlayerBashJump : State
 
     [Header("[ Component ]")]
     [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform player;
+
+    private readonly int isBashJumping = Animator.StringToHash("isBashJumping");
    
     public override void Enter(PlayerFSM fsm)
     {
@@ -42,19 +45,20 @@ public class PlayerBashJump : State
 
     public override void Exit(PlayerFSM fsm)
     {
-        
+        animator.SetBool(isBashJumping, false);
+        StopCoroutine(BashJump());
     }
 
     IEnumerator BashJump()
     {
         TimeManager.Instance.SlowMotion();
 
+        // Input.GetMouseButton(0)
         while (Input.GetMouseButton(0) && PlayerStatus.Bashable)
         {
             if (InputManager.Instance.isSwipe)
             {
                 arrowPivot.SetActive(true);
-                arrowPivot.transform.position = player.position;
             }
 
             yield return null;
@@ -63,11 +67,21 @@ public class PlayerBashJump : State
         arrowPivot.SetActive(false);
         TimeManager.Instance.TrunBackTime();
 
+        // Input.GetMouseButtonUp(0)
         if (Input.GetMouseButtonUp(0) && InputManager.Instance.isSwipe)
         {
+            animator.SetBool(isBashJumping, true);
             rigidbody.velocity = Vector2.zero;
             float defaultGravity = rigidbody.gravityScale;
-            rigidbody.gravityScale = defaultGravity;
+            rigidbody.gravityScale = 0;
+
+            float bashTimer = bashTime;
+            while (bashTimer > 0)
+            {
+                bashTimer -= Time.deltaTime;
+                rigidbody.velocity = InputManager.Instance.swipeDistance.normalized * bashPower;
+                yield return null;
+            }
 
             if (rigidbody.velocity.x > 0)
             {
@@ -83,20 +97,12 @@ public class PlayerBashJump : State
                 PlayerStatus.CurrentDirection = PlayerDirection.Left;
             }
 
-            float bashTimer = bashTime;
-            while (bashTimer > 0)
-            {
-                bashTimer -= Time.deltaTime;
-                rigidbody.velocity = InputManager.Instance.swipeDistance.normalized * bashPower;
-                yield return null;
-            }
-
             rigidbody.gravityScale = defaultGravity;
             Vector2 startVelocity = rigidbody.velocity;
             Vector2 decelerate = InputManager.Instance.swipeDistance.normalized * decelerateSpeed;
             float currentTime = 0;
 
-            while (currentTime < decelerateTime)
+            while (currentTime < decelerateTime && PlayerStatus.CurrentState == PlayerState.BashJump)
             {
                 currentTime += Time.deltaTime;
 

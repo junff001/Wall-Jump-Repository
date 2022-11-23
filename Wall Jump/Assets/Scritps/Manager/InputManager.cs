@@ -28,14 +28,36 @@ public class InputManager : MonoSingleton<InputManager>
 
     void Swipe()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 에디터 테스트
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    startTouchPosition = Input.mousePosition;
+        //    endTouchPosition = Input.mousePosition;
+        //}
+        //if (Input.GetMouseButton(0))
+        //{
+        //    endTouchPosition = Input.mousePosition;
+        //    swipeDistance = endTouchPosition - startTouchPosition;
+
+        //    if (Mathf.Abs(swipeDistance.x) >= swipeRange || Mathf.Abs(swipeDistance.y) >= swipeRange)
+        //    {
+        //        isSwipe = true;
+        //    }
+        //    else
+        //    {
+        //        isSwipe = false;
+        //    }
+        //}
+
+        // 모바일 테스트
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            startTouchPosition = Input.mousePosition;
-            endTouchPosition = Input.mousePosition;
+            startTouchPosition = Input.GetTouch(0).position;
+            endTouchPosition = Input.GetTouch(0).position;
         }
-        if (Input.GetMouseButton(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
-            endTouchPosition = Input.mousePosition;
+            endTouchPosition = Input.GetTouch(0).position;
             swipeDistance = endTouchPosition - startTouchPosition;
 
             if (Mathf.Abs(swipeDistance.x) >= swipeRange || Mathf.Abs(swipeDistance.y) >= swipeRange)
@@ -47,20 +69,5 @@ public class InputManager : MonoSingleton<InputManager>
                 isSwipe = false;
             }
         }
-
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        //{
-        //    startTouchPosition = Input.GetTouch(0).position;
-        //    endTouchPosition = Input.GetTouch(0).position;
-        //}
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-        //{
-        //    endTouchPosition = Input.GetTouch(0).position;
-        //}
-
-
-
-
-       // Debug.Log(isSwipe);
     }
 }
