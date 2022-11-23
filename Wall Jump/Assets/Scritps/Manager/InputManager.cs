@@ -10,6 +10,7 @@ public class InputManager : MonoSingleton<InputManager>
 
     public bool isSwipe { get; set; } = false;
     public float swipeRange = 0f;
+    public float quickSwipeTime = 0f;
 
     float a;
 
@@ -54,6 +55,12 @@ public class InputManager : MonoSingleton<InputManager>
         {
             startTouchPosition = Input.GetTouch(0).position;
             endTouchPosition = Input.GetTouch(0).position;
+
+            float currentTime = 0;
+
+            currentTime += Time.deltaTime;
+
+            if (currentTime > swipeRange)
         }
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
