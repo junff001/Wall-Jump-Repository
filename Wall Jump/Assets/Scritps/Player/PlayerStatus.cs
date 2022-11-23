@@ -8,4 +8,5 @@ public static class PlayerStatus
     public static PlayerDirection CurrentDirection { get; set; } = PlayerDirection.Right;
 
     public static bool Bashable { get; set; } = false;
+    public static bool IsBashing { get; set; } = false;
 }
