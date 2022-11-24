@@ -60,7 +60,10 @@ public class InputManager : MonoSingleton<InputManager>
 
             currentTime += Time.deltaTime;
 
-            if (currentTime > swipeRange)
+            if (currentTime >= quickSwipeTime)
+            {
+                currentTime = quickSwipeTime;
+            }
         }
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {

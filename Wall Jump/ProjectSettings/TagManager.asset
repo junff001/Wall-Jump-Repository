@@ -15,7 +15,7 @@ TagManager:
   - Wall
   - Water
   - UI
-  - 
+  - Ground Collision
   - 
   - 
   - 
@@ -45,15 +45,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Stage
-    uniqueID: 3871801575
-    locked: 0
-  - name: Bashable
-    uniqueID: 3796006401
-    locked: 0
   - name: Wall
-    uniqueID: 3311213923
+    uniqueID: 3687339865
     locked: 0
   - name: Player
-    uniqueID: 1314176383
+    uniqueID: 3871801575
+    locked: 0
+  - name: Ground
+    uniqueID: 1798704923
     locked: 0
