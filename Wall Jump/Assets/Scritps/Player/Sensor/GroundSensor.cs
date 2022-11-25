@@ -5,7 +5,7 @@ using UnityEngine;
 public class GroundSensor : MonoBehaviour
 {
     [SerializeField] private PlayerStickToWall playerStickToWall;
-    List<ContactPoint2D> contactPoints = new List<ContactPoint2D>();
+    [SerializeField] private float moveHeight;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,10 +13,14 @@ public class GroundSensor : MonoBehaviour
         {
             PlayerStatus.CurrentState = PlayerState.OnGround;
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+       
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Vector2 contactPoint = contactPoints[collision.GetContacts(contactPoints)].point;
-            StartCoroutine(playerStickToWall.MoveToTheWall(contactPoint));
+            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
+            {
+                StartCoroutine(playerStickToWall.MoveToTheWall(collision));
+            }
+            
         }
     }
 }

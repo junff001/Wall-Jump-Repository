@@ -9,6 +9,7 @@ public class PlayerStickToWall : PlayerIdle
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
     [SerializeField] private float moveToTheWallLerpTime;
+    [SerializeField] private float moveRange;
 
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
 
@@ -39,25 +40,10 @@ public class PlayerStickToWall : PlayerIdle
         filp.FilpX();
     }
 
-    public IEnumerator MoveToTheWall(Vector2 contactPoint)
+    public IEnumerator MoveToTheWall(Collider2D collider)
     {
-        float elapsedTime = 0;
-        Vector2 startPos = player.position;
-        
-        while (elapsedTime < moveToTheWallLerpTime)
-        {
-            elapsedTime += Time.deltaTime;
+        player.position = collider.bounds.center;
 
-            if (elapsedTime > moveToTheWallLerpTime)
-            {
-                elapsedTime = moveToTheWallLerpTime;
-            }
-
-            player.position = Vector2.Lerp(startPos, contactPoint, elapsedTime / moveToTheWallLerpTime);
-
-            yield return null;
-        }
-
-        StickToWall();
+        yield return null;
     }
 }

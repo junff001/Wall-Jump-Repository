@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Bashable
   - DeathObject
+  - WallHead
   layers:
   - Default
   - TransparentFX
