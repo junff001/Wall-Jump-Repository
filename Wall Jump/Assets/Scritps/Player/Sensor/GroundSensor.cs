@@ -20,7 +20,6 @@ public class GroundSensor : MonoBehaviour
             {
                 StartCoroutine(playerStickToWall.MoveToTheWall(collision));
             }
-            
         }
     }
 }

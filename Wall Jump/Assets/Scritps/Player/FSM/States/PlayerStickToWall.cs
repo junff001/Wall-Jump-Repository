@@ -10,6 +10,7 @@ public class PlayerStickToWall : PlayerIdle
     [SerializeField] private Animator animator;
     [SerializeField] private float moveToTheWallLerpTime;
     [SerializeField] private float moveRange;
+    [SerializeField] private float moveHeight;
 
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
 
@@ -42,8 +43,49 @@ public class PlayerStickToWall : PlayerIdle
 
     public IEnumerator MoveToTheWall(Collider2D collider)
     {
-        player.position = collider.bounds.center;
+        if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+        {
+            float timer = 0f;
+            Vector3 startPos = player.position;
+            Vector3 targetPos = collider.bounds.center + new Vector3(-(collider.bounds.extents.x + moveRange), moveHeight, 0);
 
-        yield return null;
+            while (timer < moveToTheWallLerpTime)
+            {
+                timer += Time.deltaTime;
+                
+                if (timer > moveToTheWallLerpTime)
+                {
+                    timer = moveToTheWallLerpTime;
+                }
+
+                player.localScale = new Vector3(-1, player.localScale.y, player.localScale.z);
+                player.position = Vector3.Lerp(startPos, targetPos, timer / moveToTheWallLerpTime);
+
+                yield return null;
+            }
+        }
+        else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+        {
+            float timer = 0f;
+            Vector3 startPos = player.position;
+            Vector3 targetPos = collider.bounds.center + new Vector3(collider.bounds.extents.x + moveRange, moveHeight, 0);
+
+            while (timer < moveToTheWallLerpTime)
+            {
+                timer += Time.deltaTime;
+
+                if (timer > moveToTheWallLerpTime)
+                {
+                    timer = moveToTheWallLerpTime;
+                }
+
+                player.localScale = new Vector3(1, player.localScale.y, player.localScale.z);
+                player.position = Vector3.Lerp(startPos, targetPos, timer / moveToTheWallLerpTime);
+
+                yield return null;
+            }
+        }
+
+        PlayerStatus.CurrentState = PlayerState.StickToWall;
     }
 }

@@ -51,7 +51,7 @@ public class PlayerFSM : MonoBehaviour
             currentState.Enter(this);
         }
 
-        Debug.Log(currentState.name);
+       // Debug.Log(currentState.name);
     }
 
     public void TransitionToJump()
