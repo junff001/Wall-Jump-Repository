@@ -13,7 +13,7 @@ public class GroundSensor : MonoBehaviour
         {
             PlayerStatus.CurrentState = PlayerState.OnGround;
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("WallHead"))
         {
             if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
             {

@@ -8,6 +8,7 @@ public class WallSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            PlayerStatus.CurrentStickToWall = collision.transform;
             PlayerStatus.CurrentState = PlayerState.StickToWall;
         }
     }

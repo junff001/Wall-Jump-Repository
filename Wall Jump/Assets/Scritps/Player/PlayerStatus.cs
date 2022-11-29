@@ -9,4 +9,5 @@ public static class PlayerStatus
 
     public static bool Bashable { get; set; } = false;
     public static bool IsBashing { get; set; } = false;
+    public static Transform CurrentStickToWall { get; set; } = null;
 }
