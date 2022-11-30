@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PlayerStickToWall : PlayerIdle
     [SerializeField] private PlayerFilp filp;
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
+    [SerializeField] private CameraFraming cameraFraming;
     [SerializeField] private float moveToTheWallLerpTime;
     [SerializeField] private float moveRange;
     [SerializeField] private float moveHeight;
@@ -20,6 +22,7 @@ public class PlayerStickToWall : PlayerIdle
         base.Enter(fsm);
         animator.SetBool(isStickToWall, true);
         StickToWall();
+       // WallInquiry();
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -87,5 +90,21 @@ public class PlayerStickToWall : PlayerIdle
         }
 
         PlayerStatus.CurrentState = PlayerState.StickToWall;
+    }
+
+    public void WallInquiry()
+    {
+        for (int i = 0; i < GameManager.Instance.walls.Count; i++)
+        {
+            if (GameManager.Instance.CurrentStickToWall == GameManager.Instance.walls[i])
+            {
+                float wallsDistance = GameManager.Instance.walls[i + 1].position.x - GameManager.Instance.CurrentStickToWall.position.x;
+
+                if (Mathf.Abs(wallsDistance) != GameManager.Instance.wallProperDistance && wallsDistance != 0)
+                {
+                    //cameraFraming.Framing(wallsDistance);
+                }
+            }
+        }       
     }
 }
