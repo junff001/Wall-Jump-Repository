@@ -902,7 +902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &470610706
 Transform:
   m_ObjectHideFlags: 0
@@ -929,9 +929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d59a95f196f0043945ec62f283addf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  pools:
-  - {fileID: 5709008815920944098, guid: 5e85e51589b042747a8dab9c0fb3243e, type: 3}
+  stageParent: {fileID: 1764237991}
+  stagePrefabs:
+  - {fileID: 6853735158424088587, guid: 5e85e51589b042747a8dab9c0fb3243e, type: 3}
+  - {fileID: 897719010142925713, guid: eebdbf0ac7b09414d9be91598598e8f7, type: 3}
+  - {fileID: 2415283980281695744, guid: 2319986b10393a14f90423d612f42dcf, type: 3}
 --- !u!1 &478269643
 GameObject:
   m_ObjectHideFlags: 0
@@ -5907,6 +5909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05d1784a3875e442ac45344a1604c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageList: []
   stagePrefab: {fileID: 2415283980281695744, guid: 2319986b10393a14f90423d612f42dcf, type: 3}
   stageParent: {fileID: 1764237991}
 --- !u!1 &2130290831

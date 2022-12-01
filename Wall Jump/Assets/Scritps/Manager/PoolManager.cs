@@ -1,32 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PoolManager : MonoSingleton<PoolManager>
 {
-    public Grid grid;
-    public List<GameObject> pools;
-    private Dictionary<string, GameObject> poolDictionary = new Dictionary<string, GameObject>();
+    public Transform stageParent;
+    public List<GameObject> stagePrefabs;
+    private List<GameObject> stages = new List<GameObject>();
+    private Queue<GameObject> poolQueue = new Queue<GameObject>();
 
     void Start()
     {
-        foreach (var pool in pools)
-        {
-            GameObject obj = Instantiate(pool);
-            obj.SetActive(false);
-            poolDictionary.Add(pool.name, obj);
-        }
-
-        SpawnStage("2 Stage", new Vector2(0, 26));
+        Initialization();
     }
 
-    public void SpawnStage(string tag, Vector2 position)
+    void Initialization()
     {
-        if (poolDictionary.ContainsKey(tag))
+        foreach (var stage in stagePrefabs)
         {
-            poolDictionary[tag].SetActive(true);
-            poolDictionary[tag].transform.parent = grid.transform;
-            poolDictionary[tag].transform.position = position;
+            GameObject initStage = Instantiate(stage);
+            initStage.transform.parent = stageParent;
+            initStage.SetActive(false);
+            stages.Add(initStage);
         }
+    }
+
+    public void RandomSpawnStage(Vector2 jointPos)
+    {
+        int index = Random.Range(0, stages.Count - 1);
+        stages[index].transform.position = jointPos;
+
+        if (!stages[index].activeSelf)
+        {
+            stages[index].SetActive(true);
+        }
+    }
+
+    public void RandomSpawnStageTest(Vector2 jointPos)
+    {
+        int index = Random.Range(0, stages.Count - 1);
+        GameObject newStage = Instantiate(stagePrefabs[index]);
+        newStage.transform.parent = stageParent;
+        newStage.transform.position = jointPos;
     }
 }

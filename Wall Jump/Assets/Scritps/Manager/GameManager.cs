@@ -17,9 +17,12 @@ public class GameManager : MonoSingleton<GameManager>
     //    Camera.main.orthographicSize = Camera.main.orthographicSize * displayResolutionRatio;
     //    grid.transform.localScale = new Vector3(grid.transform.localScale.x * displayResolutionRatio, grid.transform.localScale.y * displayResolutionRatio, grid.transform.localScale.z);
     //}
-
+    
+    public List<GameObject> stageList = new List<GameObject>();
     public GameObject stagePrefab;
     public Transform stageParent;
+
+
     public List<Transform> walls { get; set; } = new List<Transform>();
     public Transform CurrentStickToWall { get; set; } = null;
     public float wallProperDistance { get; set; } = 1f;
