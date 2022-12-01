@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpawnCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.CompareTag("SpawnCollider"))
+        {
+            Debug.Log("컬라이더 확인");
+            GameObject nextStage = Instantiate(GameManager.Instance.stagePrefab);
+            nextStage.transform.parent = GameManager.Instance.stageParent;
+            Transform jointTrm = collision.transform.GetChild(0);
+            nextStage.transform.position = jointTrm.position;
+        }
     }
 }
