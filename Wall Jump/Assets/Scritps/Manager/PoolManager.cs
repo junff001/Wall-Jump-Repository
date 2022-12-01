@@ -39,7 +39,7 @@ public class PoolManager : MonoSingleton<PoolManager>
 
     public void RandomSpawnStageTest(Vector2 jointPos)
     {
-        int index = Random.Range(0, stages.Count - 1);
+        int index = Random.Range(0, stages.Count);
         GameObject newStage = Instantiate(stagePrefabs[index]);
         newStage.transform.parent = stageParent;
         newStage.transform.position = jointPos;

@@ -8,7 +8,11 @@ public class SpawnCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SpawnCollider"))
         {
-            PoolManager.Instance.RandomSpawnStageTest(collision.transform.GetChild(0).position);
+            if (collision.gameObject != GameManager.Instance.CurrentSpawnCollider || GameManager.Instance.CurrentSpawnCollider == null) 
+            {
+                GameManager.Instance.CurrentSpawnCollider = collision.gameObject;
+                PoolManager.Instance.RandomSpawnStageTest(collision.transform.GetChild(0).position);
+            }
         }
     }
 }
