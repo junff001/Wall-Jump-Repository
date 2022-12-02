@@ -8,9 +8,11 @@ public class SpawnCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("SpawnCollider"))
         {
-            if (collision.gameObject != GameManager.Instance.CurrentSpawnCollider || GameManager.Instance.CurrentSpawnCollider == null) 
+            Stage stage = collision.GetComponent<Stage>();
+
+            if (!stage.isEntered)
             {
-                GameManager.Instance.CurrentSpawnCollider = collision.gameObject;
+                stage.isEntered = true;
                 PoolManager.Instance.RandomSpawnStageTest(collision.transform.GetChild(0).position);
             }
         }
