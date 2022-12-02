@@ -13,6 +13,7 @@ TagManager:
   - StageEntry
   - SpawnCollider
   - DeadBound
+  - CouldZone
   layers:
   - Default
   - TransparentFX
