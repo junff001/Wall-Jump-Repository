@@ -5,30 +5,25 @@ using UnityEngine.UIElements;
 
 public class CloudMove : MonoBehaviour
 {
+    [Header("[ Speed ]")]
     [SerializeField] private float moveSpeed;
-    [SerializeField] private BoxCollider2D collider;
-    private float colliderWidth;
 
-    void Start()
-    {
-        colliderWidth = collider.size.x;
-    }
+    [Header("[ Move Points ]")]
+    [SerializeField] private Transform startPoint;
+    [SerializeField] private Transform endPoint;
 
     void Update()
     {
-        Move();
+        RepeatedMovement();
     }
 
-    void Move()
+    void RepeatedMovement()
     {
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("CloudZone"))
+        if (transform.position.x <= endPoint.position.x)
         {
-
+            transform.position = startPoint.position;
         }
     }
 }
