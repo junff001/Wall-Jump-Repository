@@ -31,6 +31,7 @@ public class InfiniteScrollingCloud : MonoBehaviour
 
         if (transform.GetChild(1).TransformPoint(transform.GetChild(1).position).x <= firstCloud.x)
         {
+            startPos.y = transform.position.y;
             transform.position = startPos;
         }
     }
