@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerOnGround : PlayerIdle
 {
+    [Header("[ Components ]")]
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
 

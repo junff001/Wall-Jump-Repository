@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class PlayerStickToWall : PlayerIdle
 {
+    [Header("[ Player ]")]
     [SerializeField] private Transform player;
     [SerializeField] private PlayerFilp filp;
+
+    [Header("[ Components ]")]
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
-    [SerializeField] private CameraFraming cameraFraming;
+
+    [Header("[ Move to the wall ]")]
     [SerializeField] private float moveToTheWallLerpTime;
     [SerializeField] private float moveRange;
     [SerializeField] private float moveHeight;
@@ -22,7 +26,6 @@ public class PlayerStickToWall : PlayerIdle
         base.Enter(fsm);
         animator.SetBool(isStickToWall, true);
         StickToWall();
-       // WallInquiry();
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -39,9 +42,20 @@ public class PlayerStickToWall : PlayerIdle
 
     void StickToWall()
     {
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.gravityScale = 0;
+        VelocityZero();
+        GravityZero();
+
         filp.FilpX();
+    }
+
+    void GravityZero()
+    {
+        rigidbody.gravityScale = 0;
+    }
+
+    void VelocityZero()
+    {
+        rigidbody.velocity = Vector2.zero;
     }
 
     public IEnumerator MoveToTheWall(Collider2D collider)
@@ -90,21 +104,5 @@ public class PlayerStickToWall : PlayerIdle
         }
 
         PlayerStatus.CurrentState = PlayerState.StickToWall;
-    }
-
-    public void WallInquiry()
-    {
-        for (int i = 0; i < GameManager.Instance.walls.Count; i++)
-        {
-            if (GameManager.Instance.CurrentStickToWall == GameManager.Instance.walls[i])
-            {
-                float wallsDistance = GameManager.Instance.walls[i + 1].position.x - GameManager.Instance.CurrentStickToWall.position.x;
-
-                if (Mathf.Abs(wallsDistance) != GameManager.Instance.wallProperDistance && wallsDistance != 0)
-                {
-                    //cameraFraming.Framing(wallsDistance);
-                }
-            }
-        }       
     }
 }

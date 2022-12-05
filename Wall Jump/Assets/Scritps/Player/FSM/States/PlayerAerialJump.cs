@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PlayerAerialJump : State, IPressTheScreenToTransition
 {
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float jumpTime;
+    [Header("[ Components ]")]
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
+
+    [Header("[ Jump ]")]
+    [SerializeField] private float jumpPower;
+    [SerializeField] private float jumpTime;
+
+    [Header("[ Sprite ]")]
     [SerializeField] private PlayerFilp filp;
 
     private PlayerFSM fsm;

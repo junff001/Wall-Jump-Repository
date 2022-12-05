@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class PlayerBasicJump : State, IPressTheScreenToTransition
 {
-    [SerializeField] private float jumpPower;
-    [SerializeField] private float jumpTime;
+    [Header("[ Components ]")]
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private Animator animator;
 
+    [Header("[ Jump ]")]
+    [SerializeField] private float jumpPower;
+    [SerializeField] private float jumpTime;
+    
     private PlayerFSM fsm;
     private readonly int isJumping = Animator.StringToHash("isJumping");
 
