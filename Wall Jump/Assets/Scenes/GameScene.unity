@@ -1265,7 +1265,7 @@ Transform:
   m_GameObject: {fileID: 397009773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.00087950745, y: 0.00087950745, z: 0.00087950745}
+  m_LocalScale: {x: 0.0008798944, y: 0.0008798944, z: 0.0008798944}
   m_Children:
   - {fileID: 1253095801}
   - {fileID: 2103563219}
@@ -2049,7 +2049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e252cfba7fcbe74f882aecb8e48e4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1519498135}
+  physic: {fileID: 1519498134}
   animator: {fileID: 1519498136}
   jumpPower: 6
   jumpTime: 0.37
@@ -5887,8 +5887,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1519498137}
   - component: {fileID: 1519498135}
-  - component: {fileID: 1519498138}
   - component: {fileID: 1519498136}
+  - component: {fileID: 1519498139}
+  - component: {fileID: 1519498134}
+  - component: {fileID: 1519498138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5896,6 +5898,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1519498134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519498133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de64b7fec14490488d259f5e5aec20b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 1519498135}
 --- !u!50 &1519498135
 Rigidbody2D:
   serializedVersion: 4
@@ -5943,9 +5958,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519498133}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -4.7, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1066081099}
   - {fileID: 1629341555}
@@ -5964,6 +5979,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c53791667fda86343b9f0fbc16858c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1519498139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519498133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277b0685147c64242a7862a95a848c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1524278746
@@ -6120,8 +6147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1519498137}
-  filp: {fileID: 1519498138}
-  rigidbody: {fileID: 1519498135}
+  physic: {fileID: 1519498134}
+  directionOfView: {fileID: 1519498138}
   animator: {fileID: 1519498136}
   moveToTheWallLerpTime: 0.2
   moveRange: 0.3
@@ -6572,7 +6599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b6b9cf6c398a44b47beb5d886f80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1519498135}
+  physic: {fileID: 1519498134}
   animator: {fileID: 1519498136}
 --- !u!1 &1804086566
 GameObject:
@@ -6772,11 +6799,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee28d9a63d6966144a2c1e08a0058498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 1519498135}
+  physic: {fileID: 1519498134}
   animator: {fileID: 1519498136}
   jumpPower: 6
   jumpTime: 0.37
-  filp: {fileID: 1519498138}
+  directionOfView: {fileID: 1519498138}
 --- !u!1 &1934472813
 GameObject:
   m_ObjectHideFlags: 0
@@ -7074,7 +7101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103563218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 397009777}
@@ -7133,7 +7160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12700, y: 22640}
+  m_Size: {x: 12701, y: 22630}
   m_EdgeRadius: 0
 --- !u!114 &2103563222
 MonoBehaviour:
@@ -7166,15 +7193,15 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 12700
-  mHeight: 22640
+  mWidth: 12701
+  mHeight: 22630
   mDepth: 0
   boundless: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.56095403
+  aspectRatio: 0.56124616
 --- !u!1 &2109490470
 GameObject:
   m_ObjectHideFlags: 0

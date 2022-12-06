@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerBasicJump : State, IPressTheScreenToTransition
 {
     [Header("[ Components ]")]
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private PlayerPhysic physic;
     [SerializeField] private Animator animator;
 
     [Header("[ Jump ]")]
@@ -71,11 +71,13 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 
             if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
             {
-                rigidbody.velocity = new Vector2(1, 1.75f) * jumpPower;
+                Vector2 direction = new Vector2(1, 1.75f);
+                physic.SetVelocity(direction * jumpPower);
             }
             else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
             {
-                rigidbody.velocity = new Vector2(-1, 1.75f) * jumpPower;
+                Vector2 direction = new Vector2(-1, 1.75f);
+                physic.SetVelocity(direction * jumpPower);
             }
 
             yield return null;

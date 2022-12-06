@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerAerialJump : State, IPressTheScreenToTransition
 {
     [Header("[ Components ]")]
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private PlayerPhysic physic;
     [SerializeField] private Animator animator;
 
     [Header("[ Jump ]")]
@@ -13,7 +13,7 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     [SerializeField] private float jumpTime;
 
     [Header("[ Sprite ]")]
-    [SerializeField] private PlayerFilp filp;
+    [SerializeField] private PlayerDirectionOfView directionOfView;
 
     private PlayerFSM fsm;
     private readonly int isAerialJumping = Animator.StringToHash("isAerialJumping");
@@ -21,9 +21,19 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     public override void Enter(PlayerFSM fsm)
     {
         this.fsm = fsm;
+
         animator.SetBool(isAerialJumping, true);
-        rigidbody.velocity = Vector2.zero;
-        filp.FilpX();
+        physic.VelocityZero();
+
+        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+        {
+            directionOfView.RightView();
+        }
+        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+        {
+            directionOfView.LeftView();
+        }
+
         AerialJump();
     }
 
@@ -54,7 +64,8 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     IEnumerator MarioJump()
     {
         float originTime = jumpTime;
-        rigidbody.gravityScale = 0;
+        
+        physic.GravityScaleZero();
 
         while (PlayerStatus.CurrentState == PlayerState.AerialJump && originTime > 0 && Input.GetMouseButton(0))
         {
@@ -62,11 +73,13 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
             if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
             {
-                rigidbody.velocity = new Vector2(1, 1.75f) * jumpPower;
+                Vector2 direction = new Vector2(1f, 1.75f);
+                physic.SetVelocity(direction * jumpPower);
             }
             else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
             {
-                rigidbody.velocity = new Vector2(-1, 1.75f) * jumpPower;
+                Vector2 direction = new Vector2(-1f, 1.75f);
+                physic.SetVelocity(direction * jumpPower);
             }
 
             yield return null;

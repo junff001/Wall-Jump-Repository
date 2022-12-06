@@ -17,7 +17,7 @@ public class GroundSensor : MonoBehaviour
         {
             if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
             {
-                StartCoroutine(playerStickToWall.MoveToTheWall(collision));
+                playerStickToWall.PostureCorrection(collision);
             }
         }
     }

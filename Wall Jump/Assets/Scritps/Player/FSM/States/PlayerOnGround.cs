@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerOnGround : PlayerIdle
 {
     [Header("[ Components ]")]
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private PlayerPhysic physic;
     [SerializeField] private Animator animator;
 
     private readonly int isOnGround = Animator.StringToHash("isOnGround");
 
     public override void Enter(PlayerFSM fsm)
     {
-        rigidbody.velocity = Vector2.zero;
+        physic.VelocityZero();
         base.Enter(fsm);    
         animator.SetBool(isOnGround, true);
     }
