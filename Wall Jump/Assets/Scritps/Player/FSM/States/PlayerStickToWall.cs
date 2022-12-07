@@ -47,12 +47,10 @@ public class PlayerStickToWall : PlayerIdle
     {
         if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
-            Debug.Log("왼쪽");
             directionOfView.RightView();
         }
         else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
         {
-            Debug.Log("오른쪽");
             directionOfView.LeftView();
         }
     }
