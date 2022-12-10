@@ -8,12 +8,11 @@ public class CameraFollowPlayer : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
-        ClampY();
-    }
+        if (player.position.y > transform.position.y)
+        {
+            transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+        }
 
-    void ClampY()
-    {
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, transform.position.y, Mathf.Infinity), transform.position.z);
+        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
     }
 }

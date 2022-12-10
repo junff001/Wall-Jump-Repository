@@ -40,6 +40,9 @@ public class PlayerBashJump : State
             case PlayerState.StickToWall:
                 fsm.ChangeState(PlayerState.StickToWall);
                 break;
+            case PlayerState.Death:
+                fsm.ChangeState(PlayerState.Death);
+                break;
         }
     }
 

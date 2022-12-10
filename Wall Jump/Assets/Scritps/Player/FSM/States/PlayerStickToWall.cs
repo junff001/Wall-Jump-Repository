@@ -33,6 +33,13 @@ public class PlayerStickToWall : PlayerIdle
     public override void Execute(PlayerFSM fsm)
     {
         base.Execute(fsm);
+
+        switch (PlayerStatus.CurrentState)
+        {
+            case PlayerState.Death:
+                fsm.ChangeState(PlayerState.Death);
+                break;
+        }
     }
 
     public override void Exit(PlayerFSM fsm)

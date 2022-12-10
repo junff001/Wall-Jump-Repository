@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class PlayerDeath : State
 {
-    [SerializeField] private Transform camera;
     [SerializeField] private Transform player;
-    [SerializeField] private Transform respawnTrm;
+    [SerializeField] private Transform camera;
+    [SerializeField] private Transform respawnPoint;
+    [SerializeField] private PlayerPhysic physic;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private float blinkingDelay;
+
+    private PlayerFSM fsm;
+    private readonly int isDead = Animator.StringToHash("isDead");
 
     public override void Enter(PlayerFSM fsm)
     {
-        
+        this.fsm = fsm;
+        physic.VelocityZero();
+        physic.GravityScaleZero();
+
+        StartCoroutine(Blinking());
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -20,12 +31,22 @@ public class PlayerDeath : State
 
     public override void Exit(PlayerFSM fsm)
     {
-        
+        animator.SetBool(isDead, false);
     }
 
-    public void Dead()
+    IEnumerator Blinking()
     {
-        player.position = respawnTrm.position;
-        camera.position = player.position;
+        animator.speed = 0;
+        yield return new WaitForSeconds(blinkingDelay * 3);
+        spriteRenderer.enabled = false;
+        yield return new WaitForSeconds(blinkingDelay);
+        spriteRenderer.enabled = true;
+        yield return new WaitForSeconds(blinkingDelay);
+        spriteRenderer.enabled = false;
+        yield return new WaitForSeconds(blinkingDelay);
+        spriteRenderer.enabled = true;
+        yield return new WaitForSeconds(blinkingDelay * 3);
+        animator.speed = 1;
+        animator.SetBool(isDead, true);
     }
 }
