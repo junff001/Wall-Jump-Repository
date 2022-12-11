@@ -21,4 +21,12 @@ public class GroundSensor : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            GameManager.Instance.CameraFocusing();
+        }
+    }
 }

@@ -26,7 +26,12 @@ public class PlayerDeath : State
 
     public override void Execute(PlayerFSM fsm)
     {
-        
+        switch (PlayerStatus.CurrentState)
+        {
+            case PlayerState.OnGround:
+                fsm.ChangeState(PlayerState.OnGround);
+                break;
+        }
     }
 
     public override void Exit(PlayerFSM fsm)
@@ -47,6 +52,7 @@ public class PlayerDeath : State
         spriteRenderer.enabled = true;
         yield return new WaitForSeconds(blinkingDelay * 3);
         animator.speed = 1;
+
         animator.SetBool(isDead, true);
     }
 }

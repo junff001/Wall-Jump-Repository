@@ -12,6 +12,7 @@ public class PlayerOnGround : PlayerIdle
 
     public override void Enter(PlayerFSM fsm)
     {
+        
         physic.VelocityZero();
         base.Enter(fsm);    
         animator.SetBool(isOnGround, true);

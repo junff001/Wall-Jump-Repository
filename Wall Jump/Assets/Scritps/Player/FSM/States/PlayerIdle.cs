@@ -23,15 +23,18 @@ public class PlayerIdle : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (PlayerStatus.Bashable)
+        if (InputManager.Instance.isStart)
         {
-            PlayerStatus.CurrentState = PlayerState.BashJump;
-            fsm.ChangeState(PlayerStatus.CurrentState);
+            if (PlayerStatus.Bashable)
+            {
+                PlayerStatus.CurrentState = PlayerState.BashJump;
+                fsm.ChangeState(PlayerStatus.CurrentState);
+            }
+            else
+            {
+                PlayerStatus.CurrentState = PlayerState.BasicJump;
+                fsm.ChangeState(PlayerStatus.CurrentState);
+            }
         }
-        else
-        {
-            PlayerStatus.CurrentState = PlayerState.BasicJump;
-            fsm.ChangeState(PlayerStatus.CurrentState);
-        }  
     }
 }

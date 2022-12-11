@@ -15,8 +15,8 @@ public class StageEntrySensor : MonoBehaviour
                 children.Add(collision.transform.GetChild(i));
             }
 
-            GameManager.Instance.walls = children;
-            Debug.Log(GameManager.Instance.walls[1].name);
+            //GameManager.Instance.walls = children;
+            //Debug.Log(GameManager.Instance.walls[1].name);
         }
     }
 }

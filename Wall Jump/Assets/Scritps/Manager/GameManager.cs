@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,21 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoSingleton<GameManager>
 {
+    public Transform respawnTrm;
+    public Transform playerTrm;
+    public Transform cameraTrm;
+    public GameObject spriteTrm;
+    public Animator animator;
+    public PlayerPhysic physic;
+    public BoxCollider2D deadBoundCollider;
+    public CinemachineVirtualCamera virtualCamera;
+    private CinemachineFramingTransposer framingTransposer;
+    private readonly int isOnGround = Animator.StringToHash("isOnGround");
+
+    void Start()
+    {
+        framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+    }
     //[SerializeField] private Camera mainCam;
     //// Galaxy S10e ±‚¡ÿ
     //private float defaultResolutionRatio = 9 / 19;
@@ -17,10 +33,24 @@ public class GameManager : MonoSingleton<GameManager>
     //    Camera.main.orthographicSize = Camera.main.orthographicSize * displayResolutionRatio;
     //    grid.transform.localScale = new Vector3(grid.transform.localScale.x * displayResolutionRatio, grid.transform.localScale.y * displayResolutionRatio, grid.transform.localScale.z);
     //}
-    public GameObject CurrentSpawnCollider { get; set; } = null;
 
+    public void PlayerRespawn()
+    {
+        InputManager.Instance.isStart = false;
+        deadBoundCollider.enabled = false;
+        PlayerStatus.CurrentState = PlayerState.OnGround;
+        playerTrm.position = respawnTrm.position;
+        cameraTrm.position = playerTrm.position;
 
-    public List<Transform> walls { get; set; } = new List<Transform>();
-    public Transform CurrentStickToWall { get; set; } = null;
-    public float wallProperDistance { get; set; } = 1f;
+        physic.SetGravityScale(1f);
+        spriteTrm.SetActive(true);
+
+        framingTransposer.m_TrackedObjectOffset.y = -6f;
+    }
+
+    public void CameraFocusing()
+    {
+        framingTransposer.m_TrackedObjectOffset.y = 0f;
+        deadBoundCollider.enabled = true;
+    }
 }

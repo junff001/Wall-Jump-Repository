@@ -11,6 +11,7 @@ public class InputManager : MonoSingleton<InputManager>
     public bool isSwipe { get; set; } = false;
     public float swipeRange = 0f;
     public float quickSwipeTime = 0f;
+    public bool isStart { get; set; } = true;
 
     float a;
 
