@@ -6,7 +6,7 @@ public class WallSensor : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("MovingWall"))
         {
             PlayerStatus.CurrentState = PlayerState.StickToWall;
         }
