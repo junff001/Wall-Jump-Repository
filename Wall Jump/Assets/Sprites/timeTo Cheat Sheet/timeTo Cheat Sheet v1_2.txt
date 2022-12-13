@@ -1,0 +1,77 @@
+==================
+TIMETO CHEAT SHEET
+==================
+
+Title: timeTo Cheat Sheet.
+Subtitle: a cheat sheet for the analog and countdown clock typeface, timeTo.
+Version: 1.2.
+Designer: Speak the Sky.
+License: SIL OFL-1.1 (see .txt file bundled with the fonts, but basically: you can freely use timeTo, even in commercial projects).
+
+
+------------------------------
+-----What is timeTo?
+ timeTo is a typeface that turns time-codes into clock faces! OT Features: all use liga; Web uses kern; Advance uses ss01 to ss03. If you’re using MS Office, you may need to activate ‘standard ligatures’ under Format > Font > Advanced. See expansion page for extra features used in some expansion fonts.
+
+ ------------------------------
+-----How do I use timeTo?
+ Just type a time from 00:00 to 11:59 and timeTo handles the rest! The time-code must use a colon in the middle and leading zeroes in front of single-digit times (e.g. ‘0 1’ instead of just ‘1’). For example: 0 5 colon 4 7 produces a clock face set to 5:47.
+ You can change the style using the 10 different fonts:
+	• Basic: super-streamlined, with no tick marks.
+	• Flat: a round clock with hourly tick marks and flat-ended hands and marks.
+	• Round: a round clock with hourly tick marks and rounded hands and marks.
+	• Sharp: a round clock with hour and minute tick marks and sharp, almond-shaped hands.
+	• Square: a rounded square clock with hourly tick marks and thin, squarish hands.
+	• Watch: a wristwatch-shaped clock face with tick marks every 3 hours and sharp hands.
+	• Alarm: an alarm clock-shaped clock face with hourly tick marks and blunt, almond-shaped hands.
+	• Stop: a stopwatch-shaped clock face with hour and minute tick marks and very thin hands.
+	• Disc: a DIY compact disc clock with no tick marks and pointed square hands.
+	• Ornate: a round clock with hourly tick marks in Roman numerals and sharp, slightly-ornate hands. 
+
+------------------------------
+-----How do I use timeToWeb?
+ timeToWeb massively cuts the filesize by limiting each hand to 12 positions. The hour hand only points to each hour and the minute hand only points to every 5 minutes (0 0, 0 5, 10, etc.). 
+
+------------------------------
+-----How do I use timeToAdvance?
+ timeToAdvance is a layer font that uses the OpenType feature stylistic sets to include versions of each time with just the hour hand (ss01), the minute hand (ss02), or both hands (ss03). It also includes a handless face (uppercase O). These features let you separately edit each part, or mix and match between styles. 
+ ------------------------------
+-----How do I use timeToPlay?
+ timeToPlay creates progress and countdown clocks for, among other things, analog role-playing games. Just type a fraction and timeToPlay handles the rest! It includes clocks with 1, 2, 3, 4, 6, 8, and 12 segments. For example, 0 slash 1, 1 slash 2, 2 slash 3, 1 slash 8, 5 slash 12.
+ It also includes Powered by the Apocalypse-style clocks, which you can type in either as sixths, by adding an extra 0 to the start of the fraction, or as time-codes (00:00 to 12:00). For example, 0 2 slash 6 produces a PbtA clock with the first two quarters filled in and the third quarter and last 3 segments unfilled; 1 1 colon 0 0 produces a PbtA clock with everything except the last segment filled.
+
+
+------------------------------
+-----What's in the $5+ expansion?
+
+14 new analog clock styles:
+	• Alarm 2: like the original Alarm, but with a curved bar connecting the ringers.
+	• Min: a minimalist clock face of rectangular tickmarks and hands.
+	• Modern: a round clockface with minute tickmarks in the border and Arabic numeral 3-hour marks.
+	• Sun: a clock with sun rays as hour marks.
+	• Moon: a clock with moon phases as hour marks.
+	• Carry: a carriage clock with Roman numeral hourly tick marks.
+	• Tower: a decorative clock with an hour hand that encircles the Roman numeral hourly tickmarks.
+	• Gear: a clock made of three gears one inside the other.
+	• Vinyl: a disc-like clock with a spiral groove.
+	• Wahoo: a clock face inspired by the Tick Tock Clock entry point in Super Mario 64.
+	• Rough: the Basic clock but with roughened edges.
+	• Melon: a circular clock with 12 watermelon seeds marking the hours.
+	• Arc: a ring split into twelve equal arcs, one for each hour, with curved arrows running around the inside (hours) and outside (minutes) of the arcs instead of hands.
+	• Petal: a 12-petalled flower with spiked hands.
+
+And 5 new countdown/progress clock styles:
+	• Flat: similar to the original Basic style, with 45-degree corners cut into the segments.
+	• Round: similar to the original basic style, with rounded corners.
+	• Mech: a gear-like style.
+	• Blot: thick, even pen-strokes.
+	• Callig: uneven pen strokes that switch between thick and thin like calligraphic writing.
+
+timeToAdvance-Wahoo adds more face part layers (arranged A to E front to back and extra stylistic sets for just the hand shafts (ss04) or hand arrows (ss05). Face part layers:
+	• A (front, but below the hands): the outer border of the clock face.
+	• B: the numerals 3, 6, 9, and 12.
+	• C: a ring that goes underneath the numerals.
+	• D: a large dot in the centre of the clock face, under the hands.
+	• E (back): the clock face background.
+
+timeToPlay-Blot and -Callig include 4 alternate versions of each state of each clock in stylistic sets (ss01 to ss04), which you can use to prevent the hand-drawn style from becoming repetitive if you're using several clocks together, or many clocks throughout a work.

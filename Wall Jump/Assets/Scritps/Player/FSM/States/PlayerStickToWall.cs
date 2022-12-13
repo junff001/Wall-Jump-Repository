@@ -34,6 +34,11 @@ public class PlayerStickToWall : PlayerIdle
     {
         base.Execute(fsm);
 
+        if (PlayerStatus.IsPostureCorrection)
+        {
+
+        }
+
         switch (PlayerStatus.CurrentState)
         {
             case PlayerState.Death:
@@ -66,20 +71,20 @@ public class PlayerStickToWall : PlayerIdle
     {
         if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
-            StartCoroutine(MoveToSideOfWall(collider, 1f));
+            StartCoroutine(MoveToSideOfWall_Right(collider));  
         }
         else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
         {
-            StartCoroutine(MoveToSideOfWall(collider, -1f));
+            StartCoroutine(MoveToSideOfWall_Left(collider));
         }
     }
 
-    public IEnumerator MoveToSideOfWall(Collider2D collider, float scaleX)
+    public IEnumerator MoveToSideOfWall_Right(Collider2D collider)
     {
         float timer = 0f;
 
         Vector3 contactPoint = player.position;
-        Vector3 sideOfWallPoint = collider.bounds.center + new Vector3((collider.bounds.extents.x + moveRange) * scaleX, moveHeight, 0);
+        Vector3 sideOfWallPoint = collider.bounds.center + new Vector3(collider.bounds.extents.x + moveRange, moveHeight, 0);
 
         while (timer < moveToTheWallLerpTime)
         {
@@ -90,12 +95,37 @@ public class PlayerStickToWall : PlayerIdle
                 timer = moveToTheWallLerpTime;
             }
 
-            directionOfView.SetDirectionOfVeiw(scaleX);
+            player.localScale = new Vector3(1f, player.localScale.y, player.localScale.z);
             player.position = Vector3.Lerp(contactPoint, sideOfWallPoint, timer / moveToTheWallLerpTime);
 
             yield return null;
         }
 
         PlayerStatus.CurrentState = PlayerState.StickToWall;
-    } 
+    }
+
+    public IEnumerator MoveToSideOfWall_Left(Collider2D collider)
+    {
+        float timer = 0f;
+
+        Vector3 contactPoint = player.position;
+        Vector3 sideOfWallPoint = collider.bounds.center + new Vector3(-(collider.bounds.extents.x + moveRange), moveHeight, 0);
+
+        while (timer < moveToTheWallLerpTime)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > moveToTheWallLerpTime)
+            {
+                timer = moveToTheWallLerpTime;
+            }
+
+            player.localScale = new Vector3(-1f, player.localScale.y, player.localScale.z);
+            player.position = Vector3.Lerp(contactPoint, sideOfWallPoint, timer / moveToTheWallLerpTime);
+
+            yield return null;
+        }
+
+        PlayerStatus.CurrentState = PlayerState.StickToWall;
+    }
 }
