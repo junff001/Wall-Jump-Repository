@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FlipWallClear : MonoBehaviour
 {
+    [SerializeField] private Transform player;
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("FlipWall"))
         {
-            Debug.Log("빠져나감");
+            player.GetComponent<Rigidbody2D>().isKinematic = false;
             collision.GetComponent<FlipWall>().player = null;
         }
     }

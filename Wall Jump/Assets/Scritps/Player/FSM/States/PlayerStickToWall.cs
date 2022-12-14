@@ -34,11 +34,6 @@ public class PlayerStickToWall : PlayerIdle
     {
         base.Execute(fsm);
 
-        if (PlayerStatus.IsPostureCorrection)
-        {
-
-        }
-
         switch (PlayerStatus.CurrentState)
         {
             case PlayerState.Death:
@@ -81,6 +76,7 @@ public class PlayerStickToWall : PlayerIdle
 
     public IEnumerator MoveToSideOfWall_Right(Collider2D collider)
     {
+        PlayerStatus.IsPostureCorrection = true;
         float timer = 0f;
 
         Vector3 contactPoint = player.position;
@@ -102,10 +98,12 @@ public class PlayerStickToWall : PlayerIdle
         }
 
         PlayerStatus.CurrentState = PlayerState.StickToWall;
+        PlayerStatus.IsPostureCorrection = false;
     }
 
     public IEnumerator MoveToSideOfWall_Left(Collider2D collider)
     {
+        PlayerStatus.IsPostureCorrection = true;
         float timer = 0f;
 
         Vector3 contactPoint = player.position;
@@ -127,5 +125,6 @@ public class PlayerStickToWall : PlayerIdle
         }
 
         PlayerStatus.CurrentState = PlayerState.StickToWall;
+        PlayerStatus.IsPostureCorrection = false;
     }
 }

@@ -63,7 +63,7 @@ public class FlipWall : MonoBehaviour
 
             transform.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), transform.localScale.y, transform.localScale.z);
 
-            if (player != null)
+            if (player != null && !PlayerStatus.IsPostureCorrection)
             {
                 if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
                 {
@@ -80,9 +80,7 @@ public class FlipWall : MonoBehaviour
             yield return null;
         }
 
-       
-
-        if (player != null)
+        if (player != null && !PlayerStatus.IsPostureCorrection)
         {
             if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
             {

@@ -15,7 +15,6 @@ public class WallSensor : MonoBehaviour
         else if (collision.gameObject.CompareTag("FlipWall"))
         {
             PlayerStatus.CurrentState = PlayerState.StickToWall;
-           // player.GetComponent<Rigidbody2D>().isKinematic = true;
 
             if (collision.GetComponent<FlipWall>().isFliping)
             {
