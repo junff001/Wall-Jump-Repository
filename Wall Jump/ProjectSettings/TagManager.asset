@@ -15,6 +15,8 @@ TagManager:
   - DeadBound
   - CouldZone
   - MovingWall
+  - FlipWall
+  - FlipWallHead
   layers:
   - Default
   - TransparentFX
@@ -72,6 +74,12 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3871801575
+    locked: 0
+  - name: UI
+    uniqueID: 3680832883
+    locked: 0
+  - name: Electric
+    uniqueID: 3413776513
     locked: 0
   - name: Ground
     uniqueID: 1798704923

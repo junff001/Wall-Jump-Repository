@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundSensor : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     [SerializeField] private PlayerStickToWall playerStickToWall;
     [SerializeField] private float moveHeight;
 
@@ -20,6 +21,22 @@ public class GroundSensor : MonoBehaviour
                 playerStickToWall.PostureCorrection(collision);
             }
         }
+        else if (collision.gameObject.CompareTag("FlipWallHead"))
+        {
+            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
+            {
+                playerStickToWall.PostureCorrection(collision);
+            }
+
+            if (!collision.transform.parent.GetComponent<FlipWall>().isFliping)
+            {
+                collision.transform.parent.GetComponent<FlipWall>().player = player;
+            }
+            else
+            {
+                StartCoroutine(Delay(collision));
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -28,5 +45,11 @@ public class GroundSensor : MonoBehaviour
         {
             GameManager.Instance.CameraFocusing();
         }
+    }
+
+    IEnumerator Delay(Collider2D collider)
+    {
+        yield return new WaitForSeconds(collider.transform.parent.GetComponent<FlipWall>().flipTime);
+        collider.transform.parent.GetComponent<FlipWall>().player = player;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class ElectricWall : MonoBehaviour
 {
     [SerializeField] private GameObject electricObj;
     [SerializeField] private SpriteRenderer spriteRenderer;
