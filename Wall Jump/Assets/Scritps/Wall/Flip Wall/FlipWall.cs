@@ -6,6 +6,8 @@ using DG.Tweening;
 public class FlipWall : MonoBehaviour
 {
     public float flipTime;
+    [SerializeField] private Transform parent;
+    [SerializeField] private Transform timer;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> numberSprites;
     private int index = 0;
@@ -49,72 +51,71 @@ public class FlipWall : MonoBehaviour
            playerStartScaleX = player.localScale.x; 
         }
        
-
         isFliping = true;
         Debug.Log("ÇÃ¸³ ÇÔ");
-        while (time < flipTime)
+
+        if (PlayerStatus.IsPostureCorrection)
         {
-            time += Time.deltaTime;
-            
-            if (time > flipTime)
+            while (time < flipTime)
             {
-                time = flipTime;
+                time += Time.deltaTime;
+
+                if (time > flipTime)
+                {
+                    time = flipTime;
+                }
+
+                parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
+
+                
+                yield return null;
+            }
+        }
+        else
+        {
+            while (time < flipTime)
+            {
+                time += Time.deltaTime;
+
+                if (time > flipTime)
+                {
+                    time = flipTime;
+                }
+
+                parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
+
+                if (player != null)
+                {
+                    if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+                    {
+                        player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX + 1.2f, time / flipTime), player.position.y, player.position.z);
+                    }
+                    else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+                    {
+                        player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX - 1.2f, time / flipTime), player.position.y, player.position.z);
+                    }
+                }
+
+                yield return null;
             }
 
-            transform.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), transform.localScale.y, transform.localScale.z);
-
-            if (player != null && !PlayerStatus.IsPostureCorrection)
+            if (player != null)
             {
                 if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
                 {
-                    player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX + 1.2f, time / flipTime), player.position.y, player.position.z);
-
+                    PlayerStatus.CurrentDirection = PlayerDirection.Right;
                 }
                 else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
                 {
-                    player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX - 1.2f, time / flipTime), player.position.y, player.position.z);
-
+                    PlayerStatus.CurrentDirection = PlayerDirection.Left;
                 }
-            }
 
-            yield return null;
+                player.localScale = new Vector3(player.localScale.x * -1f, player.localScale.y, player.localScale.z);
+            }
         }
-
-        if (player != null && !PlayerStatus.IsPostureCorrection)
-        {
-            if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-            {
-                PlayerStatus.CurrentDirection = PlayerDirection.Right;
-            }
-            else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-            {
-                PlayerStatus.CurrentDirection = PlayerDirection.Left;
-            }
-
-            player.localScale = new Vector3(player.localScale.x * -1f, player.localScale.y, player.localScale.z);
-        }
-        
 
         isFliping = false;
-
-        
-        //transform.DOScaleX(transform.localScale.x * -1f, flipTime);
-
-        //if (player != null)
-        //{
-        //    if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-        //    {
-        //        player.DOMoveX(player.position.x + 1.2f, flipTime);
-        //        player.DOScaleX(player.localScale.x * -1f, flipTime);
-        //        PlayerStatus.CurrentDirection = PlayerDirection.Right;
-        //    }
-        //    else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-        //    {
-        //        player.DOMoveX(player.position.x - 1.2f, flipTime);
-        //        player.DOScaleX(player.localScale.x * -1f, flipTime);
-        //        PlayerStatus.CurrentDirection = PlayerDirection.Left;
-        //    }
-        //}
+        timer.localScale = new Vector3(timer.localScale.x * -1f, timer.localScale.y, timer.localScale.z);
 
         index = numberSprites.Count - 1;
         spriteRenderer.sprite = numberSprites[index];

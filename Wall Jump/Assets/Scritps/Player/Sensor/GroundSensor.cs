@@ -6,6 +6,7 @@ public class GroundSensor : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private PlayerStickToWall playerStickToWall;
+    [SerializeField] private BoxCollider2D wallCol;
     [SerializeField] private float moveHeight;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +24,9 @@ public class GroundSensor : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("FlipWallHead"))
         {
+            transform.GetComponent<BoxCollider2D>().enabled = false;
+            wallCol.enabled = false;
+
             if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
             {
                 playerStickToWall.PostureCorrection(collision);
@@ -30,10 +34,12 @@ public class GroundSensor : MonoBehaviour
 
             if (!collision.transform.parent.GetComponent<FlipWall>().isFliping)
             {
+                Debug.Log("플레이어는 플레이어");
                 collision.transform.parent.GetComponent<FlipWall>().player = player;
             }
             else
             {
+                Debug.Log("코루틴");
                 StartCoroutine(Delay(collision));
             }
         }

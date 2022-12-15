@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WallSensor : MonoBehaviour
 {
+    [SerializeField] private BoxCollider2D groundCol;
     [SerializeField] private Transform player;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -15,6 +16,8 @@ public class WallSensor : MonoBehaviour
         else if (collision.gameObject.CompareTag("FlipWall"))
         {
             PlayerStatus.CurrentState = PlayerState.StickToWall;
+            transform.GetComponent<BoxCollider2D>().enabled = false;
+            groundCol.enabled = false;
 
             if (collision.GetComponent<FlipWall>().isFliping)
             {

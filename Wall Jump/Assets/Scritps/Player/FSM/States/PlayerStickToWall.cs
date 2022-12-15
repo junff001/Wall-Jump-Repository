@@ -97,8 +97,11 @@ public class PlayerStickToWall : PlayerIdle
             yield return null;
         }
 
+       
         PlayerStatus.CurrentState = PlayerState.StickToWall;
         PlayerStatus.IsPostureCorrection = false;
+
+        Debug.Log("고쳐잡기 종료");
     }
 
     public IEnumerator MoveToSideOfWall_Left(Collider2D collider)
@@ -124,7 +127,10 @@ public class PlayerStickToWall : PlayerIdle
             yield return null;
         }
 
+        
         PlayerStatus.CurrentState = PlayerState.StickToWall;
         PlayerStatus.IsPostureCorrection = false;
+
+        Debug.Log("고쳐잡기 종료");
     }
 }
