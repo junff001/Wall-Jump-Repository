@@ -47,16 +47,19 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (PlayerStatus.Bashable)
+        if (!PlayerStatus.IsPostureCorrection)
         {
-            PlayerStatus.CurrentState = PlayerState.BashJump;
-            fsm.ChangeState(PlayerStatus.CurrentState);
+            if (PlayerStatus.Bashable)
+            {
+                PlayerStatus.CurrentState = PlayerState.BashJump;
+                fsm.ChangeState(PlayerStatus.CurrentState);
+            }
+            else
+            {
+                PlayerStatus.CurrentState = PlayerState.AerialJump;
+                fsm.ChangeState(PlayerStatus.CurrentState);
+            }
         }
-        else
-        {
-            PlayerStatus.CurrentState = PlayerState.AerialJump;
-            fsm.ChangeState(PlayerStatus.CurrentState);
-        } 
     }
 
     void Jump()

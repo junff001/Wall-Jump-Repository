@@ -35,7 +35,6 @@ public class WallSensor : MonoBehaviour
             PlayerStatus.CurrentState = PlayerState.StickToWall;
             transform.GetComponent<BoxCollider2D>().enabled = false;
             groundCol.enabled = false;
-            deadBoundCol.enabled = false;
 
             if (collision.GetComponent<FlilpSpikeWall>().isFliping)
             {

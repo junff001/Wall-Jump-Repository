@@ -23,7 +23,7 @@ public class PlayerIdle : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (InputManager.Instance.isStart)
+        if (InputManager.Instance.isStart && !PlayerStatus.IsPostureCorrection)
         {
             if (PlayerStatus.Bashable)
             {

@@ -12,6 +12,7 @@ public class PlayerStickToWall : PlayerIdle
 
     [Header("[ Components ]")]
     [SerializeField] private Animator animator;
+    [SerializeField] private CircleCollider2D deadBoundCol;
 
     [Header("[ Move to the wall ]")]
     [SerializeField] private float moveToTheWallLerpTime;
@@ -66,16 +67,19 @@ public class PlayerStickToWall : PlayerIdle
     {
         if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
+            physic.GravityScaleZero();
             StartCoroutine(MoveToSideOfWall_Right(collider));  
         }
         else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
         {
+            physic.GravityScaleZero();
             StartCoroutine(MoveToSideOfWall_Left(collider));
         }
     }
 
     public IEnumerator MoveToSideOfWall_Right(Collider2D collider)
     {
+        deadBoundCol.enabled = false;
         PlayerStatus.IsPostureCorrection = true;
         float timer = 0f;
 
@@ -97,7 +101,7 @@ public class PlayerStickToWall : PlayerIdle
             yield return null;
         }
 
-       
+        deadBoundCol.enabled = true;
         PlayerStatus.CurrentState = PlayerState.StickToWall;
         PlayerStatus.IsPostureCorrection = false;
 
@@ -106,6 +110,7 @@ public class PlayerStickToWall : PlayerIdle
 
     public IEnumerator MoveToSideOfWall_Left(Collider2D collider)
     {
+        deadBoundCol.enabled = false;
         PlayerStatus.IsPostureCorrection = true;
         float timer = 0f;
 
@@ -127,7 +132,7 @@ public class PlayerStickToWall : PlayerIdle
             yield return null;
         }
 
-        
+        deadBoundCol.enabled = true;
         PlayerStatus.CurrentState = PlayerState.StickToWall;
         PlayerStatus.IsPostureCorrection = false;
 

@@ -68,7 +68,6 @@ public class FlilpSpikeWall : MonoBehaviour
 
                 parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
 
-
                 yield return null;
             }
         }
