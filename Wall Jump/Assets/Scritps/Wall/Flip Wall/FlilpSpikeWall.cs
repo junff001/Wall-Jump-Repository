@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
-public class FlipWall : MonoBehaviour
+public class FlilpSpikeWall : MonoBehaviour
 {
     public float flipTime;
     [SerializeField] private Transform parent;
+    [SerializeField] private BoxCollider2D spikeCol;
     [SerializeField] private Transform timer;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private List<Sprite> numberSprites;
@@ -34,7 +34,7 @@ public class FlipWall : MonoBehaviour
         }
         else if (index <= 0)
         {
-           StartCoroutine(OnFlip());
+            StartCoroutine(OnFlip());
         }
     }
 
@@ -47,12 +47,13 @@ public class FlipWall : MonoBehaviour
 
         if (player != null)
         {
-           playerStartPosX = player.position.x;
-           playerStartScaleX = player.localScale.x; 
+            playerStartPosX = player.position.x;
+            playerStartScaleX = player.localScale.x;
         }
-       
+
         isFliping = true;
         Debug.Log("플립 함");
+        spikeCol.enabled = false;
 
         if (PlayerStatus.IsPostureCorrection)
         {
@@ -67,7 +68,7 @@ public class FlipWall : MonoBehaviour
 
                 parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
 
-                
+
                 yield return null;
             }
         }
@@ -120,6 +121,7 @@ public class FlipWall : MonoBehaviour
 
         index = numberSprites.Count - 1;
         spriteRenderer.sprite = numberSprites[index];
+        spikeCol.enabled = true;
         Debug.Log("플립 안함");
         StartCoroutine(ChangeSprite());
     }

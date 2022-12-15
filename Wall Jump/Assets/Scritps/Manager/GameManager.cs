@@ -36,6 +36,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void PlayerRespawn()
     {
+        if (playerTrm.localScale.x == 1)
+        {
+            PlayerStatus.CurrentDirection = PlayerDirection.Right;
+        }
+        else if (playerTrm.localScale.x == -1)
+        {
+            PlayerStatus.CurrentDirection = PlayerDirection.Left;
+        }
+
         InputManager.Instance.isStart = false;
         deadBoundCollider.enabled = false;
         PlayerStatus.CurrentState = PlayerState.OnGround;

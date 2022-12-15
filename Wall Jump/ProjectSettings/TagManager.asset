@@ -17,6 +17,8 @@ TagManager:
   - MovingWall
   - FlipWall
   - FlipWallHead
+  - FlipSpikeWall
+  - SpikeHead
   layers:
   - Default
   - TransparentFX
@@ -68,6 +70,9 @@ TagManager:
     locked: 0
   - name: Road
     uniqueID: 411615085
+    locked: 0
+  - name: Spike
+    uniqueID: 665128815
     locked: 0
   - name: Wall
     uniqueID: 3687339865
