@@ -10,6 +10,8 @@ public class PoolManager : MonoSingleton<PoolManager>
     private List<GameObject> stages = new List<GameObject>();
     private Queue<GameObject> poolQueue = new Queue<GameObject>();
 
+    private int currentIndex = 0;
+
     void Start()
     {
         Initialization();
@@ -29,11 +31,20 @@ public class PoolManager : MonoSingleton<PoolManager>
     public void RandomSpawnStage(Vector2 jointPos)
     {
         int index = Random.Range(0, stages.Count - 1);
-        stages[index].transform.position = jointPos;
-
-        if (!stages[index].activeSelf)
+        
+        if (currentIndex == index)
         {
-            stages[index].SetActive(true);
+            RandomSpawnStage(jointPos);
+        }
+        else
+        {
+            currentIndex = index;
+            stages[index].transform.position = jointPos;
+
+            if (!stages[index].activeSelf)
+            {
+                stages[index].SetActive(true);
+            }
         }
     }
 

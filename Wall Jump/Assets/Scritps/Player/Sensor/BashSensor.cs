@@ -9,7 +9,6 @@ public class BashSensor : MonoBehaviour
         if (collision.gameObject.CompareTag("Bashable"))
         {
             PlayerStatus.Bashable = true;
-            UIManager.Instance.currentBashObjectPosition = collision.transform.position;
         }
     }
 

@@ -18,7 +18,7 @@ public class GroundSensor : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("WallHead"))
         {
-            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
+            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump || PlayerStatus.CurrentState == PlayerState.BashJump)
             {
                 playerStickToWall.PostureCorrection(collision);
             }
@@ -29,7 +29,7 @@ public class GroundSensor : MonoBehaviour
             wallCol.enabled = false;
             deadBoundCol.enabled = false;
 
-            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
+            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump || PlayerStatus.CurrentState == PlayerState.BashJump)
             {
                 playerStickToWall.PostureCorrection(collision);
             }
@@ -50,7 +50,7 @@ public class GroundSensor : MonoBehaviour
             transform.GetComponent<BoxCollider2D>().enabled = false;
             wallCol.enabled = false;
 
-            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump)
+            if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump || PlayerStatus.CurrentState == PlayerState.BashJump)
             {
                 playerStickToWall.PostureCorrection(collision);
             }

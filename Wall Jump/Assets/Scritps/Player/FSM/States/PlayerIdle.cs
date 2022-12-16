@@ -25,7 +25,7 @@ public class PlayerIdle : State, IPressTheScreenToTransition
     {
         if (InputManager.Instance.isStart && !PlayerStatus.IsPostureCorrection)
         {
-            if (PlayerStatus.Bashable)
+            if (PlayerStatus.Bashable && Input.GetMouseButtonUp(0))
             {
                 PlayerStatus.CurrentState = PlayerState.BashJump;
                 fsm.ChangeState(PlayerStatus.CurrentState);

@@ -77,6 +77,9 @@ TagManager:
   - name: Wall
     uniqueID: 3687339865
     locked: 0
+  - name: Deco
+    uniqueID: 1619268301
+    locked: 0
   - name: Player
     uniqueID: 3871801575
     locked: 0
