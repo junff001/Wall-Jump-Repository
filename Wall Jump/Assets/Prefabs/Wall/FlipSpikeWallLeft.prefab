@@ -388,11 +388,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
-      value: -607627431
+      value: 665128815
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4703145481444750152, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
@@ -549,11 +549,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
-      value: -607627431
+      value: 665128815
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4703145481444750152, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
@@ -640,11 +640,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
-      value: -607627431
+      value: 665128815
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4703145481444750152, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
@@ -814,11 +814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
-      value: -607627431
+      value: 665128815
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4703145481444750152, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}

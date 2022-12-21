@@ -37,7 +37,10 @@ public class PlayerFSM : MonoBehaviour
         }
     }
 
-    // 해당 키 가 존재하고, 현재 키 와 같은 키가 아니라면
+    /// <summary>
+    /// 현재 상태를 바꾸는 함수
+    /// </summary>
+    /// <param name="newState"></param>
     public void ChangeState(PlayerState newState)
     {
         if (currentState != stateDictionary[newState])
@@ -50,8 +53,6 @@ public class PlayerFSM : MonoBehaviour
             currentState = stateDictionary[newState];
             currentState.Enter(this);
         }
-
-       // Debug.Log(currentState.name);
     }
 
     public void TransitionToJump()
@@ -62,6 +63,5 @@ public class PlayerFSM : MonoBehaviour
         {
             transition.Transition();
         }
-
     }
 }
