@@ -36,4 +36,6 @@ public class MovingWall : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, points[i].position, moveSpeed * Time.deltaTime);
     }
+
+    
 }
