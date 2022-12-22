@@ -34,6 +34,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         ScoreConversion();
     }
+
     //[SerializeField] private Camera mainCam;
     //// Galaxy S10e ±‚¡ÿ
     //private float defaultResolutionRatio = 9 / 19;
