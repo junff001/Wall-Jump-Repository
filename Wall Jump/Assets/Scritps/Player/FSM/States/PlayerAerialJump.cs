@@ -34,6 +34,7 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
             directionOfView.LeftView();
         }
 
+       // Debug.Log("공중 점프");
         AerialJump();
     }
 
@@ -49,6 +50,9 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
                 break;
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
+                break;
+            case PlayerState.PostureCorrection:
+                fsm.ChangeState(PlayerState.PostureCorrection);
                 break;
         }
     }

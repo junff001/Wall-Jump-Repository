@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,16 +14,13 @@ public class PlayerStickToWall : PlayerIdle
     [Header("[ Components ]")]
     [SerializeField] private Animator animator;
     [SerializeField] private CircleCollider2D deadBoundCol;
-
-    [Header("[ Move to the wall ]")]
-    [SerializeField] private float moveToTheWallLerpTime;
-    [SerializeField] private float moveRange;
-    [SerializeField] private float moveHeight;
+    [SerializeField] private BoxCollider2D wallSensor;
 
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
 
     public override void Enter(PlayerFSM fsm)
-    {      
+    {
+        Debug.Log("벽 부착");
         base.Enter(fsm);
 
         animator.SetBool(isStickToWall, true);
@@ -61,81 +59,5 @@ public class PlayerStickToWall : PlayerIdle
         {
             directionOfView.LeftView();
         }
-    }
-
-    public void PostureCorrection(Collider2D collider)
-    {
-        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-        {
-            physic.GravityScaleZero();
-            StartCoroutine(MoveToSideOfWall_Right(collider));  
-        }
-        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-        {
-            physic.GravityScaleZero();
-            StartCoroutine(MoveToSideOfWall_Left(collider));
-        }
-    }
-
-    public IEnumerator MoveToSideOfWall_Right(Collider2D collider)
-    {
-        deadBoundCol.enabled = false;
-        PlayerStatus.IsPostureCorrection = true;
-        float timer = 0f;
-
-        Vector3 contactPoint = player.position;
-        Vector3 sideOfWallPoint = collider.bounds.center + new Vector3(collider.bounds.extents.x + moveRange, moveHeight, 0);
-
-        while (timer < moveToTheWallLerpTime)
-        {
-            timer += Time.deltaTime;
-
-            if (timer > moveToTheWallLerpTime)
-            {
-                timer = moveToTheWallLerpTime;
-            }
-
-            player.localScale = new Vector3(1f, player.localScale.y, player.localScale.z);
-            player.position = Vector3.Lerp(contactPoint, sideOfWallPoint, timer / moveToTheWallLerpTime);
-
-            yield return null;
-        }
-
-        deadBoundCol.enabled = true;
-        PlayerStatus.CurrentState = PlayerState.StickToWall;
-        PlayerStatus.IsPostureCorrection = false;
-
-        Debug.Log("고쳐잡기 종료");
-    }
-
-    public IEnumerator MoveToSideOfWall_Left(Collider2D collider)
-    {
-        deadBoundCol.enabled = false;
-        PlayerStatus.IsPostureCorrection = true;
-        float timer = 0f;
-
-        Vector3 contactPoint = player.position;
-        Vector3 sideOfWallPoint = collider.bounds.center + new Vector3(-(collider.bounds.extents.x + moveRange), moveHeight, 0);
-
-        while (timer < moveToTheWallLerpTime)
-        {
-            timer += Time.deltaTime;
-
-            if (timer > moveToTheWallLerpTime)
-            {
-                timer = moveToTheWallLerpTime;
-            }
-
-            player.localScale = new Vector3(-1f, player.localScale.y, player.localScale.z);
-            player.position = Vector3.Lerp(contactPoint, sideOfWallPoint, timer / moveToTheWallLerpTime);
-
-            yield return null;
-        }
-
-        deadBoundCol.enabled = true;
-        PlayerStatus.CurrentState = PlayerState.StickToWall;
-        PlayerStatus.IsPostureCorrection = false;
-
-        Debug.Log("고쳐잡기 종료");
     }
 }

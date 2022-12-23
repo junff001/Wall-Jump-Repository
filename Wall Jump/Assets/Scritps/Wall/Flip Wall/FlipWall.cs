@@ -52,7 +52,7 @@ public class FlipWall : MonoBehaviour
         }
        
         isFliping = true;
-        Debug.Log("플립 함");
+
 
         if (PlayerStatus.IsPostureCorrection)
         {
@@ -101,7 +101,7 @@ public class FlipWall : MonoBehaviour
 
             if (player != null)
             {
-                Debug.Log("확인");
+
                 if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
                 {
                     PlayerStatus.CurrentDirection = PlayerDirection.Right;
@@ -120,7 +120,6 @@ public class FlipWall : MonoBehaviour
 
         index = numberSprites.Count - 1;
         spriteRenderer.sprite = numberSprites[index];
-        Debug.Log("플립 안함");
         StartCoroutine(ChangeSprite());
     }
 }

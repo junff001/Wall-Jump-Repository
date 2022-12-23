@@ -27,6 +27,7 @@ public class PlayerBashJump : State
    
     public override void Enter(PlayerFSM fsm)
     {
+        Debug.Log("배쉬 점프");
         StartCoroutine(BashJump());
     }
 
@@ -39,6 +40,9 @@ public class PlayerBashJump : State
                 break;
             case PlayerState.StickToWall:
                 fsm.ChangeState(PlayerState.StickToWall);
+                break;
+            case PlayerState.PostureCorrection:
+                fsm.ChangeState(PlayerState.PostureCorrection);
                 break;
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);

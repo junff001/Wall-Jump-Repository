@@ -20,6 +20,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         this.fsm = fsm;
         animator.SetBool(isJumping, true);
+        //Debug.Log("일반 점프");
         Jump();
     }
 
@@ -35,6 +36,9 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
                 break;
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
+                break;
+            case PlayerState.PostureCorrection:
+                fsm.ChangeState(PlayerState.PostureCorrection);
                 break;
         }
     }
