@@ -23,6 +23,7 @@ public class PlayerStickToWall : PlayerIdle
         Debug.Log("º® ºÎÂø");
         base.Enter(fsm);
 
+        //wallSensor.enabled = false;
         animator.SetBool(isStickToWall, true);
         physic.VelocityZero();
         physic.GravityScaleZero();
@@ -45,6 +46,7 @@ public class PlayerStickToWall : PlayerIdle
     {
         base.Exit(fsm);
 
+       // wallSensor.enabled = true;
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
     }

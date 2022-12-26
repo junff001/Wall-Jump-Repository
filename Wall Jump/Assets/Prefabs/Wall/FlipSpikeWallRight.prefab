@@ -73,9 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flipTime: 0.2
-  parent: {fileID: 5859465880799510356}
   timer: {fileID: 8354651426764233847}
-  spriteRenderer: {fileID: 6877183429680337094}
+  timerRenderer: {fileID: 6877183429680337094}
   numberSprites:
   - {fileID: 21300000, guid: afee9cb5f9cb0eb4d907c4a26d49c1ae, type: 3}
   - {fileID: 21300000, guid: e0d29964221251e44b2903bd0daf3b71, type: 3}

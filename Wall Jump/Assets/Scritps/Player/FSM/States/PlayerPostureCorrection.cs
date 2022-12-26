@@ -48,7 +48,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public override void Exit(PlayerFSM fsm)
     {
-        
+        animator.SetBool(isStickToWall, false);
     }
 
     public void Transition()
@@ -59,33 +59,30 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint)
     {
-        wallSensor.enabled = false;
-
-        float timer = 0f;
+        float currentTime = 0f;
 
         Vector3 contactPoint = player.position;
 
-        while (timer < moveToTheWallLerpTime)
+        while (currentTime < moveToTheWallLerpTime)
         {
             if (PlayerStatus.CurrentState == PlayerState.BasicJump)
             {
-                physic.VelocityZero();
+                wallSensor.enabled = true;
                 yield break;
             }
 
-            timer += Time.deltaTime;
+            currentTime += Time.deltaTime;
 
-            if (timer > moveToTheWallLerpTime)
+            if (currentTime > moveToTheWallLerpTime)
             {
-                timer = moveToTheWallLerpTime;
+                currentTime = moveToTheWallLerpTime;
             }
 
-            player.position = Vector3.Lerp(contactPoint, postureCorrectionPoint.position, timer / moveToTheWallLerpTime);
+            player.position = Vector3.Lerp(contactPoint, postureCorrectionPoint.position, currentTime / moveToTheWallLerpTime);
 
             yield return null;
         }
 
-        wallSensor.enabled = true;
         animator.SetBool(isStickToWall, true);
     }
 }
