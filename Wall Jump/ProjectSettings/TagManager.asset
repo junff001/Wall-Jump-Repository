@@ -7,8 +7,6 @@ TagManager:
   - Wall
   - Ground
   - Bashable
-  - DeathObject
-  - WallHead
   - CameraCollider
   - StageEntry
   - SpawnCollider

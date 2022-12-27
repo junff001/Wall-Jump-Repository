@@ -10,7 +10,7 @@ public class WallGroundSensor : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRigid;
     [SerializeField] private PlayerPostureCorrection postureCorrection;
 
-    [Header("[ Correction Values  ]")]
+    [Header("[ Correction Values ]")]
     [SerializeField] private float playerCorrectionHeight;
     [SerializeField] private float wallCorrectionHeight;
 
@@ -44,7 +44,6 @@ public class WallGroundSensor : MonoBehaviour
                             Transform leftPoint = collision.transform.GetChild(1);
                             StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
                         }
-
                     }
                 }
                 else if (correctionCriteria.position.y >= player.position.y + playerCorrectionHeight)
