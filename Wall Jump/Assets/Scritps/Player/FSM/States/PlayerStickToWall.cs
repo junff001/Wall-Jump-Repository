@@ -25,10 +25,12 @@ public class PlayerStickToWall : PlayerIdle
         base.Enter(fsm);
 
         animator.SetBool(isStickToWall, true);
+
+        directionOfView.ReverseView();
         physic.VelocityZero();
         physic.GravityScaleZero();
         StartCoroutine(Slipping());
-        StickToWall();
+        
     }
 
     public override void Execute(PlayerFSM fsm)
@@ -50,18 +52,6 @@ public class PlayerStickToWall : PlayerIdle
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
         physic.SetLinerDrag(1f);
-    }
-
-    private void StickToWall()
-    {
-        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-        {
-            directionOfView.RightView();
-        }
-        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-        {
-            directionOfView.LeftView();
-        }
     }
 
     public IEnumerator Slipping()

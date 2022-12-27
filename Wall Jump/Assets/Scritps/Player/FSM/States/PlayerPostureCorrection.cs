@@ -23,15 +23,6 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
     {
         this.fsm = fsm;
 
-        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-        {
-            directionOfView.RightView();
-        }
-        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-        {
-            directionOfView.LeftView();
-        }
-
         physic.VelocityZero();
         physic.GravityScaleZero();
     }

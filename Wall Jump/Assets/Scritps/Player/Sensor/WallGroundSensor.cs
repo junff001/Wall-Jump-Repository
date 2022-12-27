@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class WallGroundSensor : MonoBehaviour
 {
-    [Header("[ Components ]")]
+    [Header("[ Components Variables ]")]
     [SerializeField] private Transform player;
-    [SerializeField] private Rigidbody2D playerRigid;
+    [SerializeField] private PlayerDirectionOfView directionOfView;
     [SerializeField] private PlayerPostureCorrection postureCorrection;
 
-    [Header("[ Correction Values ]")]
+    [Header("[ Correction Value Variables ]")]
     [SerializeField] private float playerCorrectionHeight;
     [SerializeField] private float wallCorrectionHeight;
 
@@ -34,15 +33,34 @@ public class WallGroundSensor : MonoBehaviour
                         PlayerStatus.CurrentState = PlayerState.PostureCorrection;
                         player.SetParent(collision.transform.parent);
 
-                        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+                        Transform leftPoint = collision.transform.GetChild(1);
+                        Transform rightPoint = collision.transform.GetChild(2);
+
+                        if (leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
-                            Transform rightPoint = collision.transform.GetChild(2);
-                            StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
-                        }
-                        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+                            // 양쪽 다 활성화 상태
+                            if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+                            {
+                                StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
+                            }
+                            else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+                            {
+                                StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
+                            }
+
+                            directionOfView.ReverseView();
+                        }   
+                        else if (leftPoint.gameObject.activeSelf && !rightPoint.gameObject.activeSelf)
                         {
-                            Transform leftPoint = collision.transform.GetChild(1);
+                            // 왼쪽만 활성화 상태
                             StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
+                            directionOfView.LeftView();
+                        }
+                        else if (!leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
+                        {
+                            // 오른쪽만 활성화 상태
+                            StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
+                            directionOfView.RightView();
                         }
                     }
                 }
