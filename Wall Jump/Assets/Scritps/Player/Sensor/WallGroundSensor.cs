@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Sensor : MonoBehaviour
+public class WallGroundSensor : MonoBehaviour
 {
     [Header("[ Components ]")]
     [SerializeField] private Transform player;
+    [SerializeField] private Rigidbody2D playerRigid;
     [SerializeField] private PlayerPostureCorrection postureCorrection;
 
     [Header("[ Correction Values  ]")]
-    [SerializeField] private float correctionHeight;
+    [SerializeField] private float playerCorrectionHeight;
+    [SerializeField] private float wallCorrectionHeight;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,7 +31,7 @@ public class Sensor : MonoBehaviour
             }
             case "WallHead":
             {
-                if (collision.transform.position.y < player.position.y + correctionHeight)
+                if (collision.transform.position.y + wallCorrectionHeight < player.position.y + playerCorrectionHeight)
                 {
                     if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump || PlayerStatus.CurrentState == PlayerState.BashJump)
                     {
@@ -45,9 +48,10 @@ public class Sensor : MonoBehaviour
                             Transform leftPoint = collision.transform.GetChild(0);
                             StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
                         }
+
                     }
                 }
-                else if (collision.transform.position.y >= player.position.y + correctionHeight)
+                else if (collision.transform.position.y + wallCorrectionHeight >= player.position.y + playerCorrectionHeight)
                 {
                     PlayerStatus.CurrentState = PlayerState.StickToWall;
                     player.SetParent(collision.transform);

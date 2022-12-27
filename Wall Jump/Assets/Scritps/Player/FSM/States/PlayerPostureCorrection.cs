@@ -67,7 +67,6 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         {
             if (PlayerStatus.CurrentState == PlayerState.BasicJump)
             {
-                wallSensor.enabled = true;
                 yield break;
             }
 
