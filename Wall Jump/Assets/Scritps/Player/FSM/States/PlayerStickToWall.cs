@@ -20,7 +20,6 @@ public class PlayerStickToWall : PlayerIdle
 
     public override void Enter(PlayerFSM fsm)
     {
-        Debug.Log("º® ºÎÂø");
         base.Enter(fsm);
 
         //wallSensor.enabled = false;
