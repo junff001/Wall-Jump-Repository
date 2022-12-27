@@ -1136,7 +1136,8 @@ MonoBehaviour:
   player: {fileID: 1519498137}
   playerRigid: {fileID: 1519498135}
   postureCorrection: {fileID: 881066279}
-  correctionHeight: -0.4
+  playerCorrectionHeight: -0.4
+  wallCorrectionHeight: 0.35
 --- !u!61 &429944814
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1425,7 +1426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 0.29999876, z: -10}
+  m_LocalPosition: {x: 0.022, y: 0.29999876, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1642,7 +1643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674419181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 0.29999876, z: -10}
+  m_LocalPosition: {x: 0.022, y: 0.29999876, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 36367821}
@@ -4310,7 +4311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519498133}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: -2.05, z: 0}
+  m_LocalPosition: {x: 0.022, y: -2.212, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1066081099}
