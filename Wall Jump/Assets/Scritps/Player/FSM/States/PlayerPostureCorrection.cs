@@ -8,7 +8,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
     [SerializeField] private Transform player;
     [SerializeField] private PlayerPhysic physic;
     [SerializeField] private PlayerDirectionOfView directionOfView;
-    [SerializeField] private BoxCollider2D wallSensor;
+    [SerializeField] private PlayerStickToWall stickToWall;
     [SerializeField] private Animator animator;
 
     [Header("[ Move to the wall ]")]
@@ -49,6 +49,8 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
     public override void Exit(PlayerFSM fsm)
     {
         animator.SetBool(isStickToWall, false);
+        physic.SetGravityScale(1f);
+        physic.SetLinerDrag(1f);
     }
 
     public void Transition()
@@ -83,5 +85,6 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         }
 
         animator.SetBool(isStickToWall, true);
+        StartCoroutine(stickToWall.Slipping());
     }
 }

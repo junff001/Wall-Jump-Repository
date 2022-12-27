@@ -25,13 +25,9 @@ public class WallGroundSensor : MonoBehaviour
             }     
             case "Wall":
             {
-                PlayerStatus.CurrentState = PlayerState.StickToWall;
-                player.SetParent(collision.transform);
-                break;
-            }
-            case "WallHead":
-            {
-                if (collision.transform.position.y + wallCorrectionHeight < player.position.y + playerCorrectionHeight)
+                Transform correctionCriteria = collision.transform.GetChild(0);
+
+                if (correctionCriteria.position.y < player.position.y + playerCorrectionHeight)
                 {
                     if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump || PlayerStatus.CurrentState == PlayerState.BashJump)
                     {
@@ -40,18 +36,18 @@ public class WallGroundSensor : MonoBehaviour
 
                         if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
                         {
-                            Transform rightPoint = collision.transform.GetChild(1);
+                            Transform rightPoint = collision.transform.GetChild(2);
                             StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
                         }
                         else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
                         {
-                            Transform leftPoint = collision.transform.GetChild(0);
+                            Transform leftPoint = collision.transform.GetChild(1);
                             StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
                         }
 
                     }
                 }
-                else if (collision.transform.position.y + wallCorrectionHeight >= player.position.y + playerCorrectionHeight)
+                else if (correctionCriteria.position.y >= player.position.y + playerCorrectionHeight)
                 {
                     PlayerStatus.CurrentState = PlayerState.StickToWall;
                     player.SetParent(collision.transform);
@@ -63,8 +59,7 @@ public class WallGroundSensor : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || 
-            collision.gameObject.CompareTag("WallHead"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             player.SetParent(null);
         }

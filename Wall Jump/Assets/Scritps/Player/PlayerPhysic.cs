@@ -25,4 +25,9 @@ public class PlayerPhysic : MonoBehaviour
     {
         rigidbody.gravityScale = 0f;
     }
+
+    public void SetLinerDrag(float value)
+    {
+        rigidbody.drag = value;
+    }
 }

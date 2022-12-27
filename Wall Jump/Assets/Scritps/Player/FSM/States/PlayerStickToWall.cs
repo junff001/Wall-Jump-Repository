@@ -6,26 +6,28 @@ using UnityEngine;
 
 public class PlayerStickToWall : PlayerIdle
 {
-    [Header("[ Player ]")]
+    [Header("[ Player Variables ]")]
     [SerializeField] private Transform player;
     [SerializeField] private PlayerPhysic physic;
     [SerializeField] private PlayerDirectionOfView directionOfView;
 
-    [Header("[ Components ]")]
+    [Header("[ Components Variables ]")]
     [SerializeField] private Animator animator;
-    [SerializeField] private CircleCollider2D deadBoundCol;
-    [SerializeField] private BoxCollider2D wallSensor;
-
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
+
+
+    [Header("[ Slipping Variables ]")]
+    [SerializeField] private float slipDegree;
+    [SerializeField] private float slippingWaitTime;
 
     public override void Enter(PlayerFSM fsm)
     {
         base.Enter(fsm);
 
-        //wallSensor.enabled = false;
         animator.SetBool(isStickToWall, true);
         physic.VelocityZero();
         physic.GravityScaleZero();
+        StartCoroutine(Slipping());
         StickToWall();
     }
 
@@ -45,12 +47,12 @@ public class PlayerStickToWall : PlayerIdle
     {
         base.Exit(fsm);
 
-       // wallSensor.enabled = true;
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
+        physic.SetLinerDrag(1f);
     }
 
-    void StickToWall()
+    private void StickToWall()
     {
         if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
         {
@@ -59,6 +61,17 @@ public class PlayerStickToWall : PlayerIdle
         else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
         {
             directionOfView.LeftView();
+        }
+    }
+
+    public IEnumerator Slipping()
+    {
+        yield return new WaitForSeconds(slippingWaitTime);
+
+        if (PlayerStatus.CurrentState == PlayerState.StickToWall || PlayerStatus.CurrentState == PlayerState.PostureCorrection)
+        {
+            physic.SetGravityScale(1f);
+            physic.SetLinerDrag(slipDegree);
         }
     }
 }
