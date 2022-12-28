@@ -29,7 +29,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public override void Execute(PlayerFSM fsm)
     {
-        switch (PlayerStatus.CurrentState)
+        switch (Player.Instance.currnetState)
         {
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
@@ -46,8 +46,8 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        PlayerStatus.CurrentState = PlayerState.BasicJump;
-        fsm.ChangeState(PlayerStatus.CurrentState);
+        Player.Instance.currnetState = PlayerState.BasicJump;
+        fsm.ChangeState(Player.Instance.currnetState);
     }
 
     public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint)
@@ -58,7 +58,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
         while (currentTime < moveToTheWallLerpTime)
         {
-            if (PlayerStatus.CurrentState == PlayerState.BasicJump)
+            if (Player.Instance.currnetState == PlayerState.BasicJump)
             {
                 yield break;
             }
@@ -76,6 +76,5 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         }
 
         animator.SetBool(isStickToWall, true);
-        StartCoroutine(stickToWall.Slipping());
     }
 }

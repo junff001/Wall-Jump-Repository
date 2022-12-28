@@ -34,94 +34,94 @@ public class FlilpSpikeWall : MonoBehaviour
         }
         else if (index <= 0)
         {
-            StartCoroutine(OnFlip());
+            //StartCoroutine(OnFlip());
         }
     }
 
-    IEnumerator OnFlip()
-    {
-        float time = 0;
-        float startScaleX = parent.localScale.x;
-        float playerStartPosX = 0;
-        float playerStartScaleX = 0;
+    //IEnumerator OnFlip()
+    //{
+    //    float time = 0;
+    //    float startScaleX = parent.localScale.x;
+    //    float playerStartPosX = 0;
+    //    float playerStartScaleX = 0;
 
-        if (player != null)
-        {
-            playerStartPosX = player.position.x;
-            playerStartScaleX = player.localScale.x;
-        }
+    //    if (player != null)
+    //    {
+    //        playerStartPosX = player.position.x;
+    //        playerStartScaleX = player.localScale.x;
+    //    }
 
-        isFliping = true;
-        Debug.Log("플립 함");
-        spikeCol.enabled = false;
+    //    isFliping = true;
+    //    Debug.Log("플립 함");
+    //    spikeCol.enabled = false;
 
-        if (PlayerStatus.IsPostureCorrection)
-        {
-            while (time < flipTime)
-            {
-                time += Time.deltaTime;
+    //    if (PlayerStatus.IsPostureCorrection)
+    //    {
+    //        while (time < flipTime)
+    //        {
+    //            time += Time.deltaTime;
 
-                if (time > flipTime)
-                {
-                    time = flipTime;
-                }
+    //            if (time > flipTime)
+    //            {
+    //                time = flipTime;
+    //            }
 
-                parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
+    //            parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
 
-                yield return null;
-            }
-        }
-        else
-        {
-            while (time < flipTime)
-            {
-                time += Time.deltaTime;
+    //            yield return null;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        while (time < flipTime)
+    //        {
+    //            time += Time.deltaTime;
 
-                if (time > flipTime)
-                {
-                    time = flipTime;
-                }
+    //            if (time > flipTime)
+    //            {
+    //                time = flipTime;
+    //            }
 
-                parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
+    //            parent.localScale = new Vector3(Mathf.Lerp(startScaleX, startScaleX * -1f, time / flipTime), parent.localScale.y, parent.localScale.z);
 
-                if (player != null)
-                {
-                    if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-                    {
-                        player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX + 1.2f, time / flipTime), player.position.y, player.position.z);
-                    }
-                    else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-                    {
-                        player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX - 1.2f, time / flipTime), player.position.y, player.position.z);
-                    }
-                }
+    //            if (player != null)
+    //            {
+    //                if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+    //                {
+    //                    player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX + 1.2f, time / flipTime), player.position.y, player.position.z);
+    //                }
+    //                else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+    //                {
+    //                    player.position = new Vector3(Mathf.Lerp(playerStartPosX, playerStartPosX - 1.2f, time / flipTime), player.position.y, player.position.z);
+    //                }
+    //            }
 
-                yield return null;
-            }
+    //            yield return null;
+    //        }
 
-            if (player != null)
-            {
-                Debug.Log("확인");
-                if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
-                {
-                    PlayerStatus.CurrentDirection = PlayerDirection.Right;
-                }
-                else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
-                {
-                    PlayerStatus.CurrentDirection = PlayerDirection.Left;
-                }
+    //        if (player != null)
+    //        {
+    //            Debug.Log("확인");
+    //            if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+    //            {
+    //                PlayerStatus.CurrentDirection = PlayerDirection.Right;
+    //            }
+    //            else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+    //            {
+    //                PlayerStatus.CurrentDirection = PlayerDirection.Left;
+    //            }
 
-                player.localScale = new Vector3(player.localScale.x * -1f, player.localScale.y, player.localScale.z);
-            }
-        }
+    //            player.localScale = new Vector3(player.localScale.x * -1f, player.localScale.y, player.localScale.z);
+    //        }
+    //    }
 
-        isFliping = false;
-        timer.localScale = new Vector3(timer.localScale.x * -1f, timer.localScale.y, timer.localScale.z);
+    //    isFliping = false;
+    //    timer.localScale = new Vector3(timer.localScale.x * -1f, timer.localScale.y, timer.localScale.z);
 
-        index = numberSprites.Count - 1;
-        spriteRenderer.sprite = numberSprites[index];
-        spikeCol.enabled = true;
-        Debug.Log("플립 안함");
-        StartCoroutine(ChangeSprite());
-    }
+    //    index = numberSprites.Count - 1;
+    //    spriteRenderer.sprite = numberSprites[index];
+    //    spikeCol.enabled = true;
+    //    Debug.Log("플립 안함");
+    //    StartCoroutine(ChangeSprite());
+    //}
 }

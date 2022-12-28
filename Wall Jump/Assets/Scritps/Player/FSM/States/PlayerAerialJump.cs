@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerAerialJump : State, IPressTheScreenToTransition
 {
@@ -25,22 +26,21 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
         animator.SetBool(isAerialJumping, true);
         physic.VelocityZero();
 
-        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+        if (Player.Instance.currentDirection == PlayerDirection.Left)
         {
             directionOfView.RightView();
         }
-        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+        else if (Player.Instance.currentDirection == PlayerDirection.Right)
         {
             directionOfView.LeftView();
         }
 
-       // Debug.Log("공중 점프");
         AerialJump();
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        switch (PlayerStatus.CurrentState)
+        switch (Player.Instance.currnetState)
         {
             case PlayerState.OnGround:
                 fsm.ChangeState(PlayerState.OnGround);
@@ -74,16 +74,16 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
         
         physic.GravityScaleZero();
 
-        while (PlayerStatus.CurrentState == PlayerState.AerialJump && originTime > 0 && Input.GetMouseButton(0))
+        while (Player.Instance.currnetState == PlayerState.AerialJump && originTime > 0 && Input.GetMouseButton(0))
         {
             originTime -= Time.deltaTime;
 
-            if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+            if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
                 Vector2 direction = new Vector2(1f, 1.75f);
                 physic.SetVelocity(direction * jumpPower);
             }
-            else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+            else if (Player.Instance.currentDirection == PlayerDirection.Left)
             {
                 Vector2 direction = new Vector2(-1f, 1.75f);
                 physic.SetVelocity(direction * jumpPower);
@@ -95,10 +95,10 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (PlayerStatus.Bashable && !PlayerStatus.IsPostureCorrection)
+        if (Player.Instance.canJumping)
         {
-            PlayerStatus.CurrentState = PlayerState.BashJump;
-            fsm.ChangeState(PlayerStatus.CurrentState);
-        }
+            Player.Instance.currnetState = PlayerState.BashJump;
+            fsm.ChangeState(Player.Instance.currnetState);
+        }  
     }
 }

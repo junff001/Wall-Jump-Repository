@@ -26,7 +26,7 @@ public class PlayerDeath : State
 
     public override void Execute(PlayerFSM fsm)
     {
-        switch (PlayerStatus.CurrentState)
+        switch (Player.Instance.currnetState)
         {
             case PlayerState.OnGround:
                 fsm.ChangeState(PlayerState.OnGround);

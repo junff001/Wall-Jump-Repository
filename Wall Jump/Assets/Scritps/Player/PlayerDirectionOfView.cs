@@ -10,7 +10,7 @@ public class PlayerDirectionOfView : MonoBehaviour
     public void RightView()
     {
         transform.localScale = new Vector3(1f, transform.localScale.y, transform.localScale.z);
-        PlayerStatus.CurrentDirection = PlayerDirection.Right;
+        Player.Instance.currentDirection = PlayerDirection.Right;
     }
 
     /// <summary>
@@ -19,7 +19,7 @@ public class PlayerDirectionOfView : MonoBehaviour
     public void LeftView() 
     {
         transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
-        PlayerStatus.CurrentDirection = PlayerDirection.Left;
+        Player.Instance.currentDirection = PlayerDirection.Left;
     }
 
     /// <summary>
@@ -27,11 +27,11 @@ public class PlayerDirectionOfView : MonoBehaviour
     /// </summary>
     public void ReverseView()
     {
-        if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+        if (Player.Instance.currentDirection == PlayerDirection.Left)
         {
             RightView();
         }
-        else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+        else if (Player.Instance.currentDirection == PlayerDirection.Right)
         {
             LeftView();
         }

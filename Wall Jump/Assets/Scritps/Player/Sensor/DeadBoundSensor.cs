@@ -8,8 +8,7 @@ public class DeadBoundSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DeadBound"))
         {
-            Debug.Log("Á×À½¿¡ ´êÀ½");
-            PlayerStatus.CurrentState = PlayerState.Death;
+            Player.Instance.currnetState = PlayerState.Death;
         }
     }
 }

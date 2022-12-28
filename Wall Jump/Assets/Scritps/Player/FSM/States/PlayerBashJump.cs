@@ -27,100 +27,99 @@ public class PlayerBashJump : State
    
     public override void Enter(PlayerFSM fsm)
     {
-        Debug.Log("배쉬 점프");
-        StartCoroutine(BashJump());
+        //StartCoroutine(BashJump());
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        switch (PlayerStatus.CurrentState)
-        {
-            case PlayerState.OnGround:
-                fsm.ChangeState(PlayerState.OnGround);
-                break;
-            case PlayerState.StickToWall:
-                fsm.ChangeState(PlayerState.StickToWall);
-                break;
-            case PlayerState.PostureCorrection:
-                fsm.ChangeState(PlayerState.PostureCorrection);
-                break;
-            case PlayerState.Death:
-                fsm.ChangeState(PlayerState.Death);
-                break;
-        }
+        //switch (PlayerStatus.CurrentState)
+        //{
+        //    case PlayerState.OnGround:
+        //        fsm.ChangeState(PlayerState.OnGround);
+        //        break;
+        //    case PlayerState.StickToWall:
+        //        fsm.ChangeState(PlayerState.StickToWall);
+        //        break;
+        //    case PlayerState.PostureCorrection:
+        //        fsm.ChangeState(PlayerState.PostureCorrection);
+        //        break;
+        //    case PlayerState.Death:
+        //        fsm.ChangeState(PlayerState.Death);
+        //        break;
+        //}
     }
 
     public override void Exit(PlayerFSM fsm)
     {
         animator.SetBool(isBashJumping, false);
-        StopCoroutine(BashJump());
+        //StopCoroutine(BashJump());
     }
 
-    IEnumerator BashJump()
-    {
-        TimeManager.Instance.SlowMotion();
+    //IEnumerator BashJump()
+    //{
+    //    TimeManager.Instance.SlowMotion();
 
-        // Input.GetMouseButton(0)
-        while (Input.GetMouseButton(0) && PlayerStatus.Bashable)
-        {
-            if (InputManager.Instance.isSwipe)
-            {
-                arrowPivot.SetActive(true);
-            }
+    //    // Input.GetMouseButton(0)
+    //    while (Input.GetMouseButton(0) && PlayerStatus.Bashable)
+    //    {
+    //        if (InputManager.Instance.isSwipe)
+    //        {
+    //            arrowPivot.SetActive(true);
+    //        }
 
-            yield return null;
-        }
+    //        yield return null;
+    //    }
 
-        arrowPivot.SetActive(false);
-        TimeManager.Instance.TrunBackTime();
+    //    arrowPivot.SetActive(false);
+    //    TimeManager.Instance.TrunBackTime();
 
-        // Input.GetMouseButtonUp(0)
-        if (Input.GetMouseButtonUp(0) && InputManager.Instance.isSwipe)
-        {
-            animator.SetBool(isBashJumping, true);
-            rigidbody.velocity = Vector2.zero;
-            float defaultGravity = rigidbody.gravityScale;
-            rigidbody.gravityScale = 0;
+    //    // Input.GetMouseButtonUp(0)
+    //    if (Input.GetMouseButtonUp(0) && InputManager.Instance.isSwipe)
+    //    {
+    //        animator.SetBool(isBashJumping, true);
+    //        rigidbody.velocity = Vector2.zero;
+    //        float defaultGravity = rigidbody.gravityScale;
+    //        rigidbody.gravityScale = 0;
 
-            float bashTimer = bashTime;
-            while (bashTimer > 0)
-            {
-                bashTimer -= Time.deltaTime;
-                rigidbody.velocity = InputManager.Instance.swipeDistance.normalized * bashPower;
-                yield return null;
-            }
+    //        float bashTimer = bashTime;
+    //        while (bashTimer > 0)
+    //        {
+    //            bashTimer -= Time.deltaTime;
+    //            rigidbody.velocity = InputManager.Instance.swipeDistance.normalized * bashPower;
+    //            yield return null;
+    //        }
 
-            if (rigidbody.velocity.x > 0)
-            {
-                Debug.Log("오른쪽");
-                rigidbody.transform.localScale = new Vector3(1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
-                PlayerStatus.CurrentDirection = PlayerDirection.Right;
+    //        if (rigidbody.velocity.x > 0)
+    //        {
+    //            Debug.Log("오른쪽");
+    //            rigidbody.transform.localScale = new Vector3(1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
+    //            PlayerStatus.CurrentDirection = PlayerDirection.Right;
 
-            }
-            else if (rigidbody.velocity.x < 0)
-            {
-                Debug.Log("왼쪽");
-                rigidbody.transform.localScale = new Vector3(-1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
-                PlayerStatus.CurrentDirection = PlayerDirection.Left;
-            }
+    //        }
+    //        else if (rigidbody.velocity.x < 0)
+    //        {
+    //            Debug.Log("왼쪽");
+    //            rigidbody.transform.localScale = new Vector3(-1, rigidbody.transform.localScale.y, rigidbody.transform.localScale.z);
+    //            PlayerStatus.CurrentDirection = PlayerDirection.Left;
+    //        }
 
-            rigidbody.gravityScale = defaultGravity;
-            Vector2 startVelocity = rigidbody.velocity;
-            Vector2 decelerate = InputManager.Instance.swipeDistance.normalized * decelerateSpeed;
-            float currentTime = 0;
+    //        rigidbody.gravityScale = defaultGravity;
+    //        Vector2 startVelocity = rigidbody.velocity;
+    //        Vector2 decelerate = InputManager.Instance.swipeDistance.normalized * decelerateSpeed;
+    //        float currentTime = 0;
 
-            while (currentTime < decelerateTime && PlayerStatus.CurrentState == PlayerState.BashJump)
-            {
-                currentTime += Time.deltaTime;
+    //        while (currentTime < decelerateTime && PlayerStatus.CurrentState == PlayerState.BashJump)
+    //        {
+    //            currentTime += Time.deltaTime;
 
-                if (currentTime >= decelerateTime)
-                {
-                    currentTime = decelerateTime;
-                }
+    //            if (currentTime >= decelerateTime)
+    //            {
+    //                currentTime = decelerateTime;
+    //            }
 
-                rigidbody.velocity = Vector2.Lerp(startVelocity, decelerate, currentTime / decelerateTime);
-                yield return null;
-            }
-        }
-    }
+    //            rigidbody.velocity = Vector2.Lerp(startVelocity, decelerate, currentTime / decelerateTime);
+    //            yield return null;
+    //        }
+    //    }
+    //}
 }

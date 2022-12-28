@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class FlipWall : MonoBehaviour
 {
@@ -39,6 +40,11 @@ public class FlipWall : MonoBehaviour
 
     private IEnumerator OnFlip()
     {
+        if (Player.Instance.currentStickToWall == this.transform)
+        {
+            Player.Instance.canJumping = false;
+        }
+
         float currentTime = 0;
         float startScaleX = transform.localScale.x;
         float endcScaleX = startScaleX * -1f;
@@ -56,6 +62,11 @@ public class FlipWall : MonoBehaviour
             transform.localScale = new Vector3(flipScaleX, transform.localScale.y, transform.localScale.z);
 
             yield return null;
+        }
+
+        if (Player.Instance.currentStickToWall == this.transform)
+        {
+            Player.Instance.canJumping = true;
         }
 
         float originTimerScaleX = timer.localScale.x * -1f;

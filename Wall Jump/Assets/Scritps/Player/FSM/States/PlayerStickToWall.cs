@@ -7,18 +7,12 @@ using UnityEngine;
 public class PlayerStickToWall : PlayerIdle
 {
     [Header("[ Player Variables ]")]
-    [SerializeField] private Transform player;
     [SerializeField] private PlayerPhysic physic;
     [SerializeField] private PlayerDirectionOfView directionOfView;
 
     [Header("[ Components Variables ]")]
     [SerializeField] private Animator animator;
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
-
-
-    [Header("[ Slipping Variables ]")]
-    [SerializeField] private float slipDegree;
-    [SerializeField] private float slippingWaitTime;
 
     public override void Enter(PlayerFSM fsm)
     {
@@ -29,15 +23,13 @@ public class PlayerStickToWall : PlayerIdle
         directionOfView.ReverseView();
         physic.VelocityZero();
         physic.GravityScaleZero();
-        StartCoroutine(Slipping());
-        
     }
 
     public override void Execute(PlayerFSM fsm)
     {
         base.Execute(fsm);
 
-        switch (PlayerStatus.CurrentState)
+        switch (Player.Instance.currnetState)
         {
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
@@ -52,16 +44,5 @@ public class PlayerStickToWall : PlayerIdle
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
         physic.SetLinerDrag(1f);
-    }
-
-    public IEnumerator Slipping()
-    {
-        yield return new WaitForSeconds(slippingWaitTime);
-
-        if (PlayerStatus.CurrentState == PlayerState.StickToWall || PlayerStatus.CurrentState == PlayerState.PostureCorrection)
-        {
-            physic.SetGravityScale(1f);
-            physic.SetLinerDrag(slipDegree);
-        }
     }
 }

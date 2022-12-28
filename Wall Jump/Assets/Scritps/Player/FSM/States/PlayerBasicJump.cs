@@ -20,13 +20,12 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         this.fsm = fsm;
         animator.SetBool(isJumping, true);
-        //Debug.Log("일반 점프");
         Jump();
     }
 
     public override void Execute(PlayerFSM fsm)
     {
-        switch (PlayerStatus.CurrentState)
+        switch (Player.Instance.currnetState)
         {
             case PlayerState.OnGround:
                 fsm.ChangeState(PlayerState.OnGround);
@@ -51,18 +50,10 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (!PlayerStatus.IsPostureCorrection)
+        if (Player.Instance.canJumping)
         {
-            if (PlayerStatus.Bashable)
-            {
-                PlayerStatus.CurrentState = PlayerState.BashJump;
-                fsm.ChangeState(PlayerStatus.CurrentState);
-            }
-            else
-            {
-                PlayerStatus.CurrentState = PlayerState.AerialJump;
-                fsm.ChangeState(PlayerStatus.CurrentState);
-            }
+            Player.Instance.currnetState = PlayerState.AerialJump;
+            fsm.ChangeState(Player.Instance.currnetState);
         }
     }
 
@@ -75,16 +66,16 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         float originTime = jumpTime;
 
-        while (PlayerStatus.CurrentState == PlayerState.BasicJump && originTime > 0 && Input.GetMouseButton(0))
+        while (Player.Instance.currnetState == PlayerState.BasicJump && originTime > 0 && Input.GetMouseButton(0))
         {
             originTime -= Time.deltaTime;
 
-            if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+            if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
                 Vector2 direction = new Vector2(1, 1.75f);
                 physic.SetVelocity(direction * jumpPower);
             }
-            else if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+            else if (Player.Instance.currentDirection == PlayerDirection.Left)
             {
                 Vector2 direction = new Vector2(-1, 1.75f);
                 physic.SetVelocity(direction * jumpPower);

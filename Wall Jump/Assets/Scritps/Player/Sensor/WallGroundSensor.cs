@@ -19,18 +19,20 @@ public class WallGroundSensor : MonoBehaviour
         {
             case "Ground":
             {
-                PlayerStatus.CurrentState = PlayerState.OnGround;
+                Player.Instance.currnetState = PlayerState.OnGround;
                 break;
             }     
             case "Wall":
             {
+                Player.Instance.currentStickToWall = collision.transform;
+                Player.Instance.physic.SetActiveKinematic(true);
                 Transform correctionCriteria = collision.transform.GetChild(0);
 
                 if (correctionCriteria.position.y < player.position.y + playerCorrectionHeight)
                 {
-                    if (PlayerStatus.CurrentState == PlayerState.BasicJump || PlayerStatus.CurrentState == PlayerState.AerialJump || PlayerStatus.CurrentState == PlayerState.BashJump)
+                    if (Player.Instance.currnetState == PlayerState.BasicJump || Player.Instance.currnetState == PlayerState.AerialJump || Player.Instance.currnetState == PlayerState.BashJump)
                     {
-                        PlayerStatus.CurrentState = PlayerState.PostureCorrection;
+                        Player.Instance.currnetState = PlayerState.PostureCorrection;
                         player.SetParent(collision.transform.parent);
 
                         Transform leftPoint = collision.transform.GetChild(1);
@@ -39,11 +41,11 @@ public class WallGroundSensor : MonoBehaviour
                         if (leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
                             // 양쪽 다 활성화 상태
-                            if (PlayerStatus.CurrentDirection == PlayerDirection.Left)
+                            if (Player.Instance.currentDirection == PlayerDirection.Left)
                             {
                                 StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
                             }
-                            else if (PlayerStatus.CurrentDirection == PlayerDirection.Right)
+                            else if (Player.Instance.currentDirection == PlayerDirection.Right)
                             {
                                 StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
                             }
@@ -66,7 +68,7 @@ public class WallGroundSensor : MonoBehaviour
                 }
                 else if (correctionCriteria.position.y >= player.position.y + playerCorrectionHeight)
                 {
-                    PlayerStatus.CurrentState = PlayerState.StickToWall;
+                    Player.Instance.currnetState = PlayerState.StickToWall;
                     player.SetParent(collision.transform);
                 }
                 break;
@@ -78,6 +80,8 @@ public class WallGroundSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            Player.Instance.currentStickToWall = null;
+            Player.Instance.physic.SetActiveKinematic(false);
             player.SetParent(null);
         }
     }

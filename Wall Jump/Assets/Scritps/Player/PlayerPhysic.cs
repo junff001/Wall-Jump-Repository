@@ -30,4 +30,9 @@ public class PlayerPhysic : MonoBehaviour
     {
         rigidbody.drag = value;
     }
+
+    public void SetActiveKinematic(bool enabled)
+    {
+        rigidbody.isKinematic = enabled;
+    }
 }

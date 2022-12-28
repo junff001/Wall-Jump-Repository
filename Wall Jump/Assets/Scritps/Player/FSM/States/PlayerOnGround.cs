@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerOnGround : PlayerIdle
 {
-    [Header("[ Components ]")]
+    [Header("[ Components Variables]")]
     [SerializeField] private PlayerPhysic physic;
     [SerializeField] private Animator animator;
 
@@ -22,7 +22,7 @@ public class PlayerOnGround : PlayerIdle
     {
         base.Execute(fsm);
 
-        switch (PlayerStatus.CurrentState)
+        switch (Player.Instance.currnetState)
         {
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);

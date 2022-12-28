@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -38,16 +39,16 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (playerTrm.localScale.x == 1)
         {
-            PlayerStatus.CurrentDirection = PlayerDirection.Right;
+            Player.Instance.currentDirection = PlayerDirection.Right;
         }
         else if (playerTrm.localScale.x == -1)
         {
-            PlayerStatus.CurrentDirection = PlayerDirection.Left;
+            Player.Instance.currentDirection = PlayerDirection.Left;
         }
 
         InputManager.Instance.isStart = false;
         deadBoundCollider.enabled = false;
-        PlayerStatus.CurrentState = PlayerState.OnGround;
+        Player.Instance.currnetState = PlayerState.OnGround;
         playerTrm.position = respawnTrm.position;
         cameraTrm.position = playerTrm.position;
 

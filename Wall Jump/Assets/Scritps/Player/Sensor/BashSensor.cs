@@ -8,7 +8,7 @@ public class BashSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bashable"))
         {
-            PlayerStatus.Bashable = true;
+            //PlayerStatus.Bashable = true;
         }
     }
 
@@ -16,7 +16,7 @@ public class BashSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bashable"))
         {
-            PlayerStatus.Bashable = false;
+            //PlayerStatus.Bashable = false;
         }
     }
 }

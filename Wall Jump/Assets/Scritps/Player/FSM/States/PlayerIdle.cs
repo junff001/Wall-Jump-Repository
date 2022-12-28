@@ -23,18 +23,13 @@ public class PlayerIdle : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (InputManager.Instance.isStart && !PlayerStatus.IsPostureCorrection)
+        if (InputManager.Instance.isStart)
         {
-            if (PlayerStatus.Bashable && Input.GetMouseButtonUp(0))
+            if (Player.Instance.canJumping)
             {
-                PlayerStatus.CurrentState = PlayerState.BashJump;
-                fsm.ChangeState(PlayerStatus.CurrentState);
-            }
-            else
-            {
-                PlayerStatus.CurrentState = PlayerState.BasicJump;
-                fsm.ChangeState(PlayerStatus.CurrentState);
-            }
+                Player.Instance.currnetState = PlayerState.BasicJump;
+                fsm.ChangeState(Player.Instance.currnetState);
+            }         
         }
     }
 }
