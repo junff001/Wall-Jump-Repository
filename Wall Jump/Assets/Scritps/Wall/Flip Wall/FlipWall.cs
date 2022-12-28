@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class FlipWall : MonoBehaviour
 {
@@ -20,6 +19,20 @@ public class FlipWall : MonoBehaviour
         index = numberSprites.Count - 1;
         timerRenderer.sprite = numberSprites[index];
         StartCoroutine(RunTimer());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("µé¾î¿È");
+            Player.Instance.physic.SetActiveKinematic(true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
     }
 
     private IEnumerator RunTimer()

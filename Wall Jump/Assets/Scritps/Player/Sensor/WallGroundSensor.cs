@@ -25,7 +25,6 @@ public class WallGroundSensor : MonoBehaviour
             case "Wall":
             {
                 Player.Instance.currentStickToWall = collision.transform;
-                Player.Instance.physic.SetActiveKinematic(true);
                 Transform correctionCriteria = collision.transform.GetChild(0);
 
                 if (correctionCriteria.position.y < player.position.y + playerCorrectionHeight)
@@ -81,7 +80,6 @@ public class WallGroundSensor : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Player.Instance.currentStickToWall = null;
-            Player.Instance.physic.SetActiveKinematic(false);
             player.SetParent(null);
         }
     }
