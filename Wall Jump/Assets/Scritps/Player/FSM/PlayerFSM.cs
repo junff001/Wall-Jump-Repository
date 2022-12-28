@@ -53,8 +53,6 @@ public class PlayerFSM : MonoBehaviour
             currentState = stateDictionary[newState];
             currentState.Enter(this);
         }
-
-        Debug.Log(currentState.name);
     }
 
     public void TransitionToJump()

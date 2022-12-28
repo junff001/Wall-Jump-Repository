@@ -6,11 +6,16 @@ public class FlipWall : MonoBehaviour
 {
     [Header("[ Flip Variables ]")]
     [SerializeField] private float flipTime;
+    [SerializeField] private float flipMoveDistance;
+    [SerializeField] private Transform flipObjects;
 
     [Header("[ Timer Variables ]")]
     [SerializeField] private Transform timer;
     [SerializeField] private SpriteRenderer timerRenderer;
     [SerializeField] private List<Sprite> numberSprites;
+
+    [Header("[ Components Variables ]")]
+    [SerializeField] private BoxCollider2D wallCollider;
 
     private int index = 0;
 
@@ -19,20 +24,6 @@ public class FlipWall : MonoBehaviour
         index = numberSprites.Count - 1;
         timerRenderer.sprite = numberSprites[index];
         StartCoroutine(RunTimer());
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("들어옴");
-            Player.Instance.physic.SetActiveKinematic(true);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
     }
 
     private IEnumerator RunTimer()
@@ -53,14 +44,32 @@ public class FlipWall : MonoBehaviour
 
     private IEnumerator OnFlip()
     {
+        float currentTime = 0;
+        float startScaleX = flipObjects.localScale.x;
+        float endcScaleX = startScaleX * -1f;
+
+        float playerStartPosX = 0;
+        float playerEndPosX = 0;
+
+        wallCollider.isTrigger = true;
+
         if (Player.Instance.currentStickToWall == this.transform)
         {
+            playerStartPosX = Player.Instance.transform.position.x;
+
+            if (Player.Instance.currentDirection == PlayerDirection.Left)
+            {
+                // 오른쪽으로
+                playerEndPosX = playerStartPosX + flipMoveDistance;
+            }
+            else if (Player.Instance.currentDirection == PlayerDirection.Right)
+            {
+                // 왼쪽으로
+                playerEndPosX = playerStartPosX - flipMoveDistance;
+            }
+               
             Player.Instance.canJumping = false;
         }
-
-        float currentTime = 0;
-        float startScaleX = transform.localScale.x;
-        float endcScaleX = startScaleX * -1f;
 
         while (currentTime < flipTime)
         {
@@ -72,18 +81,25 @@ public class FlipWall : MonoBehaviour
             }
 
             float flipScaleX = Mathf.Lerp(startScaleX, endcScaleX, currentTime / flipTime);
-            transform.localScale = new Vector3(flipScaleX, transform.localScale.y, transform.localScale.z);
+            flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
+
+            if (Player.Instance.currentStickToWall == this.transform && !Player.Instance.isPostureCorrecting)
+            {
+                float playerFlipPosX = Mathf.Lerp(playerStartPosX, playerEndPosX, currentTime / flipTime);
+                Player.Instance.transform.position = new Vector3(playerFlipPosX, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
+            }
 
             yield return null;
         }
 
-        if (Player.Instance.currentStickToWall == this.transform)
+        wallCollider.isTrigger = false;
+
+        if (Player.Instance.currentStickToWall == this.transform && !Player.Instance.isPostureCorrecting)
         {
+            Player.Instance.directionOfView.ReverseView();
             Player.Instance.canJumping = true;
         }
 
-        float originTimerScaleX = timer.localScale.x * -1f;
-        timer.localScale = new Vector3(originTimerScaleX, timer.localScale.y, timer.localScale.z);
         index = numberSprites.Count - 1;
         timerRenderer.sprite = numberSprites[index];
         StartCoroutine(RunTimer());

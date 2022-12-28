@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 {
@@ -50,8 +51,10 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         fsm.ChangeState(Player.Instance.currnetState);
     }
 
-    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint)
+    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint) //UnityAction changeDirectionEvent
     {
+        Player.Instance.isPostureCorrecting = true;
+
         float currentTime = 0f;
 
         Vector3 contactPoint = player.position;
@@ -75,6 +78,8 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             yield return null;
         }
 
+        //changeDirectionEvent.Invoke();
         animator.SetBool(isStickToWall, true);
+        Player.Instance.isPostureCorrecting = false;
     }
 }

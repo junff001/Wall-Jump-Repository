@@ -24,6 +24,7 @@ public class WallGroundSensor : MonoBehaviour
             }     
             case "Wall":
             {
+                Debug.Log("닿음");
                 Player.Instance.currentStickToWall = collision.transform;
                 Transform correctionCriteria = collision.transform.GetChild(0);
 
@@ -79,6 +80,7 @@ public class WallGroundSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            Debug.Log("빠져나감");
             Player.Instance.currentStickToWall = null;
             player.SetParent(null);
         }
