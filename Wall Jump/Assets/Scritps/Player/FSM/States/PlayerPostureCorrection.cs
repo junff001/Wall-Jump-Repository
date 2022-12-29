@@ -14,8 +14,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     [Header("[ Move to the wall ]")]
     [SerializeField] private float moveToTheWallLerpTime;
-    [SerializeField] private float moveRange;
-    [SerializeField] private float moveHeight;
+    [SerializeField] private float offsetAfterPostureCorrection;
 
     private PlayerFSM fsm;
     private readonly int isStickToWall = Animator.StringToHash("isStickToWall");
@@ -51,7 +50,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         fsm.ChangeState(Player.Instance.currnetState);
     }
 
-    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint) //UnityAction changeDirectionEvent
+    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint, UnityAction changeDirectionEvent)
     {
         Player.Instance.isPostureCorrecting = true;
 
@@ -78,8 +77,21 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             yield return null;
         }
 
-        //changeDirectionEvent.Invoke();
+        changeDirectionEvent.Invoke();
         animator.SetBool(isStickToWall, true);
+
+        float PosXAfterPostureCorrection = 0;
+
+        if (Player.Instance.currentDirection == PlayerDirection.Left)
+        {
+            PosXAfterPostureCorrection = Player.Instance.transform.position.x - offsetAfterPostureCorrection;
+        }
+        else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        {
+            PosXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
+        }
+
+        Player.Instance.transform.position = new Vector3(PosXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
         Player.Instance.isPostureCorrecting = false;
     }
 }

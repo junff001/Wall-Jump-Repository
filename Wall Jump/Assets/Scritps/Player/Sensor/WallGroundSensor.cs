@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WallGroundSensor : MonoBehaviour
 {
@@ -43,26 +45,23 @@ public class WallGroundSensor : MonoBehaviour
                             // 양쪽 다 활성화 상태
                             if (Player.Instance.currentDirection == PlayerDirection.Left)
                             {
-                                StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
+                                StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.ReverseView));
                             }
                             else if (Player.Instance.currentDirection == PlayerDirection.Right)
                             {
-                                StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
+                                StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.ReverseView));
                             }
-
-                            directionOfView.ReverseView();
-                        }   
+                        }
                         else if (leftPoint.gameObject.activeSelf && !rightPoint.gameObject.activeSelf)
                         {
                             // 왼쪽만 활성화 상태
-                            StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
-                            directionOfView.LeftView();
+                            StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.LeftView));
+
                         }
                         else if (!leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
                             // 오른쪽만 활성화 상태
-                            StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
-                            directionOfView.RightView();
+                            StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.RightView));
                         }
                     }
                 }
@@ -71,8 +70,8 @@ public class WallGroundSensor : MonoBehaviour
                     Player.Instance.currnetState = PlayerState.StickToWall;
                     player.SetParent(collision.transform);
                 }
-                break;
             }
+            break;
         }
     }
 
@@ -80,9 +79,13 @@ public class WallGroundSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("빠져나감");
-            Player.Instance.currentStickToWall = null;
-            player.SetParent(null);
+            if (!Player.Instance.isPostureCorrecting)
+            {
+                Debug.Log("빠져나감");
+                Player.Instance.currentStickToWall = null;
+                player.SetParent(null);
+
+            }
         }
     }
 }
