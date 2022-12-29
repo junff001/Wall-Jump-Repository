@@ -102,7 +102,6 @@ public class FlipWall : MonoBehaviour
                 flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
 
                 Vector2 playerFlipPos = Vector2.Lerp(playerStartPos, playerEndPos, currentTime / flipTime);
-
                 Player.Instance.transform.position = playerFlipPos;
 
                 yield return null;

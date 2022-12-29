@@ -983,12 +983,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 1637730389}
     m_Modifications:
     - target: {fileID: 1501987789, guid: 53e43a7bbd806ea409c17df388a65bad, type: 3}
+      propertyPath: flipTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501987789, guid: 53e43a7bbd806ea409c17df388a65bad, type: 3}
       propertyPath: wallCollider
       value: 
       objectReference: {fileID: 1543867013}
     - target: {fileID: 1501987789, guid: 53e43a7bbd806ea409c17df388a65bad, type: 3}
       propertyPath: flipMoveDistance
-      value: 1.1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501987789, guid: 53e43a7bbd806ea409c17df388a65bad, type: 3}
+      propertyPath: minHeightForCorrection
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1109391070856107146, guid: 53e43a7bbd806ea409c17df388a65bad, type: 3}
       propertyPath: m_Name
@@ -1156,7 +1164,7 @@ Transform:
   m_GameObject: {fileID: 397009773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.00087757787, y: 0.00087757787, z: 0.00087757787}
+  m_LocalScale: {x: 0.0008798944, y: 0.0008798944, z: 0.0008798944}
   m_Children:
   - {fileID: 1253095801}
   - {fileID: 2103563219}
@@ -7463,7 +7471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103563218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 397009777}
@@ -7522,7 +7530,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12701, y: 22690}
+  m_Size: {x: 12701, y: 22630}
   m_EdgeRadius: 0
 --- !u!114 &2103563222
 MonoBehaviour:
@@ -7556,14 +7564,14 @@ MonoBehaviour:
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
   mWidth: 12701
-  mHeight: 22690
+  mHeight: 22630
   mDepth: 0
   boundless: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.559762
+  aspectRatio: 0.56124616
 --- !u!1 &2109490470
 GameObject:
   m_ObjectHideFlags: 0

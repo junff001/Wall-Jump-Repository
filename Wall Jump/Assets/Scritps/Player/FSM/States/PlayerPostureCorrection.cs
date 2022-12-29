@@ -39,6 +39,15 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public override void Exit(PlayerFSM fsm)
     {
+        if (Player.Instance.currentDirection == PlayerDirection.Left)
+        {
+            directionOfView.LeftView();
+        }
+        else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        {
+            directionOfView.RightView();
+        }
+
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
         physic.SetLinerDrag(1f);
@@ -55,7 +64,17 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         float currentTime = 0f;
 
         Vector3 contactPoint = player.position;
-        changeDirectionEvent.Invoke();
+
+        if (Player.Instance.currentDirection == PlayerDirection.Left)
+        {
+            Player.Instance.currentDirection = PlayerDirection.Right;
+        }
+        else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        {
+            Player.Instance.currentDirection = PlayerDirection.Left;
+        }
+
+        //changeDirectionEvent.Invoke();
 
         while (currentTime < moveToTheWallLerpTime && !Player.Instance.IsTheWallCurrentlyFlipping)
         {
@@ -78,20 +97,22 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
         animator.SetBool(isStickToWall, true);
 
-        float PosXAfterPostureCorrection = 0;
+        float posXAfterPostureCorrection = 0;
 
         if (Player.Instance.currentDirection == PlayerDirection.Left)
         {
-            PosXAfterPostureCorrection = Player.Instance.transform.position.x - offsetAfterPostureCorrection;
+            directionOfView.LeftView();
+            posXAfterPostureCorrection = Player.Instance.transform.position.x - offsetAfterPostureCorrection;
         }
         else if (Player.Instance.currentDirection == PlayerDirection.Right)
         {
-            PosXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
+            directionOfView.RightView();
+            posXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
         }
 
         if (!Player.Instance.IsTheWallCurrentlyFlipping)
         {
-            Player.Instance.transform.position = new Vector3(PosXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
+            Player.Instance.transform.position = new Vector3(posXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
         }
     }
 }

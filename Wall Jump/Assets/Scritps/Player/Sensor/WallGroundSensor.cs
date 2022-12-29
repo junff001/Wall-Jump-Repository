@@ -20,12 +20,13 @@ public class WallGroundSensor : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Ground":
-            {
+            {               
                 Player.Instance.currnetState = PlayerState.OnGround;
                 break;
             }     
             case "Wall":
             {
+                Debug.Log("º®¿¡ ºÙÀ½");
                 Player.Instance.currentStickToWall = collision.transform;
                 Transform correctionCriteria = collision.transform.GetChild(0);
 
@@ -77,6 +78,7 @@ public class WallGroundSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            Debug.Log("º®¿¡¼­ ¶³¾îÁü");
             Player.Instance.currentStickToWall = null;
             player.SetParent(null);
         }
