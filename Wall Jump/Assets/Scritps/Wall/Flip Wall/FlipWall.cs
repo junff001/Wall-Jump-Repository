@@ -51,9 +51,7 @@ public class FlipWall : MonoBehaviour
         float playerStartPosX = 0;
         float playerEndPosX = 0;
 
-        wallCollider.isTrigger = true;
-
-        if (Player.Instance.currentStickToWall == this.transform)
+        if (Player.Instance.currentStickToWall == this.transform && !Player.Instance.isPostureCorrecting)
         {
             playerStartPosX = Player.Instance.transform.position.x;
 
@@ -71,33 +69,48 @@ public class FlipWall : MonoBehaviour
             Player.Instance.canJumping = false;
         }
 
-        while (currentTime < flipTime)
-        {
-            currentTime += Time.deltaTime;
-
-            if (currentTime > flipTime)
-            {
-                currentTime = flipTime;
-            }
-
-            float flipScaleX = Mathf.Lerp(startScaleX, endcScaleX, currentTime / flipTime);
-            flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
-
-            if (Player.Instance.currentStickToWall == this.transform && !Player.Instance.isPostureCorrecting)
-            {
-                float playerFlipPosX = Mathf.Lerp(playerStartPosX, playerEndPosX, currentTime / flipTime);
-                Player.Instance.transform.position = new Vector3(playerFlipPosX, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
-            }
-
-            yield return null;
-        }
-
-        wallCollider.isTrigger = false;
-
         if (Player.Instance.currentStickToWall == this.transform && !Player.Instance.isPostureCorrecting)
         {
+            wallCollider.isTrigger = true;
+
+            while (currentTime < flipTime)
+            {
+                currentTime += Time.deltaTime;
+
+                if (currentTime > flipTime)
+                {
+                    currentTime = flipTime;
+                }
+
+                float flipScaleX = Mathf.Lerp(startScaleX, endcScaleX, currentTime / flipTime);
+                flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
+
+                float playerFlipPosX = Mathf.Lerp(playerStartPosX, playerEndPosX, currentTime / flipTime);
+                Player.Instance.transform.position = new Vector3(playerFlipPosX, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
+
+                yield return null;
+            }
+
             Player.Instance.directionOfView.ReverseView();
             Player.Instance.canJumping = true;
+            wallCollider.isTrigger = false;
+        }
+        else
+        {
+            while (currentTime < flipTime)
+            {
+                currentTime += Time.deltaTime;
+
+                if (currentTime > flipTime)
+                {
+                    currentTime = flipTime;
+                }
+
+                float flipScaleX = Mathf.Lerp(startScaleX, endcScaleX, currentTime / flipTime);
+                flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
+
+                yield return null;
+            }
         }
 
         index = numberSprites.Count - 1;

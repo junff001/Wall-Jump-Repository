@@ -26,7 +26,6 @@ public class WallGroundSensor : MonoBehaviour
             }     
             case "Wall":
             {
-                Debug.Log("닿음");
                 Player.Instance.currentStickToWall = collision.transform;
                 Transform correctionCriteria = collision.transform.GetChild(0);
 
@@ -56,7 +55,6 @@ public class WallGroundSensor : MonoBehaviour
                         {
                             // 왼쪽만 활성화 상태
                             StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.LeftView));
-
                         }
                         else if (!leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
@@ -81,10 +79,8 @@ public class WallGroundSensor : MonoBehaviour
         {
             if (!Player.Instance.isPostureCorrecting)
             {
-                Debug.Log("빠져나감");
                 Player.Instance.currentStickToWall = null;
                 player.SetParent(null);
-
             }
         }
     }
