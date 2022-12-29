@@ -52,13 +52,12 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint, UnityAction changeDirectionEvent)
     {
-        Player.Instance.isPostureCorrecting = true;
-
         float currentTime = 0f;
 
         Vector3 contactPoint = player.position;
+        changeDirectionEvent.Invoke();
 
-        while (currentTime < moveToTheWallLerpTime)
+        while (currentTime < moveToTheWallLerpTime && !Player.Instance.IsTheWallCurrentlyFlipping)
         {
             if (Player.Instance.currnetState == PlayerState.BasicJump)
             {
@@ -77,7 +76,6 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             yield return null;
         }
 
-        changeDirectionEvent.Invoke();
         animator.SetBool(isStickToWall, true);
 
         float PosXAfterPostureCorrection = 0;
@@ -91,7 +89,9 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             PosXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
         }
 
-        Player.Instance.transform.position = new Vector3(PosXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
-        Player.Instance.isPostureCorrecting = false;
+        if (!Player.Instance.IsTheWallCurrentlyFlipping)
+        {
+            Player.Instance.transform.position = new Vector3(PosXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
+        }
     }
 }

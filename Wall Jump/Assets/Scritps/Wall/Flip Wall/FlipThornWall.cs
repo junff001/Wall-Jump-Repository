@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlipWall : MonoBehaviour
+public class FlipThornWall : MonoBehaviour
 {
     [Header("[ Components Variables ]")]
     [SerializeField] private BoxCollider2D wallCollider;
+    [SerializeField] private BoxCollider2D thornCollider;
+
+    [Header("[ Correction Points Variables ]")]
+    [SerializeField] private GameObject correctionLeftPoint;
+    [SerializeField] private GameObject correctionRightPoint;
 
     [Header("[ Flip Variables ]")]
     [SerializeField] private float flipTime;
     [SerializeField] private float flipMoveDistance;
-    [SerializeField] private float minHeightForCorrection;
     [SerializeField] private Transform flipObjects;
 
     [Header("[ Timer Variables ]")]
@@ -48,39 +52,35 @@ public class FlipWall : MonoBehaviour
         float startScaleX = flipObjects.localScale.x;
         float endcScaleX = startScaleX * -1f;
 
-        Vector2 playerStartPos = Vector2.zero;
-        Vector2 playerEndPos = Vector2.zero;
+        float playerStartPosX = 0;
+        float playerEndPosX = 0;
+
+        if (!correctionLeftPoint.activeSelf && correctionRightPoint.activeSelf)
+        {
+            correctionLeftPoint.SetActive(true);
+            correctionRightPoint.SetActive(false);
+        }
+        else if (correctionLeftPoint.activeSelf && !correctionRightPoint.activeSelf)
+        {
+            correctionLeftPoint.SetActive(false);
+            correctionRightPoint.SetActive(true);
+        }
 
         if (Player.Instance.currentStickToWall == this.transform)
         {
-            playerStartPos = Player.Instance.transform.position;
+            playerStartPosX = Player.Instance.transform.position.x;
 
             if (Player.Instance.currentDirection == PlayerDirection.Left)
             {
                 // 오른쪽으로
-                if (Player.Instance.transform.position.y >= transform.position.y + minHeightForCorrection)
-                {
-                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
-                }
-                else
-                {
-                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
-                }
-                
+                playerEndPosX = playerStartPosX + flipMoveDistance;
             }
             else if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
                 // 왼쪽으로
-                if (Player.Instance.transform.position.y >= transform.position.y + minHeightForCorrection)
-                {
-                    playerEndPos = new Vector2(transform.position.x - flipMoveDistance, transform.position.y);
-                }
-                else
-                {
-                    playerEndPos = new Vector2(transform.position.x - flipMoveDistance, Player.Instance.transform.position.y);
-                }
+                playerEndPosX = playerStartPosX - flipMoveDistance;
             }
-               
+
             Player.Instance.canJumping = false;
         }
 
@@ -88,6 +88,11 @@ public class FlipWall : MonoBehaviour
         {
             Player.Instance.IsTheWallCurrentlyFlipping = true;
             wallCollider.isTrigger = true;
+
+            if (thornCollider != null)
+            {
+                thornCollider.enabled = false;
+            }
 
             while (currentTime < flipTime)
             {
@@ -101,17 +106,21 @@ public class FlipWall : MonoBehaviour
                 float flipScaleX = Mathf.Lerp(startScaleX, endcScaleX, currentTime / flipTime);
                 flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
 
-                Vector2 playerFlipPos = Vector2.Lerp(playerStartPos, playerEndPos, currentTime / flipTime);
-
-                Player.Instance.transform.position = playerFlipPos;
+                float playerFlipPosX = Mathf.Lerp(playerStartPosX, playerEndPosX, currentTime / flipTime);
+                Player.Instance.transform.position = new Vector3(playerFlipPosX, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
 
                 yield return null;
             }
-       
+
+            Player.Instance.IsTheWallCurrentlyFlipping = true;
             Player.Instance.directionOfView.ReverseView();
             Player.Instance.canJumping = true;
             wallCollider.isTrigger = false;
-            Player.Instance.IsTheWallCurrentlyFlipping = false;
+
+            if (thornCollider != null)
+            {
+                thornCollider.enabled = true;
+            }
         }
         else
         {

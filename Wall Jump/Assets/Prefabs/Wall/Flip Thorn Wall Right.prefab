@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8582158389838358069}
   - component: {fileID: 1501987789}
   m_Layer: 0
-  m_Name: FlipSpikeWallLeft
-  m_TagString: Wall
+  m_Name: Flip Thorn Wall Right
+  m_TagString: FlipWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,8 +105,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3307724630021383562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.004, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8783956907683603383}
   - {fileID: 5532613522713204048}
@@ -128,7 +128,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.32314867, y: -0.5218582}
+  m_Offset: {x: 0.3391522, y: -0.5218582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21678747, y: 1.4736042}
+  m_Size: {x: 0.18478042, y: 1.4736042}
   m_EdgeRadius: 0
 --- !u!1 &3807846548327604421
 GameObject:

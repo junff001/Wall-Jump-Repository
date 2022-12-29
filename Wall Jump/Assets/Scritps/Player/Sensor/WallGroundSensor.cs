@@ -77,11 +77,8 @@ public class WallGroundSensor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            if (!Player.Instance.isPostureCorrecting)
-            {
-                Player.Instance.currentStickToWall = null;
-                player.SetParent(null);
-            }
+            Player.Instance.currentStickToWall = null;
+            player.SetParent(null);
         }
     }
 }
