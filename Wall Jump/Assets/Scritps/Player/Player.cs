@@ -8,7 +8,8 @@ public class Player : MonoSingleton<Player>
     public PlayerDirection currentDirection { get; set; } = PlayerDirection.Right;
 
     public bool canJumping { get; set; } = true;
-    public bool IsTheWallCurrentlyFlipping { get; set; } = false;
+    public bool isPostureCorrecting { get; set; } = false;
+    public bool isTheWallCurrentlyFlipping { get; set; } = false;
     public Transform currentStickToWall { get; set; } = null;
 
     [Header("[ Components Variables ]")]

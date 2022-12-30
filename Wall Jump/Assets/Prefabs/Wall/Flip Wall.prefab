@@ -77,8 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallCollider: {fileID: 8582158389838358069}
   flipTime: 0.2
-  flipMoveDistance: 1.1
-  minHeightForCorrection: 0.5
+  flipMoveDistance: 0.5
   flipObjects: {fileID: 3298223070392117023}
   timer: {fileID: 8354651426764233847}
   timerRenderer: {fileID: 6877183429680337094}

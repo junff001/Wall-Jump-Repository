@@ -40,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5857775352778166171}
   - component: {fileID: 8582158389838358069}
-  - component: {fileID: 1501987789}
   m_Layer: 0
   m_Name: Flip Thorn Wall Left
   m_TagString: Wall
@@ -93,30 +92,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.265, y: 1.8670456}
   m_EdgeRadius: 0
---- !u!114 &1501987789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109391070856107146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 401c9db251d7b3e479d8742aae9acff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallCollider: {fileID: 8582158389838358069}
-  thornCollider: {fileID: 0}
-  flipTime: 0.2
-  flipMoveDistance: 1.1
-  flipObjects: {fileID: 449576075159630772}
-  timer: {fileID: 8354651426764233847}
-  timerRenderer: {fileID: 6877183429680337094}
-  numberSprites:
-  - {fileID: 21300000, guid: afee9cb5f9cb0eb4d907c4a26d49c1ae, type: 3}
-  - {fileID: 21300000, guid: e0d29964221251e44b2903bd0daf3b71, type: 3}
-  - {fileID: 21300000, guid: eb8a13cb5fd633b41acd2e8e1be45aa2, type: 3}
-  - {fileID: 21300000, guid: fd7419323e37269468b7bb77a90aafd2, type: 3}
 --- !u!1 &2146217297998662967
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,22 +45,22 @@ public class WallGroundSensor : MonoBehaviour
                             // 양쪽 다 활성화 상태
                             if (Player.Instance.currentDirection == PlayerDirection.Left)
                             {
-                                StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.ReverseView));
+                                StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
                             }
                             else if (Player.Instance.currentDirection == PlayerDirection.Right)
                             {
-                                StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.ReverseView));
+                                StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
                             }
                         }
                         else if (leftPoint.gameObject.activeSelf && !rightPoint.gameObject.activeSelf)
                         {
                             // 왼쪽만 활성화 상태
-                            StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.LeftView));
+                            StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint));
                         }
                         else if (!leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
                             // 오른쪽만 활성화 상태
-                            StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.RightView));
+                            StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint));
                         }
                     }
                 }

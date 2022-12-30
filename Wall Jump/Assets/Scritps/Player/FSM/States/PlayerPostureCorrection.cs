@@ -59,8 +59,9 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         fsm.ChangeState(Player.Instance.currnetState);
     }
 
-    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint, UnityAction changeDirectionEvent)
+    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint)
     {
+        Player.Instance.isPostureCorrecting = true;
         float currentTime = 0f;
 
         Vector3 contactPoint = player.position;
@@ -74,9 +75,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             Player.Instance.currentDirection = PlayerDirection.Left;
         }
 
-        //changeDirectionEvent.Invoke();
-
-        while (currentTime < moveToTheWallLerpTime && !Player.Instance.IsTheWallCurrentlyFlipping)
+        while (currentTime < moveToTheWallLerpTime && !Player.Instance.isTheWallCurrentlyFlipping)
         {
             if (Player.Instance.currnetState == PlayerState.BasicJump)
             {
@@ -95,6 +94,8 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             yield return null;
         }
 
+        Player.Instance.isPostureCorrecting = false;
+
         animator.SetBool(isStickToWall, true);
 
         float posXAfterPostureCorrection = 0;
@@ -110,7 +111,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             posXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
         }
 
-        if (!Player.Instance.IsTheWallCurrentlyFlipping)
+        if (!Player.Instance.isTheWallCurrentlyFlipping)
         {
             Player.Instance.transform.position = new Vector3(posXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
         }

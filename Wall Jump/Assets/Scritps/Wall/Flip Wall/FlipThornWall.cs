@@ -52,8 +52,8 @@ public class FlipThornWall : MonoBehaviour
         float startScaleX = flipObjects.localScale.x;
         float endcScaleX = startScaleX * -1f;
 
-        float playerStartPosX = 0;
-        float playerEndPosX = 0;
+        Vector2 playerStartPos = Vector2.zero;
+        Vector2 playerEndPos = Vector2.zero;
 
         if (!correctionLeftPoint.activeSelf && correctionRightPoint.activeSelf)
         {
@@ -68,17 +68,32 @@ public class FlipThornWall : MonoBehaviour
 
         if (Player.Instance.currentStickToWall == this.transform)
         {
-            playerStartPosX = Player.Instance.transform.position.x;
+            playerStartPos = Player.Instance.transform.position;
 
             if (Player.Instance.currentDirection == PlayerDirection.Left)
             {
                 // 오른쪽으로
-                playerEndPosX = playerStartPosX + flipMoveDistance;
+                if (Player.Instance.isPostureCorrecting)
+                {
+                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
+                }
+                else
+                {
+                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
+                }
+
             }
             else if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
-                // 왼쪽으로
-                playerEndPosX = playerStartPosX - flipMoveDistance;
+                // 왼쪽으로 
+                if (Player.Instance.isPostureCorrecting)
+                {
+                    playerEndPos = new Vector2(transform.position.x - flipMoveDistance, transform.position.y);
+                }
+                else
+                {
+                    playerEndPos = new Vector2(transform.position.x - flipMoveDistance, Player.Instance.transform.position.y);
+                }
             }
 
             Player.Instance.canJumping = false;
@@ -86,7 +101,7 @@ public class FlipThornWall : MonoBehaviour
 
         if (Player.Instance.currentStickToWall == this.transform)
         {
-            Player.Instance.IsTheWallCurrentlyFlipping = true;
+            Player.Instance.isTheWallCurrentlyFlipping = true;
             wallCollider.isTrigger = true;
 
             if (thornCollider != null)
@@ -106,13 +121,13 @@ public class FlipThornWall : MonoBehaviour
                 float flipScaleX = Mathf.Lerp(startScaleX, endcScaleX, currentTime / flipTime);
                 flipObjects.localScale = new Vector3(flipScaleX, flipObjects.localScale.y, flipObjects.localScale.z);
 
-                float playerFlipPosX = Mathf.Lerp(playerStartPosX, playerEndPosX, currentTime / flipTime);
-                Player.Instance.transform.position = new Vector3(playerFlipPosX, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
+                Vector2 playerFlipPos = Vector2.Lerp(playerStartPos, playerEndPos, currentTime / flipTime);
+                Player.Instance.transform.position = playerFlipPos;
 
                 yield return null;
             }
 
-            Player.Instance.IsTheWallCurrentlyFlipping = true;
+            Player.Instance.isTheWallCurrentlyFlipping = true;
             Player.Instance.directionOfView.ReverseView();
             Player.Instance.canJumping = true;
             wallCollider.isTrigger = false;

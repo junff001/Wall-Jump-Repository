@@ -10,7 +10,6 @@ public class FlipWall : MonoBehaviour
     [Header("[ Flip Variables ]")]
     [SerializeField] private float flipTime;
     [SerializeField] private float flipMoveDistance;
-    [SerializeField] private float minHeightForCorrection;
     [SerializeField] private Transform flipObjects;
 
     [Header("[ Timer Variables ]")]
@@ -58,7 +57,7 @@ public class FlipWall : MonoBehaviour
             if (Player.Instance.currentDirection == PlayerDirection.Left)
             {
                 // 오른쪽으로
-                if (Player.Instance.transform.position.y >= transform.position.y + minHeightForCorrection)
+                if (Player.Instance.isPostureCorrecting)
                 {
                     playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
                 }
@@ -66,12 +65,12 @@ public class FlipWall : MonoBehaviour
                 {
                     playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
                 }
-                
+
             }
             else if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
-                // 왼쪽으로
-                if (Player.Instance.transform.position.y >= transform.position.y + minHeightForCorrection)
+                // 왼쪽으로 
+                if (Player.Instance.isPostureCorrecting)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, transform.position.y);
                 }
@@ -80,13 +79,13 @@ public class FlipWall : MonoBehaviour
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, Player.Instance.transform.position.y);
                 }
             }
-               
+
             Player.Instance.canJumping = false;
         }
 
         if (Player.Instance.currentStickToWall == this.transform)
         {
-            Player.Instance.IsTheWallCurrentlyFlipping = true;
+            Player.Instance.isTheWallCurrentlyFlipping = true;
             wallCollider.isTrigger = true;
 
             while (currentTime < flipTime)
@@ -110,7 +109,7 @@ public class FlipWall : MonoBehaviour
             Player.Instance.directionOfView.ReverseView();
             Player.Instance.canJumping = true;
             wallCollider.isTrigger = false;
-            Player.Instance.IsTheWallCurrentlyFlipping = false;
+            Player.Instance.isTheWallCurrentlyFlipping = false;
         }
         else
         {
