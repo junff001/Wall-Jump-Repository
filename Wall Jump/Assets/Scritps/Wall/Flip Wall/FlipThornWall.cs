@@ -81,7 +81,6 @@ public class FlipThornWall : MonoBehaviour
                 {
                     playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
                 }
-
             }
             else if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
