@@ -54,27 +54,24 @@ public class FlipWall : MonoBehaviour
         {
             playerStartPos = Player.Instance.transform.position;
 
-            if (Player.Instance.currentDirection == PlayerDirection.Left)
+            if (Player.Instance.isPostureCorrecting)
             {
-                // 오른쪽으로
-                if (Player.Instance.isPostureCorrecting)
-                {
-                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
-                }
-                else
-                {
-                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
-                }
-
-            }
-            else if (Player.Instance.currentDirection == PlayerDirection.Right)
-            {
-                // 왼쪽으로 
-                if (Player.Instance.isPostureCorrecting)
+                if (Player.Instance.currentDirection == PlayerDirection.Left)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, transform.position.y);
                 }
-                else
+                else if (Player.Instance.currentDirection == PlayerDirection.Right)
+                {
+                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
+                }
+            }
+            else
+            {
+                if (Player.Instance.currentDirection == PlayerDirection.Left)
+                {
+                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
+                }
+                else if (Player.Instance.currentDirection == PlayerDirection.Right)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, Player.Instance.transform.position.y);
                 }
@@ -105,11 +102,12 @@ public class FlipWall : MonoBehaviour
 
                 yield return null;
             }
-       
+
+            Player.Instance.isTheWallCurrentlyFlipping = false;
             Player.Instance.directionOfView.ReverseView();
+
             Player.Instance.canJumping = true;
             wallCollider.isTrigger = false;
-            Player.Instance.isTheWallCurrentlyFlipping = false;
         }
         else
         {

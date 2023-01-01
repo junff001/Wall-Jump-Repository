@@ -70,26 +70,24 @@ public class FlipThornWall : MonoBehaviour
         {
             playerStartPos = Player.Instance.transform.position;
 
-            if (Player.Instance.currentDirection == PlayerDirection.Left)
+            if (Player.Instance.isPostureCorrecting)
             {
-                // 오른쪽으로
-                if (Player.Instance.isPostureCorrecting)
+                if (!correctionLeftPoint.activeSelf && correctionRightPoint.activeSelf)
                 {
                     playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
                 }
-                else
-                {
-                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
-                }
-            }
-            else if (Player.Instance.currentDirection == PlayerDirection.Right)
-            {
-                // 왼쪽으로 
-                if (Player.Instance.isPostureCorrecting)
+                else if (correctionLeftPoint.activeSelf && !correctionRightPoint.activeSelf)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, transform.position.y);
                 }
-                else
+            }
+            else
+            {
+                if (!correctionLeftPoint.activeSelf && correctionRightPoint.activeSelf)
+                {
+                    playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
+                }
+                else if (correctionLeftPoint.activeSelf && !correctionRightPoint.activeSelf)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, Player.Instance.transform.position.y);
                 }
@@ -102,11 +100,7 @@ public class FlipThornWall : MonoBehaviour
         {
             Player.Instance.isTheWallCurrentlyFlipping = true;
             wallCollider.isTrigger = true;
-
-            if (thornCollider != null)
-            {
-                thornCollider.enabled = false;
-            }
+            thornCollider.enabled = false;
 
             while (currentTime < flipTime)
             {
@@ -126,15 +120,11 @@ public class FlipThornWall : MonoBehaviour
                 yield return null;
             }
 
-            Player.Instance.isTheWallCurrentlyFlipping = true;
+            Player.Instance.isTheWallCurrentlyFlipping = false;
             Player.Instance.directionOfView.ReverseView();
             Player.Instance.canJumping = true;
             wallCollider.isTrigger = false;
-
-            if (thornCollider != null)
-            {
-                thornCollider.enabled = true;
-            }
+            thornCollider.enabled = true;
         }
         else
         {

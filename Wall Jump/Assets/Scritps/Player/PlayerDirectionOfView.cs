@@ -27,6 +27,7 @@ public class PlayerDirectionOfView : MonoBehaviour
     /// </summary>
     public void ReverseView()
     {
+        Debug.Log("¸®¹ö½º");
         if (Player.Instance.currentDirection == PlayerDirection.Left)
         {
             RightView();
@@ -34,6 +35,18 @@ public class PlayerDirectionOfView : MonoBehaviour
         else if (Player.Instance.currentDirection == PlayerDirection.Right)
         {
             LeftView();
+        }
+    }
+
+    public void SynchronizationView()
+    {
+        if (Player.Instance.currentDirection == PlayerDirection.Left)
+        {
+            LeftView();
+        }
+        else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        {
+            RightView();
         }
     }
 }

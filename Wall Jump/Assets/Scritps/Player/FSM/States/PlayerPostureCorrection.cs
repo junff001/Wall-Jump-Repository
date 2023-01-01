@@ -39,14 +39,14 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public override void Exit(PlayerFSM fsm)
     {
-        if (Player.Instance.currentDirection == PlayerDirection.Left)
-        {
-            directionOfView.LeftView();
-        }
-        else if (Player.Instance.currentDirection == PlayerDirection.Right)
-        {
-            directionOfView.RightView();
-        }
+        //if (Player.Instance.currentDirection == PlayerDirection.Left)
+        //{
+        //    directionOfView.LeftView();
+        //}
+        //else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        //{
+        //    directionOfView.RightView();
+        //}
 
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
@@ -59,26 +59,19 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         fsm.ChangeState(Player.Instance.currnetState);
     }
 
-    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint)
+    public IEnumerator MoveToSideOfWall(Transform postureCorrectionPoint, UnityAction changeVeiw)
     {
         Player.Instance.isPostureCorrecting = true;
         float currentTime = 0f;
 
         Vector3 contactPoint = player.position;
 
-        if (Player.Instance.currentDirection == PlayerDirection.Left)
-        {
-            Player.Instance.currentDirection = PlayerDirection.Right;
-        }
-        else if (Player.Instance.currentDirection == PlayerDirection.Right)
-        {
-            Player.Instance.currentDirection = PlayerDirection.Left;
-        }
-
+        #region 교정포인트로 러프 써서 이동
         while (currentTime < moveToTheWallLerpTime && !Player.Instance.isTheWallCurrentlyFlipping)
         {
             if (Player.Instance.currnetState == PlayerState.BasicJump)
             {
+                directionOfView.ReverseView();
                 yield break;
             }
 
@@ -93,6 +86,9 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
             yield return null;
         }
+        #endregion
+
+        changeVeiw.Invoke();
 
         Player.Instance.isPostureCorrecting = false;
 
@@ -100,20 +96,21 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
         float posXAfterPostureCorrection = 0;
 
+        #region 자세교정 중 플립되지 않았다면 위치 설정
         if (Player.Instance.currentDirection == PlayerDirection.Left)
         {
-            directionOfView.LeftView();
             posXAfterPostureCorrection = Player.Instance.transform.position.x - offsetAfterPostureCorrection;
         }
         else if (Player.Instance.currentDirection == PlayerDirection.Right)
         {
-            directionOfView.RightView();
             posXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
         }
+        
 
         if (!Player.Instance.isTheWallCurrentlyFlipping)
         {
             Player.Instance.transform.position = new Vector3(posXAfterPostureCorrection, Player.Instance.transform.position.y, Player.Instance.transform.position.z);
         }
+        #endregion
     }
 }
