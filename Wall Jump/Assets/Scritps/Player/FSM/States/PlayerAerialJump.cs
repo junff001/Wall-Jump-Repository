@@ -59,6 +59,7 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
     public override void Exit(PlayerFSM fsm)
     {
+        Debug.Log("공중 점프 애니메이션 종료");
         animator.SetBool(isAerialJumping, false);
         StopCoroutine(MarioJump());
     }

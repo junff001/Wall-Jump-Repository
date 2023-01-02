@@ -115,9 +115,9 @@ TextureImporter:
       name: Platform_Vertical_Wood_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 32
-        width: 12
+        width: 4
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -140,9 +140,9 @@ TextureImporter:
       name: Platform_Vertical_Wood_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 17
-        width: 12
+        width: 4
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -165,9 +165,9 @@ TextureImporter:
       name: Platform_Vertical_Wood_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 2
-        width: 12
+        width: 4
         height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

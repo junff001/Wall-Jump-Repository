@@ -15,4 +15,5 @@ public class Player : MonoSingleton<Player>
     [Header("[ Components Variables ]")]
     public PlayerPhysic physic;
     public PlayerDirectionOfView directionOfView;
+    public Animator animator;
 }
