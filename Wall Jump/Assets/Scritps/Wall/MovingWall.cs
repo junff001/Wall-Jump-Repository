@@ -11,13 +11,18 @@ public class MovingWall : MonoBehaviour
     private int i;
     private float timer;
 
-    void Start()
+    private void Start()
     {
         transform.position = points[0].position;
         timer = stopTime;
     }
 
-    void Update()
+    private void Update()
+    {
+        MoveToWayPoint();
+    }
+
+    private void MoveToWayPoint()
     {
         if (Vector2.Distance(transform.position, points[i].position) < 0.02f)
         {

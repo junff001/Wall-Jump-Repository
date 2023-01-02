@@ -54,26 +54,32 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: BackGround
-    uniqueID: 4087492989
-    locked: 0
-  - name: VeryBackCloud
+  - name: BackCloud
     uniqueID: 569665619
     locked: 0
-  - name: BetweebCloud
+  - name: BetweenCloud
     uniqueID: 1549284549
     locked: 0
-  - name: VeryFrontCloud
+  - name: FrontCloud
     uniqueID: 4099660147
     locked: 0
-  - name: Road
+  - name: GuideRoad
     uniqueID: 411615085
     locked: 0
-  - name: Spike
+  - name: MovingWallPathLine
+    uniqueID: 1833734313
+    locked: 0
+  - name: MovingWallPathPoint
+    uniqueID: 3710393671
+    locked: 0
+  - name: Thorn
     uniqueID: 665128815
     locked: 0
   - name: Wall
     uniqueID: 3687339865
+    locked: 0
+  - name: Electric
+    uniqueID: 3413776513
     locked: 0
   - name: Deco
     uniqueID: 1619268301
@@ -81,12 +87,9 @@ TagManager:
   - name: Player
     uniqueID: 3871801575
     locked: 0
-  - name: UI
-    uniqueID: 3680832883
-    locked: 0
-  - name: Electric
-    uniqueID: 3413776513
-    locked: 0
   - name: Ground
     uniqueID: 1798704923
+    locked: 0
+  - name: UI
+    uniqueID: 3680832883
     locked: 0

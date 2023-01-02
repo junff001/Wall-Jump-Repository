@@ -35,7 +35,7 @@ public class WallGroundSensor : MonoBehaviour
                     if (Player.Instance.currnetState == PlayerState.BasicJump || Player.Instance.currnetState == PlayerState.AerialJump || Player.Instance.currnetState == PlayerState.BashJump)
                     {
                         Player.Instance.currnetState = PlayerState.PostureCorrection;
-                        player.SetParent(collision.transform.parent);
+                        player.SetParent(collision.transform);
 
                         Transform leftPoint = collision.transform.GetChild(1);
                         Transform rightPoint = collision.transform.GetChild(2);

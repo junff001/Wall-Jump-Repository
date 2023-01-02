@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 
-public class AddManager : MonoBehaviour
+public class ADManager : MonoBehaviour
 {
     private RewardedAd rewardedAd;
 
