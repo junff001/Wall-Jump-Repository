@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2364633010020346002, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5928448614354007713, guid: 7d84c9a0ef474dc42812bf290d722f7e, type: 3}
     - target: {fileID: 4256506374329852320, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -249,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6459770494442891251, guid: c1991800a4bb0f245b2c96caecb09c7d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6956851683050422485, guid: 7d84c9a0ef474dc42812bf290d722f7e, type: 3}
     - target: {fileID: 8544754692068958051, guid: c1991800a4bb0f245b2c96caecb09c7d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -312,6 +320,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 15310784733826778, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 15310784733826778, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -355,6 +367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Head
       objectReference: {fileID: 0}
+    - target: {fileID: 6882344780474346171, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2312097574445501599, guid: 7d84c9a0ef474dc42812bf290d722f7e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
 --- !u!4 &6797564653098626635 stripped

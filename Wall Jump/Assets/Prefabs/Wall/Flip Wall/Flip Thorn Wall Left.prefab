@@ -254,7 +254,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -614134413
-  m_SortingLayer: 10
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: afee9cb5f9cb0eb4d907c4a26d49c1ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -321,7 +321,7 @@ PrefabInstance:
     - target: {fileID: 2364633010020346002, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -321654536880059856, guid: 1f6dbf787d3d8e84381791aa30d9c292, type: 3}
+      objectReference: {fileID: 1643305111136072869, guid: 6d86e7e8a8b8f4a4ea3a10d9dee509b0, type: 3}
     - target: {fileID: 7441741022844643246, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
       propertyPath: m_Name
       value: Tail
@@ -407,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 6882344780474346171, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -51416820201557746, guid: 1f6dbf787d3d8e84381791aa30d9c292, type: 3}
+      objectReference: {fileID: 524574422798644446, guid: 6d86e7e8a8b8f4a4ea3a10d9dee509b0, type: 3}
     m_RemovedComponents:
     - {fileID: 2756779013735529956, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}

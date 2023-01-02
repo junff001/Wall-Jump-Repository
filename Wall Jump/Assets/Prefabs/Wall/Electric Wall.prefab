@@ -311,7 +311,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -614134413
-  m_SortingLayer: 8
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: afee9cb5f9cb0eb4d907c4a26d49c1ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -481,6 +481,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8584245746312979999, guid: 0ddf619ff096ada469471c932a6d03d2, type: 3}
+    - target: {fileID: 2364633010020346002, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364633010020346002, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364633010020346002, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5377358
+      objectReference: {fileID: 0}
     - target: {fileID: 7441741022844643246, guid: bf9d8679c2d7dd341b8d3d48ab35066a, type: 3}
       propertyPath: m_Name
       value: Tail
@@ -559,6 +571,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -9140167030116538720, guid: 0ddf619ff096ada469471c932a6d03d2, type: 3}
+    - target: {fileID: 6882344780474346171, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882344780474346171, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882344780474346171, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5377358
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc745e261cbe4254ea43f752ebe54805, type: 3}
 --- !u!4 &6476835682249986382 stripped
