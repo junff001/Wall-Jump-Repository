@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-enum SpikeDirectionOfView
+enum ThornDirectionOfView
 {
     Left,
     Right
 }
 
-public class SpikeAnimation : MonoBehaviour
+public class ThornAnimation : MonoBehaviour
 {
-    [SerializeField] private SpikeDirectionOfView directionOfView;
+    [SerializeField] private ThornDirectionOfView directionOfView;
     [SerializeField] private float outPosX;
     [SerializeField] private float inPosX;
     [SerializeField] private float speed;
@@ -31,7 +31,7 @@ public class SpikeAnimation : MonoBehaviour
         }
         else
         {
-            if (directionOfView == SpikeDirectionOfView.Left)
+            if (directionOfView == ThornDirectionOfView.Left)
             {
                 MoveIn(Vector2.right);
 
@@ -40,7 +40,7 @@ public class SpikeAnimation : MonoBehaviour
                     transform.localPosition = new Vector3(outPosX, transform.localPosition.y, transform.localPosition.z);
                 }
             }
-            else if (directionOfView == SpikeDirectionOfView.Right)
+            else if (directionOfView == ThornDirectionOfView.Right)
             {
                 MoveIn(Vector2.left);
 

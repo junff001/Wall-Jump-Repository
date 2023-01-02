@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5857775352778166171}
   - component: {fileID: 8582158389838358069}
+  - component: {fileID: 777440936}
   m_Layer: 0
   m_Name: Thorn Wall Right
   m_TagString: Wall
@@ -63,6 +64,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.265, y: 1.8670456}
   m_EdgeRadius: 0
+--- !u!114 &777440936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109391070856107146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5aab1dcbcfbdc4e801c414ee4cb439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thornCollider: {fileID: 2013919269}
 --- !u!1 &2835782523948228599
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
@@ -444,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
@@ -601,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID
@@ -692,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7856494220077512027, guid: 4d3440ffb4eef7447a02b559925be75b, type: 3}
       propertyPath: m_SortingLayerID

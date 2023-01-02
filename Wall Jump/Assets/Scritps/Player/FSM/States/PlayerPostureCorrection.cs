@@ -39,15 +39,6 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public override void Exit(PlayerFSM fsm)
     {
-        //if (Player.Instance.currentDirection == PlayerDirection.Left)
-        //{
-        //    directionOfView.LeftView();
-        //}
-        //else if (Player.Instance.currentDirection == PlayerDirection.Right)
-        //{
-        //    directionOfView.RightView();
-        //}
-
         animator.SetBool(isStickToWall, false);
         physic.SetGravityScale(1f);
         physic.SetLinerDrag(1f);
@@ -71,7 +62,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         {
             if (Player.Instance.currnetState == PlayerState.BasicJump)
             {
-                directionOfView.ReverseView();
+                changeVeiw.Invoke();
                 yield break;
             }
 

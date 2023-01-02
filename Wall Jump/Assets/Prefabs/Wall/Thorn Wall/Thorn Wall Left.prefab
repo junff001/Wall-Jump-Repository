@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5857775352778166171}
   - component: {fileID: 8582158389838358069}
+  - component: {fileID: 7971338267840998335}
   m_Layer: 0
   m_Name: Thorn Wall Left
   m_TagString: Wall
@@ -63,6 +64,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.265, y: 1.8670456}
   m_EdgeRadius: 0
+--- !u!114 &7971338267840998335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109391070856107146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5aab1dcbcfbdc4e801c414ee4cb439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thornCollider: {fileID: 2013919269}
 --- !u!1 &4526126812240855446
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +227,11 @@ PrefabInstance:
 --- !u!4 &1548583843155704684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2725757889406078058, guid: 0362a73ed6cea264fa424465dde32b0c, type: 3}
+  m_PrefabInstance: {fileID: 3507875949296285446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &2013919269 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3507875950236340003, guid: 0362a73ed6cea264fa424465dde32b0c, type: 3}
   m_PrefabInstance: {fileID: 3507875949296285446}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4237750634890939459
