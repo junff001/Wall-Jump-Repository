@@ -18,6 +18,7 @@ public class SlipEffect : MonoBehaviour
 
     private IEnumerator Slipping()
     {
+        yield return new WaitUntil(() => !Player.Instance.isPostureCorrecting);
         yield return new WaitForSeconds(slippingWaitTime);
 
         while ((Player.Instance.currnetState == PlayerState.StickToWall || 

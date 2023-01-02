@@ -42,11 +42,11 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     {
         switch (Player.Instance.currnetState)
         {
-            case PlayerState.OnGround:
-                fsm.ChangeState(PlayerState.OnGround);
-                break;
             case PlayerState.StickToWall:
                 fsm.ChangeState(PlayerState.StickToWall);
+                break;
+            case PlayerState.OnGround:
+                fsm.ChangeState(PlayerState.OnGround);
                 break;
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
@@ -95,10 +95,10 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        if (Player.Instance.canJumping)
-        {
-            Player.Instance.currnetState = PlayerState.BashJump;
-            fsm.ChangeState(Player.Instance.currnetState);
-        }  
+        //if (Player.Instance.canJumping)
+        //{
+        //    Player.Instance.currnetState = PlayerState.BashJump;
+        //    fsm.ChangeState(Player.Instance.currnetState);
+        //}  
     }
 }

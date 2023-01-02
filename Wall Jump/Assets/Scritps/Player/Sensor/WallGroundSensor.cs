@@ -10,6 +10,7 @@ public class WallGroundSensor : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private PlayerDirectionOfView directionOfView;
     [SerializeField] private PlayerPostureCorrection postureCorrection;
+    [SerializeField] private BoxCollider2D wallGroundCollider;
 
     [Header("[ Correction Value Variables ]")]
     [SerializeField] private float playerCorrectionHeight;
@@ -19,14 +20,8 @@ public class WallGroundSensor : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
-            case "Ground":
-            {               
-                Player.Instance.currnetState = PlayerState.OnGround;
-                break;
-            }     
             case "Wall":
             {
-                Debug.Log("벽에 붙음");
                 Player.Instance.currentStickToWall = collision.transform;
                 Transform correctionCriteria = collision.transform.GetChild(0);
 
@@ -43,7 +38,6 @@ public class WallGroundSensor : MonoBehaviour
                         if (leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
                             // 양쪽 다 활성화 상태
-
                             if (Player.Instance.currentDirection == PlayerDirection.Left)
                             {
                                 StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.ReverseView));
@@ -57,33 +51,48 @@ public class WallGroundSensor : MonoBehaviour
                         {
                             // 왼쪽만 활성화 상태
                             StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.LeftView));
-                            
                         }
                         else if (!leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
                             // 오른쪽만 활성화 상태
                             StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.RightView));
-                            
                         }
                     }
                 }
                 else if (correctionCriteria.position.y >= player.position.y + playerCorrectionHeight)
                 {
-                    Player.Instance.currnetState = PlayerState.StickToWall;
-                    player.SetParent(collision.transform);
+                    if (Player.Instance.currnetState != PlayerState.OnGround)
+                    {
+                        Player.Instance.currnetState = PlayerState.StickToWall;
+                        player.SetParent(collision.transform);
+                    }
                 }
+                break;
             }
-            break;
+            case "Ground":
+            {
+                wallGroundCollider.enabled = false;
+                Player.Instance.currnetState = PlayerState.OnGround;
+                break;
+            }     
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        switch (collision.gameObject.tag)
         {
-            Debug.Log("벽에서 떨어짐");
-            Player.Instance.currentStickToWall = null;
-            player.SetParent(null);
+            case "Wall":
+            {
+                Player.Instance.currentStickToWall = null;
+                player.SetParent(null);
+                break;
+            }             
+            case "Ground":
+            {
+                wallGroundCollider.enabled = true;
+                break;
+            }
         }
     }
 }

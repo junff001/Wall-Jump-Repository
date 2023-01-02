@@ -27,11 +27,11 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         switch (Player.Instance.currnetState)
         {
-            case PlayerState.OnGround:
-                fsm.ChangeState(PlayerState.OnGround);
-                break;
             case PlayerState.StickToWall:
                 fsm.ChangeState(PlayerState.StickToWall);
+                break;
+            case PlayerState.OnGround:
+                fsm.ChangeState(PlayerState.OnGround);
                 break;
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
