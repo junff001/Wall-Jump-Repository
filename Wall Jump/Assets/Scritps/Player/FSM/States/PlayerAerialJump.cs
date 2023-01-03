@@ -54,12 +54,14 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
             case PlayerState.PostureCorrection:
                 fsm.ChangeState(PlayerState.PostureCorrection);
                 break;
+            case PlayerState.BasicJump:
+                fsm.ChangeState(PlayerState.BasicJump);
+                break;
         }
     }
 
     public override void Exit(PlayerFSM fsm)
     {
-        Debug.Log("공중 점프 애니메이션 종료");
         animator.SetBool(isAerialJumping, false);
         StopCoroutine(MarioJump());
     }

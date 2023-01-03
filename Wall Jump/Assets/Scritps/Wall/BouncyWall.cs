@@ -6,35 +6,50 @@ public class BouncyWall : MonoBehaviour
 {
     [Header("[ Bounces Variables ]")]
     [SerializeField] private float bouncesOffDegree;
-    private readonly int isJumping = Animator.StringToHash("isJumping");
-    private readonly int isAerialJumping = Animator.StringToHash("isAerialJumping");
+    [SerializeField] private float bouncesTime;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Player.Instance.directionOfView.ReverseView();
-            Player.Instance.animator.SetBool(isAerialJumping, false);
-            Player.Instance.animator.SetBool(isJumping, true);
             Player.Instance.physic.VelocityZero();
-            PlayerBouncesOff();
+
+            if (Player.Instance.currnetState == PlayerState.BasicJump)
+            {
+                StartCoroutine(PlayerBouncesOff());
+            }
+            else if (Player.Instance.currnetState == PlayerState.AerialJump)
+            {
+                Player.Instance.currnetState = PlayerState.BasicJump;
+                StartCoroutine(PlayerBouncesOff());
+            }  
         }
     }
 
-    // FSM 상태 변환 
-    // 튕겨나감는 힘 코루틴 while로 적용해야 함
-
-    private void PlayerBouncesOff()
+    private IEnumerator PlayerBouncesOff()
     {
-        if (Player.Instance.currentDirection == PlayerDirection.Right)
+        Player.Instance.isCurrentlyBouncedOffTheWall = true;
+        float originTime = bouncesTime;
+
+        while (originTime > 0)
         {
-            Vector2 direction = new Vector2(1, 1.75f);
-            Player.Instance.physic.SetVelocity(direction * bouncesOffDegree);
+            originTime -= Time.deltaTime;
+
+            if (Player.Instance.currentDirection == PlayerDirection.Right)
+            {
+                Vector2 direction = new Vector2(1, 1.75f);
+                Player.Instance.physic.SetVelocity(direction * bouncesOffDegree);
+            }
+            else if (Player.Instance.currentDirection == PlayerDirection.Left)
+            {
+                Vector2 direction = new Vector2(-1, 1.75f);
+                Player.Instance.physic.SetVelocity(direction * bouncesOffDegree);
+            }
+
+            yield return null;
         }
-        else if (Player.Instance.currentDirection == PlayerDirection.Left)
-        {
-            Vector2 direction = new Vector2(-1, 1.75f);
-            Player.Instance.physic.SetVelocity(direction * bouncesOffDegree);
-        }
+
+        Player.Instance.isCurrentlyBouncedOffTheWall = false;
     }
 }
