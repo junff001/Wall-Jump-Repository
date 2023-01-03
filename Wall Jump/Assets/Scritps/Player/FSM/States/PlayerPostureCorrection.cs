@@ -34,6 +34,9 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
                 break;
+            case PlayerState.BasicJump:
+                fsm.ChangeState(PlayerState.BasicJump);
+                break;
         }
     }
 

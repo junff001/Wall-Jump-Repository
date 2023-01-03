@@ -34,6 +34,9 @@ public class PlayerStickToWall : PlayerIdle
             case PlayerState.Death:
                 fsm.ChangeState(PlayerState.Death);
                 break;
+            case PlayerState.BasicJump:
+                fsm.ChangeState(PlayerState.BasicJump);
+                break;
         }
     }
 

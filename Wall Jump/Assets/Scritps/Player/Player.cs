@@ -12,6 +12,7 @@ public class Player : MonoSingleton<Player>
     public bool isPostureCorrecting { get; set; } = false;
     public bool isTheWallCurrentlyFlipping { get; set; } = false;
     public bool isCurrentlyBouncedOffTheWall { get; set; } = false;
+    public bool isCurrentlySlippingTheWall { get; set; } = false;
 
     public Transform currentStickToWall { get; set; } = null;
 

@@ -21,7 +21,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
         this.fsm = fsm;
         animator.SetBool(isJumping, true);
 
-        if (!Player.Instance.isCurrentlyBouncedOffTheWall)
+        if (!Player.Instance.isCurrentlyBouncedOffTheWall || !Player.Instance.isCurrentlySlippingTheWall)
         {
             Jump();
         } 
