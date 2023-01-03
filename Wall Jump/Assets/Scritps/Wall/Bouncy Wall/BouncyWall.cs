@@ -7,6 +7,7 @@ public class BouncyWall : MonoBehaviour
     [Header("[ Bounces Variables ]")]
     [SerializeField] private float bouncesOffDegree;
     [SerializeField] private float bouncesTime;
+    [SerializeField] private float jumpDelay;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -23,18 +24,29 @@ public class BouncyWall : MonoBehaviour
             {
                 Player.Instance.currnetState = PlayerState.BasicJump;
                 StartCoroutine(PlayerBouncesOff());
-            }  
+            }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
     }
 
     private IEnumerator PlayerBouncesOff()
     {
+        Player.Instance.canJumping = false;
         Player.Instance.isCurrentlyBouncedOffTheWall = true;
         float originTime = bouncesTime;
 
         while (originTime > 0)
         {
             originTime -= Time.deltaTime;
+
+            if (originTime <= jumpDelay)
+            {
+                Player.Instance.canJumping = true;
+            }
 
             if (Player.Instance.currentDirection == PlayerDirection.Right)
             {
