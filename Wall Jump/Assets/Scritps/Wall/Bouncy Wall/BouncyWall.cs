@@ -9,7 +9,7 @@ public class BouncyWall : MonoBehaviour
     [SerializeField] private float bouncesTime;
     [SerializeField] private float jumpDelay;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -26,11 +26,6 @@ public class BouncyWall : MonoBehaviour
                 StartCoroutine(PlayerBouncesOff());
             }
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       
     }
 
     private IEnumerator PlayerBouncesOff()
