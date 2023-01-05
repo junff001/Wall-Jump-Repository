@@ -6,54 +6,71 @@ using UnityEngine;
 enum ThornDirectionOfView
 {
     Left,
-    Right
+    Right,
+    Up,
+    Down
 }
 
 public class ThornAnimation : MonoBehaviour
 {
+    [Header("[ Direction Of View Variables ]")]
     [SerializeField] private ThornDirectionOfView directionOfView;
-    [SerializeField] private float outPosX;
-    [SerializeField] private float inPosX;
+
+    [Header("[ Position Variables ]")]
+    [SerializeField] private float outDegree;
+    private Vector2 startPosition;
+    private Vector2 endPosition;
+
+    [Header("[ Speed Variables ]")]
     [SerializeField] private float speed;
-    [SerializeField] private float waitForTime;
-    private float timer;
 
-    void Start()
+    private void Start()
     {
-        timer = waitForTime;
-    }
-
-    void Update()
-    {
-        if (timer > 0)
+        switch (directionOfView)
         {
-            timer -= Time.deltaTime;
+            case ThornDirectionOfView.Left:
+            {
+                startPosition = transform.position;
+                endPosition = startPosition + new Vector2(-outDegree, 0);
+                StartCoroutine(RepeatedMovement(Vector2.left, endPosition));
+                break; 
+            }   
+            case ThornDirectionOfView.Right:
+            {
+                startPosition = transform.position;
+                endPosition = startPosition + new Vector2(outDegree, 0);
+                StartCoroutine(RepeatedMovement(Vector2.right, endPosition));
+                break;
+            }
+            case ThornDirectionOfView.Up:
+            {
+                startPosition = transform.position;
+                endPosition = startPosition + new Vector2(0, outDegree);
+                StartCoroutine(RepeatedMovement(Vector2.up, endPosition));
+                break;
+            }
+            case ThornDirectionOfView.Down:
+            {
+                startPosition = transform.position;
+                endPosition = startPosition + new Vector2(0, -outDegree);
+                StartCoroutine(RepeatedMovement(Vector2.down, endPosition));
+                break;
+            }
         }
-        else
-        {
-            if (directionOfView == ThornDirectionOfView.Left)
-            {
-                MoveIn(Vector2.right);
-
-                if (transform.localPosition.x >= inPosX)
-                {
-                    transform.localPosition = new Vector3(outPosX, transform.localPosition.y, transform.localPosition.z);
-                }
-            }
-            else if (directionOfView == ThornDirectionOfView.Right)
-            {
-                MoveIn(Vector2.left);
-
-                if (transform.localPosition.x <= inPosX)
-                {
-                    transform.localPosition = new Vector3(outPosX, transform.localPosition.y, transform.localPosition.z);
-                }
-            }
-        } 
     }
 
-    void MoveIn(Vector2 direction)
+    private IEnumerator RepeatedMovement(Vector2 direction, Vector2 target)
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        while (true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * speed);
+
+            if (transform.position == (Vector3)target)
+            {
+                transform.position = startPosition;
+            }
+
+            yield return null;
+        }
     }
 }
