@@ -21,7 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Start()
     {
-        framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+        //framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
     //[SerializeField] private Camera mainCam;
     //// Galaxy S10e ±‚¡ÿ
@@ -50,17 +50,17 @@ public class GameManager : MonoSingleton<GameManager>
         deadBoundCollider.enabled = false;
         Player.Instance.currnetState = PlayerState.OnGround;
         playerTrm.position = respawnTrm.position;
-        cameraTrm.position = playerTrm.position;
+        //cameraTrm.position = playerTrm.position;
 
         physic.SetGravityScale(1f);
         spriteTrm.SetActive(true);
 
-        framingTransposer.m_TrackedObjectOffset.y = -6f;
+        //framingTransposer.m_TrackedObjectOffset.y = -6f;
     }
 
     public void CameraFocusing()
     {
-        framingTransposer.m_TrackedObjectOffset.y = 0f;
+        //framingTransposer.m_TrackedObjectOffset.y = 0f;
         deadBoundCollider.enabled = true;
     }
 }
