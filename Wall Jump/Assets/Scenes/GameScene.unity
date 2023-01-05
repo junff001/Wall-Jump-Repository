@@ -815,58 +815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.4
---- !u!1 &341568817
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 341568819}
-  - component: {fileID: 341568818}
-  m_Layer: 0
-  m_Name: ProCamera2DTriggerRails
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &341568818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341568817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b7e101cf63d740019ea10c81f38f8ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pc2D: {fileID: 519420035}
-  _serializedAxis: 0
-  UpdateInterval: 0.1
-  TriggerShape: 1
-  UseTargetsMidPoint: 1
-  TriggerTarget: {fileID: 0}
-  ProCamera2DRails: {fileID: 519420033}
-  Mode: 0
-  TransitionDuration: 1
---- !u!4 &341568819
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341568817}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.42, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370729501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,20 +1338,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270fcd4170a9e48c68cb78c7df1f5b56, type: 3}
+  m_Script: {fileID: 11500000, guid: 37203e96e63794cd38c73c6c90eae460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _pc2D: {fileID: 519420035}
   _serializedAxis: 0
-  RailNodes:
-  - {x: 0.024411678, y: -3.6882534, z: 0}
-  - {x: 0.10301924, y: 8.964631, z: 0}
-  FollowMode: 1
-  CameraTargets:
-  - TargetTransform: {fileID: 1519498137}
-    TargetInfluenceH: 1
-    TargetInfluenceV: 1
-    TargetOffset: {x: 0, y: 0}
+  UseTargetsPosition: 1
+  LimitTopCameraDistance: 1
+  MaxTopTargetDistance: 0.8
+  LimitBottomCameraDistance: 1
+  MaxBottomTargetDistance: 0.8
+  LimitLeftCameraDistance: 1
+  MaxLeftTargetDistance: 0.8
+  LimitRightCameraDistance: 1
+  MaxRightTargetDistance: 0.8
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
