@@ -39,16 +39,16 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (playerTrm.localScale.x == 1)
         {
-            Player.Instance.currentDirection = PlayerDirection.Right;
+            Player.Instance.currentDirection = EPlayerDirection.RIGHT;
         }
         else if (playerTrm.localScale.x == -1)
         {
-            Player.Instance.currentDirection = PlayerDirection.Left;
+            Player.Instance.currentDirection = EPlayerDirection.LEFT;
         }
 
         InputManager.Instance.isStart = false;
         deadBoundCollider.enabled = false;
-        Player.Instance.currnetState = PlayerState.OnGround;
+        Player.Instance.currnetState = EPlayerState.ON_GROUND;
         playerTrm.position = respawnTrm.position;
         //cameraTrm.position = playerTrm.position;
 

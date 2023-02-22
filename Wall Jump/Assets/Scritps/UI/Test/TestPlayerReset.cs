@@ -14,6 +14,6 @@ public class TestPlayerReset : MonoBehaviour
         player.GetComponent<Rigidbody2D>().gravityScale = 1;
         player.position = resetPosition.position;
         player.localScale = new Vector3(1, player.localScale.y, player.localScale.z);
-        Player.Instance.currentDirection = PlayerDirection.Right;
+        Player.Instance.currentDirection = EPlayerDirection.RIGHT;
     }
 }

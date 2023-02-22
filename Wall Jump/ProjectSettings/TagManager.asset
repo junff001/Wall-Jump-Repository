@@ -17,6 +17,9 @@ TagManager:
   - FlipWallHead
   - FlipSpikeWall
   - SpikeHead
+  - CameraFixedZone
+  - CameraUnfixedZone
+  - PlayerDeadZone
   layers:
   - Default
   - TransparentFX

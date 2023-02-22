@@ -31,17 +31,17 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         switch (Player.Instance.currnetState)
         {
-            case PlayerState.StickToWall:
-                fsm.ChangeState(PlayerState.StickToWall);
+            case EPlayerState.SITCK_TO_WALL:
+                fsm.ChangeState(EPlayerState.SITCK_TO_WALL);
                 break;
-            case PlayerState.OnGround:
-                fsm.ChangeState(PlayerState.OnGround);
+            case EPlayerState.ON_GROUND:
+                fsm.ChangeState(EPlayerState.ON_GROUND);
                 break;
-            case PlayerState.Death:
-                fsm.ChangeState(PlayerState.Death);
+            case EPlayerState.DEATH:
+                fsm.ChangeState(EPlayerState.DEATH);
                 break;
-            case PlayerState.PostureCorrection:
-                fsm.ChangeState(PlayerState.PostureCorrection);
+            case EPlayerState.POSTURE_CORRECTION:
+                fsm.ChangeState(EPlayerState.POSTURE_CORRECTION);
                 break;
         }
     }
@@ -56,7 +56,7 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         if (Player.Instance.canJumping)
         {
-            Player.Instance.currnetState = PlayerState.AerialJump;
+            Player.Instance.currnetState = EPlayerState.AERIAL_JUMP;
             fsm.ChangeState(Player.Instance.currnetState);
         }
     }
@@ -70,16 +70,16 @@ public class PlayerBasicJump : State, IPressTheScreenToTransition
     {
         float originTime = jumpTime;
 
-        while (Player.Instance.currnetState == PlayerState.BasicJump && originTime > 0 && Input.GetMouseButton(0))
+        while (Player.Instance.currnetState == EPlayerState.BASIC_JUMP && originTime > 0 && Input.GetMouseButton(0))
         {
             originTime -= Time.deltaTime;
 
-            if (Player.Instance.currentDirection == PlayerDirection.Right)
+            if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
             {
                 Vector2 direction = new Vector2(1, 1.75f);
                 physic.SetVelocity(direction * jumpPower);
             }
-            else if (Player.Instance.currentDirection == PlayerDirection.Left)
+            else if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
             {
                 Vector2 direction = new Vector2(-1, 1.75f);
                 physic.SetVelocity(direction * jumpPower);

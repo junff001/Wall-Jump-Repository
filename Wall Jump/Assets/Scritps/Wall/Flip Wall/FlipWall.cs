@@ -56,22 +56,22 @@ public class FlipWall : MonoBehaviour
 
             if (Player.Instance.isPostureCorrecting)
             {
-                if (Player.Instance.currentDirection == PlayerDirection.Left)
+                if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, transform.position.y);
                 }
-                else if (Player.Instance.currentDirection == PlayerDirection.Right)
+                else if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
                 {
                     playerEndPos = new Vector2(transform.position.x + flipMoveDistance, transform.position.y);
                 }
             }
             else
             {
-                if (Player.Instance.currentDirection == PlayerDirection.Left)
+                if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
                 {
                     playerEndPos = new Vector2(transform.position.x + flipMoveDistance, Player.Instance.transform.position.y);
                 }
-                else if (Player.Instance.currentDirection == PlayerDirection.Right)
+                else if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
                 {
                     playerEndPos = new Vector2(transform.position.x - flipMoveDistance, Player.Instance.transform.position.y);
                 }

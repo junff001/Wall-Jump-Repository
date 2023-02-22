@@ -26,11 +26,11 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
         animator.SetBool(isAerialJumping, true);
         physic.VelocityZero();
 
-        if (Player.Instance.currentDirection == PlayerDirection.Left)
+        if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
         {
             directionOfView.RightView();
         }
-        else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        else if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
         {
             directionOfView.LeftView();
         }
@@ -42,20 +42,20 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
     {
         switch (Player.Instance.currnetState)
         {
-            case PlayerState.StickToWall:
-                fsm.ChangeState(PlayerState.StickToWall);
+            case EPlayerState.SITCK_TO_WALL:
+                fsm.ChangeState(EPlayerState.SITCK_TO_WALL);
                 break;
-            case PlayerState.OnGround:
-                fsm.ChangeState(PlayerState.OnGround);
+            case EPlayerState.ON_GROUND:
+                fsm.ChangeState(EPlayerState.ON_GROUND);
                 break;
-            case PlayerState.Death:
-                fsm.ChangeState(PlayerState.Death);
+            case EPlayerState.DEATH:
+                fsm.ChangeState(EPlayerState.DEATH);
                 break;
-            case PlayerState.PostureCorrection:
-                fsm.ChangeState(PlayerState.PostureCorrection);
+            case EPlayerState.POSTURE_CORRECTION:
+                fsm.ChangeState(EPlayerState.POSTURE_CORRECTION);
                 break;
-            case PlayerState.BasicJump:
-                fsm.ChangeState(PlayerState.BasicJump);
+            case EPlayerState.BASIC_JUMP:
+                fsm.ChangeState(EPlayerState.BASIC_JUMP);
                 break;
         }
     }
@@ -77,16 +77,16 @@ public class PlayerAerialJump : State, IPressTheScreenToTransition
         
         physic.GravityScaleZero();
 
-        while (Player.Instance.currnetState == PlayerState.AerialJump && originTime > 0 && Input.GetMouseButton(0))
+        while (Player.Instance.currnetState == EPlayerState.AERIAL_JUMP && originTime > 0 && Input.GetMouseButton(0))
         {
             originTime -= Time.deltaTime;
 
-            if (Player.Instance.currentDirection == PlayerDirection.Right)
+            if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
             {
                 Vector2 direction = new Vector2(1f, 1.75f);
                 physic.SetVelocity(direction * jumpPower);
             }
-            else if (Player.Instance.currentDirection == PlayerDirection.Left)
+            else if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
             {
                 Vector2 direction = new Vector2(-1f, 1.75f);
                 physic.SetVelocity(direction * jumpPower);

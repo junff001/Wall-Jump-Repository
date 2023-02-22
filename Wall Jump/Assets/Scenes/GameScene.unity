@@ -1100,7 +1100,7 @@ Transform:
   m_GameObject: {fileID: 397009773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0008802817, y: 0.0008802817, z: 0.0008802817}
+  m_LocalScale: {x: 0.0008783487, y: 0.0008783487, z: 0.0008783487}
   m_Children:
   - {fileID: 1253095801}
   - {fileID: 2103563219}
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 558571210}
   - component: {fileID: 558571212}
   m_Layer: 0
-  m_Name: Camera Free Zone Right
+  m_Name: Camera Unfixed Zone Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4040,8 +4040,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1254506741}
+  - component: {fileID: 1254506742}
   m_Layer: 0
-  m_Name: Screen Zone
+  m_Name: Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4065,6 +4066,18 @@ Transform:
   m_Father: {fileID: 519420032}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254506742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254506740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83e029844c649145a79f368675674ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1288258729
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,7 +4177,7 @@ GameObject:
   - component: {fileID: 1313209651}
   - component: {fileID: 1313209653}
   m_Layer: 0
-  m_Name: Camera Free Zone Left
+  m_Name: Camera Unfixed Zone Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7562,7 +7575,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12698, y: 22620}
+  m_Size: {x: 12702, y: 22670}
   m_EdgeRadius: 0
 --- !u!114 &2103563222
 MonoBehaviour:
@@ -7595,15 +7608,15 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 12698
-  mHeight: 22620
+  mWidth: 12702
+  mHeight: 22670
   mDepth: 0
   boundless: 0
   mMat: {fileID: 0}
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.5613616
+  aspectRatio: 1.8106308
 --- !u!1 &2109490470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7900,6 +7913,90 @@ PrefabInstance:
     - target: {fileID: 2325409122524021842, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254506742}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254506742}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254506742}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FixingCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeStateToDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnfixingCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CameraZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CameraZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CameraZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraFixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: changeStateEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2325409122524021845, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
+      propertyPath: cameraUnfixedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2325409123072618725, guid: 15b974d1abe3b204ea3fedef9a7c1c17, type: 3}
       propertyPath: camera

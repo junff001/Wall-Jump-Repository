@@ -16,13 +16,13 @@ public class BouncyWall : MonoBehaviour
             Player.Instance.directionOfView.ReverseView();
             Player.Instance.physic.VelocityZero();
 
-            if (Player.Instance.currnetState == PlayerState.BasicJump)
+            if (Player.Instance.currnetState == EPlayerState.BASIC_JUMP)
             {
                 StartCoroutine(PlayerBouncesOff());
             }
-            else if (Player.Instance.currnetState == PlayerState.AerialJump)
+            else if (Player.Instance.currnetState == EPlayerState.AERIAL_JUMP)
             {
-                Player.Instance.currnetState = PlayerState.BasicJump;
+                Player.Instance.currnetState = EPlayerState.BASIC_JUMP;
                 StartCoroutine(PlayerBouncesOff());
             }
         }
@@ -43,12 +43,12 @@ public class BouncyWall : MonoBehaviour
                 Player.Instance.canJumping = true;
             }
 
-            if (Player.Instance.currentDirection == PlayerDirection.Right)
+            if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
             {
                 Vector2 direction = new Vector2(1, 1.75f);
                 Player.Instance.physic.SetVelocity(direction * bouncesOffDegree);
             }
-            else if (Player.Instance.currentDirection == PlayerDirection.Left)
+            else if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
             {
                 Vector2 direction = new Vector2(-1, 1.75f);
                 Player.Instance.physic.SetVelocity(direction * bouncesOffDegree);

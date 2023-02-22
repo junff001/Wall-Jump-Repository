@@ -31,11 +31,11 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
     {
         switch (Player.Instance.currnetState)
         {
-            case PlayerState.Death:
-                fsm.ChangeState(PlayerState.Death);
+            case EPlayerState.DEATH:
+                fsm.ChangeState(EPlayerState.DEATH);
                 break;
-            case PlayerState.BasicJump:
-                fsm.ChangeState(PlayerState.BasicJump);
+            case EPlayerState.BASIC_JUMP:
+                fsm.ChangeState(EPlayerState.BASIC_JUMP);
                 break;
         }
     }
@@ -49,7 +49,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
 
     public void Transition()
     {
-        Player.Instance.currnetState = PlayerState.BasicJump;
+        Player.Instance.currnetState = EPlayerState.BASIC_JUMP;
         fsm.ChangeState(Player.Instance.currnetState);
     }
 
@@ -63,7 +63,7 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         #region 교정포인트로 러프 써서 이동
         while (currentTime < moveToTheWallLerpTime && !Player.Instance.isTheWallCurrentlyFlipping)
         {
-            if (Player.Instance.currnetState == PlayerState.BasicJump)
+            if (Player.Instance.currnetState == EPlayerState.BASIC_JUMP)
             {
                 changeVeiw.Invoke();
                 yield break;
@@ -91,11 +91,11 @@ public class PlayerPostureCorrection : State, IPressTheScreenToTransition
         float posXAfterPostureCorrection = 0;
 
         #region 자세교정 중 플립되지 않았다면 위치 설정
-        if (Player.Instance.currentDirection == PlayerDirection.Left)
+        if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
         {
             posXAfterPostureCorrection = Player.Instance.transform.position.x - offsetAfterPostureCorrection;
         }
-        else if (Player.Instance.currentDirection == PlayerDirection.Right)
+        else if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
         {
             posXAfterPostureCorrection = Player.Instance.transform.position.x + offsetAfterPostureCorrection;
         }

@@ -31,11 +31,11 @@ public class PlayerStickToWall : PlayerIdle
 
         switch (Player.Instance.currnetState)
         {
-            case PlayerState.Death:
-                fsm.ChangeState(PlayerState.Death);
+            case EPlayerState.DEATH:
+                fsm.ChangeState(EPlayerState.DEATH);
                 break;
-            case PlayerState.BasicJump:
-                fsm.ChangeState(PlayerState.BasicJump);
+            case EPlayerState.BASIC_JUMP:
+                fsm.ChangeState(EPlayerState.BASIC_JUMP);
                 break;
         }
     }

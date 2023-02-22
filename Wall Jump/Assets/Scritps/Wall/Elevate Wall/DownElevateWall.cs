@@ -44,7 +44,7 @@ public class DownElevateWall : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (Player.Instance.currnetState == PlayerState.StickToWall || Player.Instance.currnetState == PlayerState.PostureCorrection)
+            if (Player.Instance.currnetState == EPlayerState.SITCK_TO_WALL || Player.Instance.currnetState == EPlayerState.POSTURE_CORRECTION)
             {
                 if (!Player.Instance.isPostureCorrecting)
                 {
@@ -62,8 +62,8 @@ public class DownElevateWall : MonoBehaviour
         Player.Instance.physic.VelocityZero();
         yield return new WaitUntil(() => !Player.Instance.isPostureCorrecting);
 
-        while ((Player.Instance.currnetState == PlayerState.StickToWall ||
-            Player.Instance.currnetState == PlayerState.PostureCorrection) &&
+        while ((Player.Instance.currnetState == EPlayerState.SITCK_TO_WALL ||
+            Player.Instance.currnetState == EPlayerState.POSTURE_CORRECTION) &&
             Player.Instance.currentStickToWall == this.transform)
         {
             Player.Instance.transform.Translate(Vector2.down * Time.deltaTime * elevateSpeed);
