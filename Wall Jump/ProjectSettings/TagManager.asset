@@ -10,7 +10,6 @@ TagManager:
   - CameraCollider
   - StageEntry
   - SpawnCollider
-  - DeadBound
   - CouldZone
   - MovingWall
   - FlipWall

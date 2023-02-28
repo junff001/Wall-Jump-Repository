@@ -8,9 +8,9 @@ using UnityEngine.Events;
 public class CameraZoneSensor : MonoBehaviour
 {
     [Header("[ Camera Zone Trigger Events ]")]
-    [SerializeField] private UnityEvent cameraFixedEvent;
-    [SerializeField] private UnityEvent cameraUnfixedEvent;
-    [SerializeField] private UnityEvent changeStateEvent;
+    [SerializeField] private UnityEvent OnCameraFixed;
+    [SerializeField] private UnityEvent OnCameraUnfixed;
+    [SerializeField] private UnityEvent OnChangeState;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,19 +19,19 @@ public class CameraZoneSensor : MonoBehaviour
             case "CameraFixedZone":
             {
                 // 카메라 중앙으로 고정
-                cameraFixedEvent.Invoke();
+                OnCameraFixed.Invoke();
                 break;
             }
             case "CameraUnfixedZone":
             {
                 // 카메라 고정 해제 (플레이어 팔로우)
-                cameraUnfixedEvent.Invoke();
+                OnCameraUnfixed.Invoke();
                 break;
             }  
             case "PlayerDeadZone":
             {
                 // 죽음 상태로 교체
-                changeStateEvent.Invoke();
+                OnChangeState.Invoke();
                 break;
             } 
         }
