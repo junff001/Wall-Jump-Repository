@@ -6,13 +6,13 @@ using UnityEngine.Events;
 
 public class WallGroundSensor : MonoBehaviour
 {
-    [Header("[ Components ]")]
+    [Header("[ Components Variables ]")]
     [SerializeField] private Transform player;
     [SerializeField] private PlayerDirectionOfView directionOfView;
     [SerializeField] private PlayerPostureCorrection postureCorrection;
     [SerializeField] private BoxCollider2D wallGroundCollider;
 
-    [Header("[ Correction Values ]")]
+    [Header("[ Correction Value Variables ]")]
     [SerializeField] private float playerCorrectionHeight;
     [SerializeField] private float wallCorrectionHeight;
 

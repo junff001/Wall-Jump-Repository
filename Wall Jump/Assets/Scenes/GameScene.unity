@@ -252,10 +252,6 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.9653808
       objectReference: {fileID: 0}
-    - target: {fileID: 6567686895914576266, guid: 7d5995a4d027c6a4b93c4480a137fe4c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6567686896041167150, guid: 7d5995a4d027c6a4b93c4480a137fe4c, type: 3}
       propertyPath: m_Name
       value: Start Stage
@@ -7620,7 +7616,7 @@ MonoBehaviour:
   autoResizeBoxCollider: 1
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 0.56029993
+  aspectRatio: 1.8106308
 --- !u!1 &2109490470
 GameObject:
   m_ObjectHideFlags: 0
