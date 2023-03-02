@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PlayerStateDictionary : SerializableDictionaryBase<EPlayerState, State>
+public class PlayerStateDictionary : SerializableDictionaryBase<PlayerState, State>
 {
     
 }

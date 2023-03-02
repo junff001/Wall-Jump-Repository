@@ -27,7 +27,7 @@ public class PlayerIdle : State, IPressTheScreenToTransition
         {
             if (Player.Instance.canJumping)
             {
-                Player.Instance.currnetState = EPlayerState.BASIC_JUMP;
+                Player.Instance.currnetState = PlayerState.BasicJump;
                 fsm.ChangeState(Player.Instance.currnetState);
             }         
         }

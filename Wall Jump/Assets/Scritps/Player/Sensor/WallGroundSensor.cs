@@ -27,9 +27,9 @@ public class WallGroundSensor : MonoBehaviour
 
                 if (correctionCriteria.position.y < player.position.y + playerCorrectionHeight)
                 {
-                    if (Player.Instance.currnetState == EPlayerState.BASIC_JUMP || Player.Instance.currnetState == EPlayerState.AERIAL_JUMP || Player.Instance.currnetState == EPlayerState.BASH_JUMP)
+                    if (Player.Instance.currnetState == PlayerState.BasicJump || Player.Instance.currnetState == PlayerState.AerialJump || Player.Instance.currnetState == PlayerState.BashJump)
                     {
-                        Player.Instance.currnetState = EPlayerState.POSTURE_CORRECTION;
+                        Player.Instance.currnetState = PlayerState.PostureCorrection;
                         player.SetParent(collision.transform);
 
                         Transform leftPoint = collision.transform.GetChild(1);
@@ -38,11 +38,11 @@ public class WallGroundSensor : MonoBehaviour
                         if (leftPoint.gameObject.activeSelf && rightPoint.gameObject.activeSelf)
                         {
                             // 양쪽 다 활성화 상태
-                            if (Player.Instance.currentDirection == EPlayerDirection.LEFT)
+                            if (Player.Instance.currentDirection == PlayerDirection.Left)
                             {
                                 StartCoroutine(postureCorrection.MoveToSideOfWall(rightPoint, directionOfView.ReverseView));
                             }
-                            else if (Player.Instance.currentDirection == EPlayerDirection.RIGHT)
+                            else if (Player.Instance.currentDirection == PlayerDirection.Right)
                             {
                                 StartCoroutine(postureCorrection.MoveToSideOfWall(leftPoint, directionOfView.ReverseView));
                             }
@@ -61,9 +61,9 @@ public class WallGroundSensor : MonoBehaviour
                 }
                 else if (correctionCriteria.position.y >= player.position.y + playerCorrectionHeight)
                 {
-                    if (Player.Instance.currnetState != EPlayerState.ON_GROUND)
+                    if (Player.Instance.currnetState != PlayerState.OnGround)
                     {
-                        Player.Instance.currnetState = EPlayerState.SITCK_TO_WALL;
+                        Player.Instance.currnetState = PlayerState.StickToWall;
                         player.SetParent(collision.transform);
                     }
                 }
@@ -72,7 +72,7 @@ public class WallGroundSensor : MonoBehaviour
             case "Ground":
             {
                 wallGroundCollider.enabled = false;
-                Player.Instance.currnetState = EPlayerState.ON_GROUND;
+                Player.Instance.currnetState = PlayerState.OnGround;
                 break;
             }     
         }

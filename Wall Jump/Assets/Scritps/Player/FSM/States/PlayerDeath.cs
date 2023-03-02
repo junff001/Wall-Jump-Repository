@@ -28,8 +28,8 @@ public class PlayerDeath : State
     {
         switch (Player.Instance.currnetState)
         {
-            case EPlayerState.ON_GROUND:
-                fsm.ChangeState(EPlayerState.ON_GROUND);
+            case PlayerState.OnGround:
+                fsm.ChangeState(PlayerState.OnGround);
                 break;
         }
     }

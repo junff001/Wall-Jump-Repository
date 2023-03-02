@@ -24,8 +24,8 @@ public class PlayerOnGround : PlayerIdle
 
         switch (Player.Instance.currnetState)
         {
-            case EPlayerState.DEATH:
-                fsm.ChangeState(EPlayerState.DEATH);
+            case PlayerState.Death:
+                fsm.ChangeState(PlayerState.Death);
                 break;
         }
     }

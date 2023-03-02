@@ -7,7 +7,7 @@ public class CameraFreeFollow : MonoBehaviour
 {
     [Header("[ Component Variables ]")]
     [SerializeField] private ProCamera2D proCamera;
-    [SerializeField] private CameraZone fixation;
+    [SerializeField] private CameraFixation fixation;
     [SerializeField] private Transform player;
     private float offset;
 

@@ -27,7 +27,7 @@ public class SlipEffect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {      
-            if (Player.Instance.currnetState == EPlayerState.SITCK_TO_WALL || Player.Instance.currnetState == EPlayerState.POSTURE_CORRECTION)
+            if (Player.Instance.currnetState == PlayerState.StickToWall || Player.Instance.currnetState == PlayerState.PostureCorrection)
             {
                 if (!Player.Instance.isPostureCorrecting)
                 {
@@ -47,8 +47,8 @@ public class SlipEffect : MonoBehaviour
         yield return new WaitForSeconds(slippingWaitTime);
         
 
-        while ((Player.Instance.currnetState == EPlayerState.SITCK_TO_WALL || 
-            Player.Instance.currnetState == EPlayerState.POSTURE_CORRECTION) && 
+        while ((Player.Instance.currnetState == PlayerState.StickToWall || 
+            Player.Instance.currnetState == PlayerState.PostureCorrection) && 
             Player.Instance.currentStickToWall == this.transform)
         {
             Player.Instance.transform.Translate(Vector2.down * Time.deltaTime * slipSpeed);

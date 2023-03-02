@@ -13,7 +13,7 @@ public class PlayerFSM : MonoBehaviour
 
     void Start()
     {
-        currentState = stateDictionary[EPlayerState.ON_GROUND];
+        currentState = stateDictionary[PlayerState.OnGround];
         currentState.Enter(this);
     }
 
@@ -41,7 +41,7 @@ public class PlayerFSM : MonoBehaviour
     /// 현재 상태를 바꾸는 함수
     /// </summary>
     /// <param name="newState"></param>
-    public void ChangeState(EPlayerState newState)
+    public void ChangeState(PlayerState newState)
     {
         if (currentState != stateDictionary[newState])
         {

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Player : MonoSingleton<Player>
 {
-    public EPlayerState currnetState { get; set; } = EPlayerState.ON_GROUND;
-    public EPlayerDirection currentDirection { get; set; } = EPlayerDirection.RIGHT;
+    public PlayerState currnetState { get; set; } = PlayerState.OnGround;
+    public PlayerDirection currentDirection { get; set; } = PlayerDirection.Right;
 
     public bool canJumping { get; set; } = true;
     public bool isPostureCorrecting { get; set; } = false;
