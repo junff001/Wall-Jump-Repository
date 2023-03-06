@@ -13,11 +13,11 @@ public class CameraOutBounderay : MonoBehaviour
 
     private void Start()
     {
-        triggerBoundCenter.enabled = false;
+        //triggerBoundCenter.enabled = false;
 
-        triggerBoundLeft.OnEnteredTrigger += FollowXActiveTrueLeft;
-        triggerBoundRight.OnEnteredTrigger += FollowXActiveTrueRight;
-        triggerBoundCenter.OnEnteredTrigger += FollowXActiveFalse;
+        //triggerBoundLeft.OnEnteredTrigger += FollowXActiveTrueLeft;
+        //triggerBoundRight.OnEnteredTrigger += FollowXActiveTrueRight;
+        //triggerBoundCenter.OnEnteredTrigger += FollowXActiveFalse;
     }
 
     private void FollowXActiveTrueLeft()
