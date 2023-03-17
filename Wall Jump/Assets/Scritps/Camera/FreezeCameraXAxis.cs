@@ -1,4 +1,5 @@
 using Com.LuisPedroFonseca.ProCamera2D;
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,12 @@ public class FreezeCameraXAxis : MonoBehaviour
 {
     [Header("[ Camera-Related ]")]
     [SerializeField] private ProCamera2D proCamera;
+    [SerializeField] private ProCamera2DCameraWindow proCameraWindow;
+    [Space(10)]
+    [SerializeField] private float cameraUnfreezingOffsetX;
 
     [Header("[ Collider-Related ]")]
-    [SerializeField] private BoxCollider2D freezeCameraXAxisZone;
-    [SerializeField] private BoxCollider2D unfreezeCameraXAxisZoneLeft;
-    [SerializeField] private BoxCollider2D unfreezeCameraXAxisZoneRight;
+    [SerializeField] private BoxCollider2D freezeCameraXAxisZoneCollider; 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,17 +23,37 @@ public class FreezeCameraXAxis : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            UnfreezingTheCameraXAxis();
+        }
+    }
+
     private void FreezingTheCameraXAxis()
     {
-        Debug.Log("고정");
+        this.transform.SetParent(proCamera.transform);
 
-        // ProCamera 고정해제하는 설정
+        float baselineX = freezeCameraXAxisZoneCollider.bounds.center.x;
+        float currentPlayerPositionX = Player.Instance.transform.position.x;
+
+        //if (baselineX < currentPlayerPositionX) proCamera.OffsetX = 
+        //else if (baselineX > currentPlayerPositionX) proCamera.OffsetX = cameraUnfreezingOffsetX;
+
         proCamera.FollowHorizontal = false;
-        proCamera.transform.position = new Vector3(0f, proCamera.transform.position.y, proCamera.transform.position.z);
+    }
 
-        // 같은 역할을 하는 컬라이더에 추가로 걸리지 않도록 방지
-        freezeCameraXAxisZone.enabled = false;
-        unfreezeCameraXAxisZoneLeft.enabled = true;
-        unfreezeCameraXAxisZoneRight.enabled = true;
+    private void UnfreezingTheCameraXAxis()
+    {
+        this.transform.SetParent(null);
+
+        float baselineX = freezeCameraXAxisZoneCollider.bounds.center.x;
+        float currentPlayerPositionX = Player.Instance.transform.position.x;
+
+        if (baselineX < currentPlayerPositionX) proCamera.OffsetX = -cameraUnfreezingOffsetX;
+        else if (baselineX > currentPlayerPositionX) proCamera.OffsetX = cameraUnfreezingOffsetX;
+
+        proCamera.FollowHorizontal = true;
     }
 }
